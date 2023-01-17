@@ -1,0 +1,454 @@
+% header -----------------------------------------------------------------------
+% Template created by texnew (author: Sachin Kumar); info can be found at 'https://github.com/alexrutar/texnew'.
+% version (1.13)
+
+
+% doctype ----------------------------------------------------------------------
+\documentclass[11pt, a4paper]{memoir}
+\usepackage[utf8]{inputenc}
+\usepackage[left=3cm,right=3cm,top=3cm,bottom=4cm]{geometry}
+\usepackage[protrusion=true,expansion=true]{microtype}
+
+
+% packages ---------------------------------------------------------------------
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{etoolbox}
+
+% Set enimitem
+\usepackage{enumitem}
+\SetEnumitemKey{nl}{nolistsep}
+\SetEnumitemKey{r}{label=(\roman*)}
+
+% Set tikz
+\usepackage{tikz, pgfplots}
+\pgfplotsset{compat=1.15}
+\usetikzlibrary{intersections,positioning,cd}
+\usetikzlibrary{arrows,arrows.meta}
+\tikzcdset{arrow style=tikz,diagrams={>=stealth}}
+
+% Set hyperref
+\usepackage[hidelinks]{hyperref}
+\usepackage{xcolor}
+\newcommand\myshade{85}
+\colorlet{mylinkcolor}{violet}
+\colorlet{mycitecolor}{orange!50!yellow}
+\colorlet{myurlcolor}{green!50!blue}
+
+\hypersetup{
+  linkcolor  = mylinkcolor!\myshade!black,
+  citecolor  = mycitecolor!\myshade!black,
+  urlcolor   = myurlcolor!\myshade!black,
+  colorlinks = true,
+}
+
+
+% macros -----------------------------------------------------------------------
+\DeclareMathOperator{\N}{{\mathbb{N}}}
+\DeclareMathOperator{\Q}{{\mathbb{Q}}}
+\DeclareMathOperator{\Z}{{\mathbb{Z}}}
+\DeclareMathOperator{\R}{{\mathbb{R}}}
+\DeclareMathOperator{\C}{{\mathbb{C}}}
+\DeclareMathOperator{\F}{{\mathbb{F}}}
+
+% Boldface includes math
+\newcommand{\mbf}[1]{{\boldmath\bfseries #1}}
+
+% proof implications
+\newcommand{\imp}[2]{($#1\Rightarrow#2$)\hspace{0.2cm}}
+\newcommand{\impe}[2]{($#1\Leftrightarrow#2$)\hspace{0.2cm}}
+\newcommand{\impr}{{($\Rightarrow$)\hspace{0.2cm}}}
+\newcommand{\impl}{{($\Leftarrow$)\hspace{0.2cm}}}
+
+% align macros
+\newcommand{\agspace}{\ensuremath{\phantom{--}}}
+\newcommand{\agvdots}{\ensuremath{\hspace{0.16cm}\vdots}}
+
+% convenient brackets
+\newcommand{\brac}[1]{\ensuremath{\left\langle #1 \right\rangle}}
+\newcommand{\norm}[1]{\ensuremath{\left\lVert#1\right\rVert}}
+\newcommand{\abs}[1]{\ensuremath{\left\lvert#1\right\rvert}}
+
+% arrows
+\newcommand{\lto}[0]{\ensuremath{\longrightarrow}}
+\newcommand{\fto}[1]{\ensuremath{\xrightarrow{\scriptstyle{#1}}}}
+\newcommand{\hto}[0]{\ensuremath{\hookrightarrow}}
+\newcommand{\mapsfrom}[0]{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+ 
+% Divides, Not Divides
+\renewcommand{\div}{\bigm|}
+\newcommand{\ndiv}{%
+    \mathrel{\mkern.5mu % small adjustment
+        % superimpose \nmid to \big|
+        \ooalign{\hidewidth$\big|$\hidewidth\cr$/$\cr}%
+    }%
+}
+
+% Convenient overline
+\newcommand{\ol}[1]{\ensuremath{\overline{#1}}}
+
+% Big \cdot
+\makeatletter
+\newcommand*\bigcdot{\mathpalette\bigcdot@{.5}}
+\newcommand*\bigcdot@[2]{\mathbin{\vcenter{\hbox{\scalebox{#2}{$\m@th#1\bullet$}}}}}
+\makeatother
+
+% Big and small Disjoint union
+\makeatletter
+\providecommand*{\cupdot}{%
+  \mathbin{%
+    \mathpalette\@cupdot{}%
+  }%
+}
+\newcommand*{\@cupdot}[2]{%
+  \ooalign{%
+    $\m@th#1\cup$\cr
+    \sbox0{$#1\cup$}%
+    \dimen@=\ht0 %
+    \sbox0{$\m@th#1\cdot$}%
+    \advance\dimen@ by -\ht0 %
+    \dimen@=.5\dimen@
+    \hidewidth\raise\dimen@\box0\hidewidth
+  }%
+}
+
+\providecommand*{\bigcupdot}{%
+  \mathop{%
+    \vphantom{\bigcup}%
+    \mathpalette\@bigcupdot{}%
+  }%
+}
+\newcommand*{\@bigcupdot}[2]{%
+  \ooalign{%
+    $\m@th#1\bigcup$\cr
+    \sbox0{$#1\bigcup$}%
+    \dimen@=\ht0 %
+    \advance\dimen@ by -\dp0 %
+    \sbox0{\scalebox{2}{$\m@th#1\cdot$}}%
+    \advance\dimen@ by -\ht0 %
+    \dimen@=.5\dimen@
+    \hidewidth\raise\dimen@\box0\hidewidth
+  }%
+}
+\makeatother
+
+
+% macros (theorem) -------------------------------------------------------------
+\usepackage[thmmarks,amsmath,hyperref]{ntheorem}
+\usepackage[capitalise,nameinlink]{cleveref}
+
+% Numbered Statements
+\theoremstyle{change}
+\theoremindent\parindent
+\theorembodyfont{\itshape}
+\theoremheaderfont{\bfseries\boldmath}
+\newtheorem{theorem}{Theorem.}[section]
+\newtheorem{lemma}[theorem]{Lemma.}
+\newtheorem{corollary}[theorem]{Corollary.}
+\newtheorem{proposition}[theorem]{Proposition.}
+
+% Claim environment
+\theoremstyle{plain}
+\theorempreskip{0.2cm}
+\theorempostskip{0.2cm}
+\theoremheaderfont{\scshape}
+\newtheorem{claim}{Claim}
+\renewcommand\theclaim{\Roman{claim}}
+\AtBeginEnvironment{theorem}{\setcounter{claim}{0}}
+
+% Un-numbered Statements
+\theorempreskip{0.1cm}
+\theorempostskip{0.1cm}
+\theoremindent0.0cm
+\theoremstyle{nonumberplain}
+\theorembodyfont{\upshape}
+\theoremheaderfont{\bfseries\itshape}
+\newtheorem{definition}{Definition.}
+\theoremheaderfont{\itshape}
+\newtheorem{example}{Example.}
+\newtheorem{exercise}{Exercise.}
+\newtheorem{remark}{Remark.}
+
+% Proof / solution environments
+\theoremseparator{}
+\theoremheaderfont{\hspace*{\parindent}\scshape}
+\theoremsymbol{$//$}
+\newtheorem{solution}{Sol'n}
+\theoremsymbol{$\blacksquare$}
+\theorempostskip{0.4cm}
+\newtheorem{proof}{Proof}
+\theoremsymbol{}
+\newtheorem{nmproof}{Proof}
+
+% Format references
+\crefformat{equation}{(#2#1#3)}
+\Crefformat{theorem}{#2Thm. #1#3}
+\Crefformat{lemma}{#2Lem. #1#3}
+\Crefformat{proposition}{#2Prop. #1#3}
+\Crefformat{corollary}{#2Cor. #1#3}
+\crefformat{theorem}{#2Theorem #1#3}
+\crefformat{lemma}{#2Lemma #1#3}
+\crefformat{proposition}{#2Proposition #1#3}
+\crefformat{corollary}{#2Corollary #1#3}
+
+
+% macros (algebra) -------------------------------------------------------------
+\DeclareMathOperator{\Ann}{Ann}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\chr}{char}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\disc}{disc}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Fix}{Fix}
+\DeclareMathOperator{\Frac}{Frac}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\Nil}{Nil}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\Res}{Res}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\spn}{span}
+\DeclareMathOperator{\Stab}{Stab}
+\DeclareMathOperator{\Tor}{Tor}
+
+% Lagrange symbol
+\newcommand{\lgs}[2]{\ensuremath{\left(\frac{#1}{#2}\right)}}
+
+% Quotient (larger in display mode)
+\newcommand{\quot}[2]{\mathchoice{\left.\raisebox{0.14em}{$#1$}\middle/\raisebox{-0.14em}{$#2$}\right.}
+                                 {\left.\raisebox{0.08em}{$#1$}\middle/\raisebox{-0.08em}{$#2$}\right.}
+                                 {\left.\raisebox{0.03em}{$#1$}\middle/\raisebox{-0.03em}{$#2$}\right.}
+                                 {\left.\raisebox{0em}{$#1$}\middle/\raisebox{0em}{$#2$}\right.}}
+
+
+% macros (analysis) ------------------------------------------------------------
+\DeclareMathOperator{\M}{{\mathcal{M}}}
+\DeclareMathOperator{\B}{{\mathcal{B}}}
+\DeclareMathOperator{\ps}{{\mathcal{P}}}
+\DeclareMathOperator{\pr}{{\mathbb{P}}}
+\DeclareMathOperator{\E}{{\mathbb{E}}}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\sgn}{sgn}
+
+\renewcommand{\Re}{\ensuremath{\operatorname{Re}}}
+\renewcommand{\Im}{\ensuremath{\operatorname{Im}}}
+\renewcommand{\d}[1]{\ensuremath{\operatorname{d}\!{#1}}}
+
+
+% file-specific preamble -------------------------------------------------------
+\DeclareMathOperator{\Ps}{\mathcal{P}}
+\renewcommand{\Re}{\ensuremath{\operatorname{Re}}}
+\renewcommand{\Im}{\ensuremath{\operatorname{Im}}}
+\DeclareMathOperator{\proj}{proj}
+\DeclareMathOperator{\Int}{Int}
+\DeclareMathOperator{\Id}{Id}
+\DeclareMathOperator{\diam}{diam}
+\newcommand{\inner}[2]{\left\langle #1, #2 \right\rangle} % inner product
+\newcommand{\st}{\text{ s.t. }}
+
+
+% constants --------------------------------------------------------------------
+\newcommand{\subject}{MATH 138: Honours Calculus 2 \\ Theorems}
+\newcommand{\semester}{Winter 2023}
+\newcommand{\professor}{Eddie Dupont}
+
+% formatting -------------------------------------------------------------------
+% Fonts
+\usepackage{kpfonts}
+\usepackage{dsfont}
+
+% Adjust numbering
+\numberwithin{equation}{section}
+\counterwithin{figure}{section}
+\counterwithout{section}{chapter}
+\counterwithin*{chapter}{part}
+
+% Footnote
+\setfootins{0.5cm}{0.5cm} % footer space above
+\renewcommand*{\thefootnote}{\fnsymbol{footnote}} % footnote symbol
+
+% Table of Contents
+\renewcommand{\thechapter}{\Roman{chapter}}
+\renewcommand*{\cftchaptername}{Chapter } % Place 'Chapter' before roman
+\setlength\cftchapternumwidth{4em} % Add space before chapter name
+\cftpagenumbersoff{chapter} % Turn off page numbers for chapter
+\maxtocdepth{section} % table of contents up to section
+
+% Section / Subsection headers
+\setsecnumdepth{section} % numbering up to and including "section"
+\newcommand*{\shortcenter}[1]{%
+    \sethangfrom{\noindent ##1}%
+    \Large\boldmath\scshape\bfseries
+    \centering
+\parbox{5in}{\centering #1}\par}
+\setsecheadstyle{\shortcenter}
+\setsubsecheadstyle{\large\scshape\boldmath\bfseries\raggedright}
+
+% Chapter Headers
+\chapterstyle{verville}
+
+% Page Headers / Footers
+\copypagestyle{myruled}{ruled} % Draw formatting from existing 'ruled' style
+\makeoddhead{myruled}{}{}{\scshape\subject}
+\makeevenfoot{myruled}{}{\thepage}{}
+\makeoddfoot{myruled}{}{\thepage}{}
+\pagestyle{myruled}
+\setfootins{0.5cm}{0.5cm}
+\renewcommand*{\thefootnote}{\fnsymbol{footnote}}
+
+% Titlepage
+\title{\subject}
+\author{Sachin Kumar\thanks{\itshape skmuthuk@uwaterloo.ca}\\ University of Waterloo}
+\date{\semester\thanks{Last updated: \today}}
+
+
+%----------------------- DOCUMENT BEGIN ----------------------
+
+\begin{document}
+\pagenumbering{gobble}
+\hypersetup{pageanchor=false}
+\maketitle
+\newpage
+\frontmatter
+\hypersetup{pageanchor=true}
+\tableofcontents*
+\newpage
+\mainmatter
+
+
+
+
+
+
+% main document ----------------------------------------------------------
+
+% -------------------- CHAPTER 1 -------------------------
+\chapter{Intgeration}
+\section{Riemann Sums and Definite Integral}
+\begin{theorem}[Integrability Theorem for Continuous Functions]
+Let $f$ be continuous on $[a, b]$. Then $f$ is integrable on $[a,b]$. Moreover, 
+$$\int^b_a f(t) \space dt = \lim_{n \to \infty}S_n$$ where, $$S_n = \sum^n_{i = 1}f(c_i) \Delta t_i$$ is any Riemann sum associated with the regular $n$-partitions. In particular, $$\int^b_a f(t) \space dt=\lim_{n \to \infty} R_n = \lim_{n \to \infty} \sum^n_{i = 1} f(t_i)\dfrac{b-a}{n}$$ and $$\int^b_a f(t) \space dt=\lim_{n \to \infty} L_n = \lim_{n \to \infty} \sum^n_{i = 1} f(t_{i - 1}) \dfrac{b-a}{n}$$
+\end{theorem}
+\section{Properties of the Definite Integral}
+\begin{theorem}[Properties of Integrals Theorem]
+Assume that $f$ and $g$ are integrable on the interval $[a, b]$. Then:
+\begin{enumerate}
+    \item For any $c \in \R$, $\int^b_a c \space f(t) \space dt = c \int^b_a f(t) \space dt$
+    \item $\int^b_a (f + g)(t) \space dt = \int^b_a f(t) \space dt + \int^b_a g(t) \space dt$
+    \item If $m \le f(t) \le M$ for all $t \in [a, b]$, then $m(b-a) \le \int^b_a f(t) \space dt \le M(b-a)$
+    \item If $0 \le f(t)$ for all $t \in [a, b]$, then $0 \le \int^b_a f(t) \space dt$
+    \item If $g(t) \le f(t)$ for all $t \in [a, b]$, then $\int^b_a g(t) \space dt \le \int^b_a f(t) \space dt$
+    \item The function $|f|$ is integrable on $[a,b]$ and $\big|\int^b_a f(t) \space dt \big| \le \int^b_a |f(t)| \space dt$
+\end{enumerate}
+\end{theorem}
+\begin{theorem}[Integrals over Subintervals Theorem]
+    Assume that $f$ is integrable on an interval $I$ containing $a, b$ and $c$. Then $$\int^a_a f(t) \space dt = \int^c_a f(t) \space dt + \int^b_c f(t) \space dt$$
+\end{theorem}
+\section{The Average Value of a Function}
+\begin{theorem}[Average Value Theorem (Mean Value Theorem for Integrals)]
+    Assume that $f$ is continuous on $[a.b]$. Then there exists $a \le c \le b$ such that $$f(c) = \dfrac{1}{b-a}\int^b_af(t) \space dt$$
+\end{theorem}
+\section{The Fundamental Theorem of Calculus}
+\begin{theorem}[Fundamental Theorem of Calculus (Part 1)]
+    Assume that $f$ is continuous on an open interval $I$ containing a point $a$. Let $$G(x) =  \int^x_a f(t) dt$$Then $G(x)$ is differentiable at each $x \in I$ and $$G'(x) = f(x)$$ Equivalently, $$G'(x) = \dfrac{d}{dx}\int^x_a f(t) dt = f(x)$$
+\end{theorem}
+\begin{theorem}[Extended Version of the Fundamental Theorem of Calculus]
+    Assume that $f$ is continuous and that $g$ and $h$ are differentiable. Let, $$H(x) = \int^{h(x)}_{g(x)}f(t) \space dt$$ Then $H(x)$ is differentiable and $$H'(x) = f(h(x)) h'(x) - f(g(hx))g'(x)$$
+\end{theorem}
+\begin{theorem}[Power Rule for Antiderivatives]
+    If $\alpha \ne -1$, then $$\int x^\alpha \space dx = \dfrac{x^{\alpha + 1}}{\alpha + 1} + C$$
+\end{theorem}
+\begin{theorem}[Fundamental Theorem of Calculus (Part 2)]
+    Assume that $f$ is continuous and that $F$ is any antiderivative of $f$, then $$\int^b_a f(t)\space dt = F(b) - F(a)$$
+\end{theorem}
+\section{Change of Variables}
+\begin{theorem}[Change of Variables Theorem]
+Assume that $g'(x)$ is continuous on $[a,b]$ and $f(u)$ is continuous on $g([a,b])$,  then $$\int^{x=b}_{x=a} f(g(x))g'(x) \space dx = \int^{u = g(b)}_{u = g(a)} f(u) \space du$$
+\end{theorem}
+
+\chapter{Techniques of Integration}
+\section{Partial Fractions}
+\begin{theorem}[Integration by Parts Theorem]
+Assume that $f$  and $g$  are such that both $f'$ and $g'$ are continuous on an interval containing $a$ and $b$. Then $$\int^b_a f(x)g'(x) \space dx = f(x)g(x)|^b_a - \int^b_a f'(x)g(x) \space dx$$
+\end{theorem}
+\begin{theorem}[Integration of Partial Fractions]
+    Assume that $f(x) = \frac{p(x)}{q(x)}$ admits a Type I Partial Fraction Decomposition of the form $$f(x) = \dfrac{1}{a}\bigg[\dfrac{A_1}{x - a_1} + \dfrac{A_2}{x - a_2} + \dots + \dfrac{A_k}{x - a_k} \bigg]$$
+    Then 
+    \begin{align*}
+        \int f(x) \space dx &= \dfrac{1}{a}\bigg[\int \dfrac{A_1}{x - a_1} \space dx + \int \dfrac{A_2}{x - a_2} \space dx + \dots + \int \dfrac{A_k}{x - a_k} \space dx \bigg]\\
+        &= \dfrac{1}{a}[A_1 \ln (|x - a_1|) + A_2 \ln (|x - a_2|) + \dots + A_k \ln (|x - a_k|)] + C
+    \end{align*}
+\end{theorem}
+\section{Improper Integrals}
+\begin{theorem}[$p$-Test for Type I Improper Integrals]
+    The improper integral $$\int^\infty_1 \dfrac{1}{x^p} \space dx$$ converges if and only if $p > 1$. If $p > 1$, then $$\int^\infty_1 \dfrac{1}{x^p} \space dx = \dfrac{1}{p-1}$$
+\end{theorem}
+\begin{theorem}[Properties of Type I Improper Integrals]
+    Assume that $\int^\infty_a f(x) \space dx$  and $\int^\infty_a g(x) \space dx$ both converge
+    \begin{enumerate}
+        \item $\int^\infty_a cf(x) \space dx$ converges for each $c \in \R$ and  $$\int^\infty_a cf(x) \space dx = c \int^\infty_a f(x) \space dx$$
+        \item $\int^\infty_a (f(x) + g(x)) \space dx $ converges and $$\int^\infty_a (f(x) + g(x)) \space dx  = \int^\infty_a f(x)\space dx + \int^\infty_a g(x) \space dx$$
+        \item If $f(x) \le g(x) $ for all $a \le x$, then $$\int^\infty_a f(x)\space dx \le \int^\infty_a g(x) \space dx$$
+        \item If $a < c< \infty $, then $\int^\infty_c f(x) \space dx$ converges and $$\int^\infty_a f(x)\space dx = \int^c_a f(x)\space dx  + \int^\infty_c f(x)\space dx$$
+    \end{enumerate}
+\end{theorem}
+\begin{theorem}[The Monotone Convergence Theorem for Functions]
+    Assume that $f$ is non-decreasing on $[a, \infty]$.
+    \begin{enumerate}
+        \item If $\{f(x) \space | \space  x \in [a, \infty]\}$ is bounded above, then $\lim_{x \to \infty}f(x)$ exists and $$\lim_{x \to \infty} f(x) = L = lub(\{f(x) \space | \space  x \in [a, \infty)\})$$
+        \item If $\{f(x) \space | \space  x \in [a, \infty]\}$ is not bounded above, then $\lim_{x \to \infty} f(x) = \infty$
+    \end{enumerate}
+\end{theorem}
+\begin{theorem}[Comparison Test for Type I Improper Integrals]
+    Assume that $0\le g(x)\le f(x)$ forall $x\ge a$ and that both $f$ and $g$ are continuous on $[a, \infty)$.
+    \begin{enumerate}
+        \item If $\int^{\infty}_a f(x) \space dx $ converges, then so does $\int^\infty_a g(x) \space dx$
+        \item If $\int^\infty_a g(x) \space dx$ diverges, then so does $\int^{\infty}_a f(x) \space dx$
+    \end{enumerate}
+\end{theorem}
+\begin{theorem}[Absolute Convergence Theorem for Improper Integrals]
+    Let $f$ be integrable on $[a,b]$ for all $b > a$. Then $|f|$ is also integrable on $[a,b]$ for all $b > a$. Moreover, if we assume that $$\int^\infty_a |f(x)|\space dx$$ converges, then so does $$\int^\infty_a f(x) \space dx$$ In particular, if $0 \le |f(x)| \le g(x)$ for all $x \ge a$, both $f$ and $g$ are integrable on $[a,b]$ for all $b \ge a$, and if  $\int^\infty_a g(x) \space dx$ converges, then so does $$\int^\infty_a f(x) \space dx$$
+\end{theorem}
+\begin{theorem}[$p$-Test for Type II Improper Integrals]
+    The improper integral $$\int^1_0 \dfrac{1}{x^p} \space dx$$ converges if and only if $p < 1$. \\If $p < 1$, then $$\int^1_0 \dfrac{1}{x^p} \space dx = \dfrac{1}{1 - p}$$
+\end{theorem}
+
+\chapter{Applications of Integration}
+\section{Area Between Curves}
+\begin{theorem}[Area Between Curves]
+    Let $f$ and $g$ be continuous on $[a,b]$. Let $A$ be the region bounded by the graphs of $f$ and $g$, the line $t = a$ and the line $t = b$. Then the area of region $A$ is given by $$A = \int^b_a |g(t) - f(t)|\space dt$$
+\end{theorem}
+\section{Volumes of Revolution: Disk Method}
+\begin{theorem}[Volumes of Revolution: Disk Method I]
+    Let $f$ be continuous on $[a,b]$ with $f(x) \ge 0$  for all $x \in [a,b]$. Let $W$ be the region bounded by the graphs of $f$, the $x$-axis and the lines $x = a$ and $x = b$. Then the volume $V$ of the solid of revolution obtained by rotating the region $W$ around the $x$-axis is given by $$V = \int^b_a \pi f(x)^2 \space dx$$
+\end{theorem}
+\begin{theorem}[Volumes of Revolution: Disk Method II]
+    Let $f$ and $g$ be continuous on $[a,b]$ with $0 \le f(x) \le g(x)$ for all $x \in [a,b]$. Let $W$ be the region bounded by the graphs of $f$ and $g$, and the lines $x = a$ and $x = b$. Then the volume $V$ of the solid of revolution obtained by rotating the region $W$ around the $x$-axis is given by $$V = \int^b_a \pi(g(x)^2 - f(x)^2)\space dx$$
+\end{theorem}
+\begin{theorem}[Volumes of Revolution: The Shell Method]
+    Let $a \ge 0$. Let $f$ and $g$ be continuous on $ [a,b]$ with f$(x) \le g(x)$ for all $x \in [a, b]$. Let $W$ be the region bounded by the graphs of$ f$ and $g$, and the lines $x = a $ and $x = b$. Then the volume$ V$ of the solid of revolution obtained by rotating the region $W$ around the $y$-axis is given by $$V = \int^b_a 2\pi x(g(x) - f(x)) \space dx$$
+\end{theorem}
+\section{Arc Length}
+\begin{theorem}[Arc Length]
+    Let $ f $ be continuously differentiable on $[a, b]$. Then the arc length $S$ of the graph of $f$ over the interval $[a, b]$ is given by $$S = \int^b_a \sqrt{1 + (f'(x))^2} \space dx$$
+\end{theorem}
+
+\chapter{Differential Equations}
+\section{First-Order Linear Differential Equations}
+\begin{theorem}[Solving First-order Linear Differential Equations]
+    Let $f$ and $g$  be continuous and let $$y' = f(x)y + g(x)$$ be a first-order linear differential equation. Then the solutions to this equation are of the form $$y = \dfrac{\int g(x)I(x) \space dx}{I(x)}$$ where $I(x) = e^{- \int f(x) \space dx}$
+\end{theorem}
+\section{Initial Value Problems}
+\begin{theorem}[Existence and Uniqueness Theorem for FOLDE]
+    Assume that $f$ and $g$ are continuous functions on an interval $I$. Then for each $x_0 \in I$ and for all $y_0 \in \R$, the initial value problem
+    \begin{align*}
+        y' = f(x)y + g(x)\\
+        y(x_0) = y_0
+    \end{align*}
+    has exactly one solution $y = \phi(x)$ on the interval $I$.
+\end{theorem}
+\end{document}

@@ -1,0 +1,531 @@
+% header -----------------------------------------------------------------------
+% Template created by texnew (author: Sachin Kumar); info can be found at 'https://github.com/alexrutar/texnew'.
+% version (1.13)
+
+
+% doctype ----------------------------------------------------------------------
+\documentclass[11pt, a4paper]{memoir}
+\usepackage[utf8]{inputenc}
+\usepackage[left=3cm,right=3cm,top=3cm,bottom=4cm]{geometry}
+\usepackage[protrusion=true,expansion=true]{microtype}
+
+
+% packages ---------------------------------------------------------------------
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{etoolbox}
+
+% Set enimitem
+\usepackage{enumitem}
+\SetEnumitemKey{nl}{nolistsep}
+\SetEnumitemKey{r}{label=(\roman*)}
+
+% Set tikz
+\usepackage{tikz, pgfplots}
+\pgfplotsset{compat=1.15}
+\usetikzlibrary{intersections,positioning,cd}
+\usetikzlibrary{arrows,arrows.meta}
+\tikzcdset{arrow style=tikz,diagrams={>=stealth}}
+
+% Set hyperref
+\usepackage[hidelinks]{hyperref}
+\usepackage{xcolor}
+\newcommand\myshade{85}
+\colorlet{mylinkcolor}{violet}
+\colorlet{mycitecolor}{orange!50!yellow}
+\colorlet{myurlcolor}{green!50!blue}
+
+\hypersetup{
+  linkcolor  = mylinkcolor!\myshade!black,
+  citecolor  = mycitecolor!\myshade!black,
+  urlcolor   = myurlcolor!\myshade!black,
+  colorlinks = true,
+}
+
+
+% macros -----------------------------------------------------------------------
+\DeclareMathOperator{\N}{{\mathbb{N}}}
+\DeclareMathOperator{\Q}{{\mathbb{Q}}}
+\DeclareMathOperator{\Z}{{\mathbb{Z}}}
+\DeclareMathOperator{\R}{{\mathbb{R}}}
+\DeclareMathOperator{\C}{{\mathbb{C}}}
+\DeclareMathOperator{\F}{{\mathbb{F}}}
+
+% Boldface includes math
+\newcommand{\mbf}[1]{{\boldmath\bfseries #1}}
+
+% proof implications
+\newcommand{\imp}[2]{($#1\Rightarrow#2$)\hspace{0.2cm}}
+\newcommand{\impe}[2]{($#1\Leftrightarrow#2$)\hspace{0.2cm}}
+\newcommand{\impr}{{($\Rightarrow$)\hspace{0.2cm}}}
+\newcommand{\impl}{{($\Leftarrow$)\hspace{0.2cm}}}
+
+% align macros
+\newcommand{\agspace}{\ensuremath{\phantom{--}}}
+\newcommand{\agvdots}{\ensuremath{\hspace{0.16cm}\vdots}}
+
+% convenient brackets
+\newcommand{\brac}[1]{\ensuremath{\left\langle #1 \right\rangle}}
+\newcommand{\norm}[1]{\ensuremath{\left\lVert#1\right\rVert}}
+\newcommand{\abs}[1]{\ensuremath{\left\lvert#1\right\rvert}}
+
+% arrows
+\newcommand{\lto}[0]{\ensuremath{\longrightarrow}}
+\newcommand{\fto}[1]{\ensuremath{\xrightarrow{\scriptstyle{#1}}}}
+\newcommand{\hto}[0]{\ensuremath{\hookrightarrow}}
+\newcommand{\mapsfrom}[0]{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+ 
+% Divides, Not Divides
+\renewcommand{\div}{\bigm|}
+\newcommand{\ndiv}{%
+    \mathrel{\mkern.5mu % small adjustment
+        % superimpose \nmid to \big|
+        \ooalign{\hidewidth$\big|$\hidewidth\cr$/$\cr}%
+    }%
+}
+
+% Convenient overline
+\newcommand{\ol}[1]{\ensuremath{\overline{#1}}}
+
+% Big \cdot
+\makeatletter
+\newcommand*\bigcdot{\mathpalette\bigcdot@{.5}}
+\newcommand*\bigcdot@[2]{\mathbin{\vcenter{\hbox{\scalebox{#2}{$\m@th#1\bullet$}}}}}
+\makeatother
+
+% Big and small Disjoint union
+\makeatletter
+\providecommand*{\cupdot}{%
+  \mathbin{%
+    \mathpalette\@cupdot{}%
+  }%
+}
+\newcommand*{\@cupdot}[2]{%
+  \ooalign{%
+    $\m@th#1\cup$\cr
+    \sbox0{$#1\cup$}%
+    \dimen@=\ht0 %
+    \sbox0{$\m@th#1\cdot$}%
+    \advance\dimen@ by -\ht0 %
+    \dimen@=.5\dimen@
+    \hidewidth\raise\dimen@\box0\hidewidth
+  }%
+}
+
+\providecommand*{\bigcupdot}{%
+  \mathop{%
+    \vphantom{\bigcup}%
+    \mathpalette\@bigcupdot{}%
+  }%
+}
+\newcommand*{\@bigcupdot}[2]{%
+  \ooalign{%
+    $\m@th#1\bigcup$\cr
+    \sbox0{$#1\bigcup$}%
+    \dimen@=\ht0 %
+    \advance\dimen@ by -\dp0 %
+    \sbox0{\scalebox{2}{$\m@th#1\cdot$}}%
+    \advance\dimen@ by -\ht0 %
+    \dimen@=.5\dimen@
+    \hidewidth\raise\dimen@\box0\hidewidth
+  }%
+}
+\makeatother
+
+
+% macros (theorem) -------------------------------------------------------------
+\usepackage[thmmarks,amsmath,hyperref]{ntheorem}
+\usepackage[capitalise,nameinlink]{cleveref}
+
+% Numbered Statements
+\theoremstyle{change}
+\theoremindent\parindent
+\theorembodyfont{\itshape}
+\theoremheaderfont{\bfseries\boldmath}
+\newtheorem{theorem}{Theorem.}[section]
+\newtheorem{lemma}[theorem]{Lemma.}
+\newtheorem{corollary}[theorem]{Corollary.}
+\newtheorem{proposition}[theorem]{Proposition.}
+
+% Claim environment
+\theoremstyle{plain}
+\theorempreskip{0.2cm}
+\theorempostskip{0.2cm}
+\theoremheaderfont{\scshape}
+\newtheorem{claim}{Claim}
+\renewcommand\theclaim{\Roman{claim}}
+\AtBeginEnvironment{theorem}{\setcounter{claim}{0}}
+
+% Un-numbered Statements
+\theorempreskip{0.1cm}
+\theorempostskip{0.1cm}
+\theoremindent0.0cm
+\theoremstyle{nonumberplain}
+\theorembodyfont{\upshape}
+\theoremheaderfont{\bfseries\itshape}
+\newtheorem{definition}{Definition.}
+\theoremheaderfont{\itshape}
+\newtheorem{example}{Example.}
+\newtheorem{exercise}{Exercise.}
+\newtheorem{remark}{Remark.}
+
+% Proof / solution environments
+\theoremseparator{}
+\theoremheaderfont{\hspace*{\parindent}\scshape}
+\theoremsymbol{$//$}
+\newtheorem{solution}{Sol'n}
+\theoremsymbol{$\blacksquare$}
+\theorempostskip{0.4cm}
+\newtheorem{proof}{Proof}
+\theoremsymbol{}
+\newtheorem{nmproof}{Proof}
+
+% Format references
+\crefformat{equation}{(#2#1#3)}
+\Crefformat{theorem}{#2Thm. #1#3}
+\Crefformat{lemma}{#2Lem. #1#3}
+\Crefformat{proposition}{#2Prop. #1#3}
+\Crefformat{corollary}{#2Cor. #1#3}
+\crefformat{theorem}{#2Theorem #1#3}
+\crefformat{lemma}{#2Lemma #1#3}
+\crefformat{proposition}{#2Proposition #1#3}
+\crefformat{corollary}{#2Corollary #1#3}
+
+
+% macros (algebra) -------------------------------------------------------------
+\DeclareMathOperator{\Ann}{Ann}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\chr}{char}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\disc}{disc}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Fix}{Fix}
+\DeclareMathOperator{\Frac}{Frac}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\Nil}{Nil}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\Res}{Res}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\spn}{span}
+\DeclareMathOperator{\Stab}{Stab}
+\DeclareMathOperator{\Tor}{Tor}
+
+% Lagrange symbol
+\newcommand{\lgs}[2]{\ensuremath{\left(\frac{#1}{#2}\right)}}
+
+% Quotient (larger in display mode)
+\newcommand{\quot}[2]{\mathchoice{\left.\raisebox{0.14em}{$#1$}\middle/\raisebox{-0.14em}{$#2$}\right.}
+                                 {\left.\raisebox{0.08em}{$#1$}\middle/\raisebox{-0.08em}{$#2$}\right.}
+                                 {\left.\raisebox{0.03em}{$#1$}\middle/\raisebox{-0.03em}{$#2$}\right.}
+                                 {\left.\raisebox{0em}{$#1$}\middle/\raisebox{0em}{$#2$}\right.}}
+
+
+% macros (analysis) ------------------------------------------------------------
+\DeclareMathOperator{\M}{{\mathcal{M}}}
+\DeclareMathOperator{\B}{{\mathcal{B}}}
+\DeclareMathOperator{\ps}{{\mathcal{P}}}
+\DeclareMathOperator{\pr}{{\mathbb{P}}}
+\DeclareMathOperator{\E}{{\mathbb{E}}}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\sgn}{sgn}
+
+\renewcommand{\Re}{\ensuremath{\operatorname{Re}}}
+\renewcommand{\Im}{\ensuremath{\operatorname{Im}}}
+\renewcommand{\d}[1]{\ensuremath{\operatorname{d}\!{#1}}}
+
+
+% file-specific preamble -------------------------------------------------------
+\DeclareMathOperator{\Ps}{\mathcal{P}}
+\renewcommand{\Re}{\ensuremath{\operatorname{Re}}}
+\renewcommand{\Im}{\ensuremath{\operatorname{Im}}}
+\DeclareMathOperator{\proj}{proj}
+\DeclareMathOperator{\Int}{Int}
+\DeclareMathOperator{\Id}{Id}
+\DeclareMathOperator{\diam}{diam}
+\newcommand{\inner}[2]{\left\langle #1, #2 \right\rangle} % inner product
+\newcommand{\st}{\text{ s.t. }}
+
+
+% constants --------------------------------------------------------------------
+\newcommand{\subject}{MATH 138 \\ Honours Calculus 2}
+\newcommand{\semester}{Winter 2023}
+\newcommand{\professor}{Eddie Dupont}
+
+% formatting -------------------------------------------------------------------
+% Fonts
+\usepackage{kpfonts}
+\usepackage{dsfont}
+
+% Adjust numbering
+\numberwithin{equation}{section}
+\counterwithin{figure}{section}
+\counterwithout{section}{chapter}
+\counterwithin*{chapter}{part}
+
+% Footnote
+\setfootins{0.5cm}{0.5cm} % footer space above
+\renewcommand*{\thefootnote}{\fnsymbol{footnote}} % footnote symbol
+
+% Table of Contents
+\renewcommand{\thechapter}{\Roman{chapter}}
+\renewcommand*{\cftchaptername}{Chapter } % Place 'Chapter' before roman
+\setlength\cftchapternumwidth{4em} % Add space before chapter name
+\cftpagenumbersoff{chapter} % Turn off page numbers for chapter
+\maxtocdepth{section} % table of contents up to section
+
+% Section / Subsection headers
+\setsecnumdepth{section} % numbering up to and including "section"
+\newcommand*{\shortcenter}[1]{%
+    \sethangfrom{\noindent ##1}%
+    \Large\boldmath\scshape\bfseries
+    \centering
+\parbox{5in}{\centering #1}\par}
+\setsecheadstyle{\shortcenter}
+\setsubsecheadstyle{\large\scshape\boldmath\bfseries\raggedright}
+
+% Chapter Headers
+\chapterstyle{verville}
+
+% Page Headers / Footers
+\copypagestyle{myruled}{ruled} % Draw formatting from existing 'ruled' style
+\makeoddhead{myruled}{}{}{\scshape\subject}
+\makeevenfoot{myruled}{}{\thepage}{}
+\makeoddfoot{myruled}{}{\thepage}{}
+\pagestyle{myruled}
+\setfootins{0.5cm}{0.5cm}
+\renewcommand*{\thefootnote}{\fnsymbol{footnote}}
+
+% Titlepage
+\title{\subject}
+\author{Sachin Kumar\thanks{\itshape skmuthuk@uwaterloo.ca}\\ University of Waterloo}
+\date{\semester\thanks{Last updated: \today}}
+
+
+%----------------------- DOCUMENT BEGIN ----------------------
+
+\begin{document}
+\pagenumbering{gobble}
+\hypersetup{pageanchor=false}
+\maketitle
+\newpage
+\frontmatter
+\hypersetup{pageanchor=true}
+\tableofcontents*
+\newpage
+\mainmatter
+
+
+
+
+
+
+% main document ----------------------------------------------------------
+
+% -------------------- CHAPTER 1 -------------------------
+\chapter{Integration}
+
+\section{Introduction}
+Consider the interval $[a, b]$,
+If we sub-divide it into $n$ sub-intervals we get (for example) something called an increasing sequence $P = \{t_0, t_1, t_2, \dots, t_n\}$ a partition of the interval $[a, b]$. \\
+The length of the $i^{\text{th}}$ sub-interval is given by $$\Delta t_i = t_i - t_{i-1}, \space \space i \in 1, 2, \dots, n$$
+Next let $c_i \in [t_{i-1}, t_i]$.
+
+\begin{definition}[Riemann Sum]
+    Given a bounded function $f$ and partition $P$ over the interval $[a, b]$ with $c_i \in [t_{i-1}, t_i]$ a Riemann sum of $f$ w.r.t  $P$ is $$S = S(f, P) = \sum^{n}_{i=1}f(c_i)\Delta t_i$$
+\end{definition}
+Note:
+\begin{enumerate}
+    \item Different partitions $P$ or different choices for the $c_i$ will yield different values of $S$.
+    \item The value $n$ can change from one Riemann sum to the next.
+\end{enumerate}
+
+Key Ideas:
+\begin{enumerate}
+    \item Shrink all $\Delta t_i$ down to zero thus increasing the “resolution” of the sum. We will end up with an $\infty \cdot 0$ situation which will hopefully balance out to give a finite value, call it $I$.
+    \item If it turns out that the value of $I$ is independent of the partition $P$ and values $c_i$ then we say $f$ is integrable.
+    \item We denote $||P|| = \max(\Delta t_1, \Delta t_2, \dots, \Delta t_n)$ so the previous condition can be written as $||P|| \to 0$ as $n \to \infty$.
+    \item If our bounded function $f$ is integrable with value $I$ then we write $$I = \int^b_a f(t) \space dt$$ where $f(t)$ is the integrand, $dt $ is the variable of integration (aka dummy variable) and $a, b$ are the limits of integration.
+    \item The notation $\int^b_a f(t) \space dt$ is called the definite integral of $f$ from $a$ to $b$.
+    \item Note that $\int^b_a f(t) \space dt  = \int^b_a f(x) \space dx = \int^b_a f(u) \space du $  etc. is to be thought as $\sum^{n}_{i=1}f(i) = \sum^{n}_{k=1}f(k) = \sum^{n}_{p=1}f(p)$ etc.
+\end{enumerate}
+\begin{definition}[Regular $n$-partition]
+The regular $n$-partition for an interval $[a, b]$ is where $\Delta t_i = \frac{b-a}{n}$ for each $i$. 
+i.e., we divide $[a, b]$ into $n$ intervals of equal width.
+\end{definition}
+Eg: If we knew that $f(x) = e^x$ was integrable the one way to calculate its integral over $[1, 4]$ would be: $$\int^4_1 e^x \space dx = \lim_{n \to \infty} \sum^n_{i=1} e^{c_i}\Delta t_i$$ where $c_i \in [t_{n-1}, t_i]$. \\ \space \\
+Assuming the regular $n$-partition we get, $$\Delta t_i = \dfrac{b-a}{n} = \dfrac{4-1}{n} = \dfrac{3}{n} = \Delta t$$ We can choose $c_i$ any way we like. One common way is to built a right-hand Riemann sum $(R)$ by letting, 
+\begin{align*}
+    c_i &= a + i \Delta t \\
+    &= 1 + \dfrac{3i}{n}
+\end{align*}
+We could also make a left-hand Riemann sum $(L)$ by choosing,
+\begin{align*}
+    c_i &= a + (i-1) \Delta t\\
+    &= 1 + \dfrac{3(i-1)}{n}
+\end{align*}
+Using $R$, we would get
+\begin{align*}
+    \int^4_1 e^x \space dx &= \lim_{n \to \infty} \sum^n_{i=1}f(c_i)\space \Delta t\\
+    &= \lim_{n \to \infty} \sum^{n}_{i=1} e^{ \space 1 + \frac{3i}{n}} \bigg(\frac{3}{n} \bigg)\\
+    &= \lim_{n \to \infty} \frac{3e}{n} \sum^n_{i=1} \big(e^{\frac{3}{n}}\big)^i \; \; \; \; \; \; \; \; \bigg[\text{recall } \sum^{n}_{i=1}r^i  = \frac{r^{n+1} - r}{r - 1}\bigg]\\
+    &= \lim_{n \to \infty} \frac{3e}{n}\bigg(\frac{e^{\frac{3}{n} + 3} - e^{\frac{3}{n}}}{e^{\frac{3}{n} } - 1}\bigg)\\
+    &= \frac{3e (e^3 - 1)}{3}\\
+    &= e(e^3 - 1)
+\end{align*} \\ \space \\
+But is $f(x) = e^x $ integrable$?$
+\begin{theorem}[Integrability Condition]
+If $f$ is continuous on $[a, b]$ then $f$ is integrable on $[a, b]$.
+\end{theorem}
+Note: If $f$ is bounded with finitely many jump discontinuities then it is also integrable.
+
+
+\section{Properties of Integration}
+\begin{theorem}[Properties of Integrals]
+If $f$ and $g$ are integrable over $[a, b]$ then
+\begin{enumerate}
+    \item[a.] $\int^b_a cf(t) dt = c \int^b_af(t) dt$, for any $c \in \R$
+    \item[b.] $\int^b_a[f(t) + g(t)] dt = \int^b_a f(t) dt + \int^b_a g(t) dt$
+    \item[c.] If $m \le f(t) \le M$ then, $$m(b-a) \le \int^b_af(t) \le M(b-a)$$
+    \item[d.] $|f|$ is integrable on $[a, b]$, then $$\Bigg|\int^b_a f(t) dt\Bigg| \le \int^b_a |f(t)| dt$$
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+Given any partition $P$ of $[a, b]$, note that $$\sum^n_{i=1}\Delta t_i = b-a$$
+Since $m \le f(t) \le M$ we get that 
+\begin{align*}
+    \sum^n_{i=1}m \Delta t_i \le \sum^n_{i=1} f(t) \Delta t_i \le \sum^n_{i=1}M \Delta t_i\\
+    m\sum^n_{i=1} \Delta t_i \le \sum^n_{i=1} f(t) \Delta t_i \le M\sum^n_{i=1} \Delta t_i
+\end{align*}
+This is true for every partition $P$ and so we end up with $$m(b-a) \le \int^b_a f(t) dt \le M(b-a)$$
+\end{proof}
+\begin{corollary}
+Properties of Integration
+\begin{enumerate}
+    \item[e.] Set $m=0$ in (c.) to get, if $f(t) \ge 0$ then $$\int^b_af(t) dt \ge 0$$
+    \item[f.] If $f(t) \ge g(t)$ then use (e.), (b.) and (a.) to get $$\int^b_a f(t) dt \ge \int^b_a g(t) dt$$it can be proved by making a new function $h(t) = f(t) - g(t)$ (hint...)
+    \item[g.] We define $\int^b_a f(t) dt = 0$. Our integration interval would be $[a, a]$ and so any Riemann sum we create would be of the form $$\sum^n_{i=1}f(a) \Delta t_i = f(a) \cdot 0 = 0$$
+    \item[f.] For $a < b$ we have $$\int^b_a f(t) dt = - \int^a_b f(t) dt$$
+\end{enumerate}
+\end{corollary}
+The idea here is that writing $\int^b_a$ suggests moving from $a$ to $b$ where $t_{1-i}$ and $t_i$ are points on line $a$ to $b$ and $\Delta t_i > 0$.\\
+Whereas $\int^b_a$ suggests moving from $b$ to $a$ where $\Delta t_i < 0$.
+\begin{theorem}
+Given $a, b, c \in I$ over which $f$ is integrable then $$\int^b_a f(t) dt = \int^c_a f(t) dt + \int^b_c f(t) dt$$
+\end{theorem}
+Note: It is not required that $a < c < b$. 
+If $a< b< c$, we get
+\begin{align*}
+    \underbrace{\int^b_a f(t) dt}_{\text{Area b/w } [a, b]} &= \int^c_a f(t) dt + \int^b_c f(t) dt\\
+    &= \underbrace{\int^c_a f(t) dt}_{\text{Area b/w }[a, c]} -\underbrace{\int^c_b f(t) dt}_{\text{Area b/w }[b, c]}
+\end{align*}
+
+\section{Areas and Integrals}
+Note that $\int^b_a f(t) dt$ will only return the "expected" are when $f \ge 0$. Generally $\int^b_a f(t) dt$ returns the "signed" area.\\
+That is if $f < 0$ over some interval $[c, d]$ then $\int^d_c f(t) dt$ will return the negative area between $f$ and the $x$-axis.\\ \space \\
+Let the interval from $[a, b]$ have $2$-regular partitions, $c$ and $d$, where $a < c < d < b$. Assume $A_1, A_2, A_3 > 0$ (i.e., the normal area), where $A_1$ be the positive area from $[a, c]$, $A_2$ be the positive area from $[d, b]$ and $A_3$ be the negative area from $[c, d]$.
+then $$\int^b_a f(t) dt = A_1 + A_2 - A_3$$
+\textbf{Example:}
+$\int^{2\pi}_0 \sin(t) dt = 0$, since $A_1$ and $A_2$ have equal areas, where $A_1$ is the positive area from $[0, \pi]$ and $A_2$ is the negative area from $[\pi, 2\pi]$.
+
+\section{Average Value}
+Recall the average of a discrete set $\{x_1, x_2, \dots, x_n\}$ is given by $$\dfrac{\sum^n_{i=1}x_i}{n}$$
+We can define a similar concept for functions as follows:
+\begin{definition}[Average Value]
+    The average value of a continuous function over the interval $[a, b]$ is given by $$f_{ave} = \dfrac{1}{b-a}\int^b_a f(t) dt$$
+\end{definition}
+sometimes written as $\bar{f}$.\\ \; \\
+\textbf{Example:}
+Geometrically compute $f_{ave}$ over $[0,4]$ if $f(x)=3x$. \\
+Geometrically, we have $$\int^4_0 3x dx = \dfrac{\text{base} \times \text{height}}{2} = \dfrac{4 \cdot 12}{2} = 24$$
+so that $f_{ave} = \bar{f} = \frac{1}{4} \int^4_0 3x dx = \frac{24}{4} = 6$.\\ \; \\
+In this case, $f_{ave}$ occurs halfway between 0 and 12. \\ \: \\
+However, in all cases, $f_{ave}$ will split $f(x)$ into 2 parts of equal areas.
+That is the area above $f_{ave}$ and below $f(x)$ will equal the area of both $f(x)$ and below $f_{ave}$. \\ 
+This can be proven by shifting the $x$-axis to instead be $f_{ave}$. Let $g(x) = f(x) - f_{ave}$.\\
+If the area above $y = f_{ave}$ is equal to the below $f_{ave}$ then we should get $\int^b_a g(x)d(x) = 0$. \\
+Indeed, 
+\begin{align*}
+    \int^b_a g(x) dx &= \int^b_a f(x) - f_{ave} dx\\
+    &= \int^b_a f(x) - \int^b_a f_{ave}dx \; \; \; \; \; [\text{Recall} f_{ave} = \dfrac{1}{b-a} \int^b_a f(x) dx]\\
+    &= (b-a)f_{ave} - (b-a)f_{ave}\\
+    &= 0
+\end{align*}
+It is always the case that for an integrable function, there is a $c \in [a,b]$ such that $f(c) = f_{ave}$? In general "no".\\
+\begin{theorem}[Average Value Theorem (AVT)]
+    If $f$ is a continuous function on $[a,b]$ then there is a $c \in [a,b]$ such that $$f(c) = \frac{1}{b-a} \int^b_a f(x) dx$$
+\end{theorem}
+\begin{proof}
+    By Extreme Value Theorem (EVT), there are $p$ (min) and $q$ (max), where $p, q \in [a,b]$ such that $$f(p) \le f(x) \le f(q)$$
+    By integral properties, 
+    \begin{align*}
+        (b-a) f(p) &\le \int^b_a f(x) dx \le (b-a)f(q)\\
+        f(p) &\le \dfrac{1}{b-a} \int^b_a f(x) dx \le f(q)
+    \end{align*}
+    By the Intermediate value theorem, there is a $c \in [a, b]$ where $f(c)$ is the above equation.
+\end{proof}
+
+\section{Fundamental Theorem of Calculus (FTC)}
+Up until now to compute $\int^b_af(t)dt$ we had to rely on geometry or, if using the definition, we need formulas to convert $\sum^n_{i=1}f(c_i) \Delta t_i$ to an explicit expression like $$\sum^n_{i=1}i^2 = \dfrac{n(n+1)(2n+1)}{6}$$
+In many cases, this is not possible. \\ \: \\
+Let us investigate how an integral behaves on a function on $x$. That is, \\
+Let $A(x) = \int^x_a f(t) dt$ for a continuous function $f$. Now consider $x + h$ $$A(x+h) = \int^{x+h}_{a} f(t) dt$$
+The incremental area is given by 
+$$A(x+h) - A(x) = \int^{x+h}_{a}f(t) dt - \int^x_a f(t) dt = \int^{x+h}_x f(t) dt$$
+Divide both sides by $h$ to get $$\dfrac{A(x+h) - A(x)}{h} = \dfrac{1}{h}\int^{x+h}_{a}f(t) dt$$
+since $f$ is continuous, by AVT, $\exists c \in [x, x+h]$ such that $$\dfrac{A(x+h) - A(x)}{h} = f(c)$$
+Also since $f$ is continuous and $c$ depends on $h$, $$\lim_{h \to 0} f(c) = f(x)$$
+Finally by definition $$\lim_{h \to 0}\dfrac{A(x+h) - A(x)}{h} = A'(x)$$
+Thus $A'(x) = f(x)$, i.e., $$\dfrac{d}{dx}\int^x_a f(t) dt = f(x)$$
+\begin{theorem}[Fundamental Theorem of Calculus I (FTC I)]
+  If $f$ is continuous on an open interval containing $x$ and $a$, then $$\dfrac{d}{dx}\bigg[\int^x_a f(t) dt\bigg] = f(x)$$
+\end{theorem}
+That is, the derivative \textbf{cancels} the integral.\\ \; \\
+How does this help us compute $\int^b_a f(t) dt$? If we let $g(x) = \int^x_a f(t) dt$ then by FTC I, we know that $g'(x) = f(x)$ so we begin a search for a function $g(x)$
+which after we take a derivative gives $f(x)$.
+\\ \; \\
+\textbf{Example:} Compute $$\int^5_3 2t dt$$
+We need a function $g(x)$ such that $g'(x) = 2x$. That is we seek an antiderivative of $2x$ (Recall from MATH 137 that
+given a funtion, any 2 antiderivatives of that function can differ by at most a constant.)\\
+Let us denote $G(x) = x^2 + c$ as the family of antiderivatives of $2x$. By FTC I we have that 
+$$G(x) = x^2 + c = \int^x_3 2t dt$$ since G'(x) = 2x \\ \: \\
+But what is $c$? We know that $G(3) = 9 + c = \int^3_3 2t dt = 0$, so $c = -9$. Thus $$G(5) = \int^5_3 2t dt = 25 - 9 = 16$$
+Notice that if we instead let $g(x) = x^2 + 4$ and evaluated $g(5) - g(3)$ we should still get 16. \\ \: \\
+This leads us to: 
+\begin{theorem}[Fundamental Theorem of Calculus II (FTC II)]
+  Let $F$ be any antiderivative of a continuous function $f$. Then, $$\int^b_a f(t) dt = F(b) - F(a)$$
+\end{theorem}
+\textbf{Example:} Compute $$\int^4_1 \cos(x) dx$$
+Using a Riemann sum would require a foumula for $$\sum^n_{i=1} \cos(1 + \frac{3i}{n})$$ and then a limit as $n \to \infty$ \\ \: \\
+Using FTC however we know that since $\frac{d}{dx} \sin(x) = \cos(x)$, we get $$\int^4_1 \cos(x) dx = \sin(4) - \sin(1)$$
+Notation: The expression $g(x) \big |^b_a = g(b) - g(a)$ \\ \: \\
+\textbf{Example:} 
+\begin{align*}
+  \int^1_{-1} |x| dx &= \int^0_{-1} (-x) dx + \int^1_0 (x) dx\\
+  &= - \int^0_{-1} (x) dx + \int^1_0 (x) dx\\
+  &= \dfrac{-x^2}{2} \bigg|^0_{-1} + \dfrac{x^2}{2} \bigg|^1_0\\
+  &= \dfrac{1}{2} + \dfrac{1}{2} \\
+  &= 1
+\end{align*}
+\subsection{Extended Fundamental Theorem of Calculus I}
+We learned that $$\dfrac{d}{dx}\int^x_a f(t) dt = f(x)$$
+What about $\frac{d}{dx} \int^a_x f(t) dt$ or $\frac{d}{dx} \int^{h(x)}_{g(x)} f(t) dt$? we solve these using the \textbf{chain rule}. \\ \; \\
+\textbf{Example:} Compute $$\dfrac{d}{dx}\int^{\ln(x)}_{2} \sin(t^2) dt$$
+Let $u = \ln(x)$ and let $g(u) = \int^u_2 \sin(t^2) dt$. \\
+We seek $\frac{d}{dx}[g(u)]$, by chain rule $\frac{d}{dx}[g(u)] = \frac{d}{du}[g(u)] \cdot \frac{du}{dx}$. [We can end up with $\frac{d}{dx}$ by multiplying various derivatives, i.e. $\frac{du}{dt} \cdot \frac{dt}{dp} \cdot \frac{dp}{dx}$]\\ \: \\
+Now, $\frac{du}{dx} = \frac{1}{x}$ and by FTC, $$\frac{d}{du}[g(u)] = \frac{d}{du} \int^u_2 \sin(t^2) dt = \sin(u^2)$$
+so we get $$\frac{d}{dx}[g(u)] = \sin(u^2)\bigg(\frac{1}{x}\bigg)$$
+i.e. $$\frac{d}{dx}\int^{\ln(x)}_{2} \sin(t^2) dt = \dfrac{\sin([\ln x]^2)}{x}$$ 
+\textbf{General rule:} For a continuous $f$ and differentiable at $a(x)$ and $b(x)$, we get $$\dfrac{d}{dx} \int^{b(x)}_{a(x)} f(t) dt = f(b(x)) \cdot b'(x) - f(a(x)) \cdot a'(x)$$\\ \: \\
+\textbf{Tip:}  Even if you can't find an explicit $F$ such that $F' = f$ you can "imagine" one exists. \\
+Then by FTC II,
+\begin{align*}
+  \int^{b(x)}_{a(x)} f(t) dt &= F(b(x)) - F(a(x)) \\
+  \dfrac{d}{dx} \int^{b(x)}_{a(x)} f(t) dt &= F'(b(x)) \cdot b'(x) - F'(a(x)) \cdot a(x)\\
+  &= f(b(x)) \cdot b'(x) - f(a(x)) \cdot a'(x)
+\end{align*}
+\end{document}

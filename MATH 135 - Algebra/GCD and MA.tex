@@ -1,0 +1,201 @@
+\documentclass[11pt, aspectratio=169]{beamer}
+\usetheme{Copenhagen}
+%https://www.overleaf.com/learn/latex/Beamer#Reference_guide
+\usecolortheme{beaver}
+%\usepackage{ctex, hyperref}
+\usepackage[utf8]{inputenc}
+
+% other packages
+\usepackage{latexsym,amsmath,xcolor,multicol,booktabs,calligra}
+\usepackage{graphicx,pstricks,listings,stackengine}
+
+\author{Sachin Kumar}
+\title{Greatest Common Divisor, Linear Diophantine Euqations, Congruence and Modular Arithmetic \& The RSA Public-key Encryption Scheme}
+\institute{University of Waterloo}
+
+\begin{document}
+
+\maketitle
+
+
+\begin{frame}{The Greatest Common Divisor}
+
+\begin{block}{Proposition 1}
+For all real numbers $x$, we have $x \le |x|$.
+\end{block}
+
+\begin{block}{Proposition 2 - Bounds by Divisibility (BBD)}
+For all integers $a$ and $b$, if $b | a$ and $a \ne 0$ then $b \le |a|$.
+\end{block}
+
+\begin{block}{Proposition 3 - Division Algorithm (DA)}
+For all integers $a$ and positive integers $b$, there exist unique integers $q$ and $r$ such that $$a=qb + r, \; \; \; \; \; 0 \le r < b$$
+\end{block}
+
+\end{frame}
+
+
+
+
+
+\begin{frame}{The Greatest Common Divisor}
+
+\begin{block}{Proposition 4 - GCD with Remainders (GCD WR)}
+For all integers $a, b, q$ and $r$, if $a = qb + r$, then $\gcd(a,b) = \gcd(b,r)$.
+\end{block}
+
+\begin{block}{Proposition 5 - GCD Characterization Theorem (GCD CT)}
+For all integers $a$ and $b$, and non-negative integers $d$, if 
+\begin{itemize}
+    \item $d$ is a common divisor of $a$ and $b$, and
+    \item there exist integers $s$ and $t$ such that $as + bt = d$,
+\end{itemize}
+then $d = \gcd(a,b)$.
+\end{block}
+
+\begin{block}{Proposition 6 - Bézout’s Lemma (BL)}
+For all integers $a$ and $b$, there exists integers $s$ and $t$ such that $as + bt = d$, where $d = \gcd(a,b)$.
+\end{block}
+
+\end{frame}
+
+
+
+\begin{frame}{The Greatest Common Divisor}
+
+\begin{block}{Proposition 7 - Common Divisor Divides GCD (CDDGCD)}
+For all integers $a, b$ and $c$, if $c | a$ and $c | b$, then $c | \gcd(a,b)$.
+\end{block}
+
+\begin{block}{Proposition 8 - Coprimeness Characterization Theorem (CCT)}
+For all integers $a$ and $b$, $\gcd(a,b) = 1$ if and only if there exist integers $s$ and $t$ such that $as + bt = 1$.
+\end{block}
+
+\begin{block}{Proposition 9 - Division by the GCD (DB GCD)}
+For all integers $a$ and $b$, not both zero, $\gcd (\frac{a}{d}, \frac{b}{d}) = 1$, where $d = \gcd(a.b)$.
+\end{block}
+
+\end{frame}
+
+
+
+\begin{frame}{The Greatest Common Divisor}
+
+\begin{block}{Proposition 10 - Coprimeness and Divisibility (CAD)}
+For all integers $a, b$ and $c$, if $c | ab$ and $\gcd(a,c) = 1$, then $c | b$.
+\end{block}
+
+\begin{block}{Proposition 11 - Prime Factorization (PF)}
+Every natural number $n > 1$ can be written as a product of primes.
+\end{block}
+
+\begin{block}{Proposition 12 - Euclid’s Theorem (ET)}
+The number of primes is infinite.
+\end{block}
+
+\begin{block}{Corollary 13 - Euclid’s Lemma (EL)}
+For all integers $a$ and $b$, then prime numbers $p$, if $p | ab$, then $p | a$ or $p | b$
+\end{block}
+\end{frame}
+
+
+\begin{frame}{The Greatest Common Divisor}
+
+\begin{block}{Proposition 14}
+Let $p$ be a prime number, $n$ be a natural number, and $a_1, a_2, \dots, a_n$ be integers. If $p | (a_1a_2 \dots a_n)$, then $p | a_i$ for some $i = 1,2,\dots, n$.
+\end{block}
+
+\begin{block}{Theorem 15 - Unique Factorization Theorem (UFT)}
+Every natural number $n > 1$ can be written as a product of prime factors uniquely, apart
+from the order of factors.
+\end{block}
+
+\begin{block}{Proposition 16 - Finding a Prime Factor (FPF)}
+Every natural number $n > 1$ is either prime or contains a prime factor less than or equal
+to $\sqrt{n}$.
+\end{block}
+\end{frame}
+
+
+
+\begin{frame}{The Greatest Common Divisor}
+
+\begin{block}{Proposition 17 - Divisors From Prime Factorization (DFPF)}
+Let $n \ge 2$ and $c \ge 1$ be positive integers, and let $$n = p_1^{\alpha_1}p_2^{\alpha_2} \dots p_k^{\alpha_k}$$
+be the unique representation of $n$ as a product of distinct primes $p_1, p_2, \dots, p_k$, where $\alpha_1, \alpha_2, \dots, \alpha_k$ are positive integers. The integer $c$ is a positive divisor of $n$ if and only if $c$ can be represented as a product. $$c = p_1^{\beta_1}p_2^{\beta_2} \dots p_k^{\beta_k}, \; \; \text{ where } 0 \le \beta_i \le \alpha_i \text{ for } i = 1, 2, \dots, k$$.
+\end{block}
+\end{frame}
+
+\begin{frame}{The Greatest Common Divisor}
+
+\begin{block}{Proposition 18 - GCD From Prime Factorization (GCD PF)}
+Let $a$ and $b$ be positive integers, and let
+$$a = p_1^{\alpha_1}p_2^{\alpha_2} \dots p_k^{\alpha_k}, \; \; \; \; \text{ and } \; \; \; \; b = p_1^{\beta_1}p_2^{\beta_2} \dots p_k^{\beta_k}, $$
+be ways to express $a$ and $b$ as products of the distinct primes $p_1, p_2, \dots, p_k$, where some or all of the exponents may be zero. We have
+$$\gcd(a,b) = p_1^{\gamma_1}p_2^{\gamma_2}\dots p_k^{\gamma_k} \text{ where } \gamma_i = \min\{\alpha_i, \beta_i\} \text{ for } i = 1,2, \dots, k.$$
+\end{block}
+
+\end{frame}
+
+
+
+
+\begin{frame}{The Greatest Common Divisor}
+
+\begin{block}{Extended Euclidean Algorithm(EEA)}
+\textbf{input:} Integers $a, b$ with $a \ge b > 0$.\\
+\textbf{Initialize:} Construct a table with four columns so that
+\begin{itemize}
+    \item the columns are labelled $x, y, r$ and $q$,
+    \item the first row in the table is $(1, 0, a, 0)$
+    \item the second row in the table is $(0,1,b,0)$
+\end{itemize}
+\textbf{Repeat:} For $i \ge 3$, 
+\begin{itemize}
+    \item $q_i \leftarrow \big \lfloor \frac{r_{i-2}}{r_{i-1}} \big \rfloor$
+    \item $\text{Row}_i \leftarrow \text{Row}_{i-2} - q_i \text{Row}_{i-1}$
+\end{itemize}
+\textbf{Stop:} When $r_i = 0$.\\
+\textbf{Output:} Set $n = i-1$. Then $\gcd(a,b) = r_n$, and $s = x_n$ and $t = y_n$ are a certificate of correctness.
+\end{block}
+
+\end{frame}
+
+
+
+
+
+\begin{frame}{Linear Diophantine Equations}
+
+\begin{block}{Theorem 1 - Linear Diophantine Equation Theorem, Part 1 (LDET 1)}
+For all integers $a, b$ and $c$, with $a$ and $b$ not both zero, the linear Diophantine equation $$ax + by = c$$
+(in variables $x$ and $y$) has an integer solution if and only if $d |c$, where $d = \gcd(a, b)$.
+\end{block}
+
+\begin{block}{Theorem 2 - Linear Diophantine Equation Theorem (LDET 2)}
+Let $a, b$ and $c$ be integers with $a$ and $b$ not zero, and define $d = \gcd(a,b)$. If $x = x_0$ and $y = y_0$ is one particular integer solution to the linear Diophantine equation $ax + by = c$, then the set of all solutions is given by
+$$\{(x, y): x = x_0 + \frac{b}{d}n, \; y=y_0 - \frac{a}{d}n, n \in \mathbb{Z}\}.$$
+\end{block}
+
+\end{frame}
+
+
+
+
+\begin{frame}{Congruence and Modular
+Arithmetic}
+
+\begin{block}{Theorem 1 - Linear Diophantine Equation Theorem, Part 1 (LDET 1)}
+For all integers $a, b$ and $c$, with $a$ and $b$ not both zero, the linear Diophantine equation $$ax + by = c$$
+(in variables $x$ and $y$) has an integer solution if and only if $d |c$, where $d = \gcd(a, b)$.
+\end{block}
+
+\begin{block}{Theorem 2 - Linear Diophantine Equation Theorem (LDET 2)}
+Let $a, b$ and $c$ be integers with $a$ and $b$ not zero, and define $d = \gcd(a,b)$. If $x = x_0$ and $y = y_0$ is one particular integer solution to the linear Diophantine equation $ax + by = c$, then the set of all solutions is given by
+$$\{(x, y): x = x_0 + \frac{b}{d}n, \; y=y_0 - \frac{a}{d}n, n \in \mathbb{Z}\}.$$
+\end{block}
+
+\end{frame}
+
+
+\end{document}

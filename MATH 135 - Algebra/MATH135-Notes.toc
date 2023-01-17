@@ -1,0 +1,22 @@
+\contentsline {chapter}{\chapternumberline {I}Introduction to the Language of Mathematics}{1}{chapter.0.1}%
+\contentsline {section}{\numberline {1}Sets and Mathematical Statements}{1}{section.0.1.1}%
+\contentsline {subsection}{Common Sets}{1}{section*.2}%
+\contentsline {subsection}{Statements}{2}{section*.3}%
+\contentsline {subsection}{Open Sentence}{2}{section*.4}%
+\contentsline {subsection}{Negation of Statements}{3}{section*.5}%
+\contentsline {section}{\numberline {2}Quantifiers and Nested Quantifiers}{3}{section.0.1.2}%
+\contentsline {subsection}{Quantifiers}{3}{section*.6}%
+\contentsline {subsection}{Hidden Quantifiers}{4}{section*.7}%
+\contentsline {subsection}{Negation of Quantifiers}{4}{section*.8}%
+\contentsline {subsection}{Nested Quantifiers}{4}{section*.9}%
+\contentsline {subsection}{Negating Nested Quantifiers}{5}{section*.10}%
+\contentsline {chapter}{\chapternumberline {II}Logical Analysis of Mathematical Statements}{7}{chapter.0.2}%
+\contentsline {section}{\numberline {3}Truth Table}{7}{section.0.2.3}%
+\contentsline {section}{\numberline {4}Conjuction and Disjunction}{7}{section.0.2.4}%
+\contentsline {section}{\numberline {5}Logical Operators and Algebra}{8}{section.0.2.5}%
+\contentsline {subsection}{De Morgan's Laws}{8}{section*.11}%
+\contentsline {subsection}{Other Logical Operators Laws}{8}{section*.12}%
+\contentsline {section}{\numberline {6}Implications}{9}{section.0.2.6}%
+\contentsline {subsection}{Negating Implication}{10}{section*.13}%
+\contentsline {section}{\numberline {7}Converse and Contrapositive}{10}{section.0.2.7}%
+\contentsline {section}{\numberline {8}If and Only if}{10}{section.0.2.8}%
