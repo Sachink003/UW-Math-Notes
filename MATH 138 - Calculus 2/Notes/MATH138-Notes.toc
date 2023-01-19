@@ -5,3 +5,7 @@
 \contentsline {section}{\numberline {4}Average Value}{5}{section.0.1.4}%
 \contentsline {section}{\numberline {5}Fundamental Theorem of Calculus (FTC)}{6}{section.0.1.5}%
 \contentsline {subsection}{Extended Fundamental Theorem of Calculus I}{8}{section*.2}%
+\contentsline {section}{\numberline {6}Indefinite Integrals}{9}{section.0.1.6}%
+\contentsline {subsection}{Basic antiderivatives}{9}{section*.3}%
+\contentsline {section}{\numberline {7}Substitution Rule}{10}{section.0.1.7}%
+\contentsline {subsection}{How to choose $u$?}{11}{section*.4}%

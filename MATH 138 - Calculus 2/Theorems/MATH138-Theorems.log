@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.12.30)  16 JAN 2023 17:48
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.12.30)  17 JAN 2023 17:44
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**"/Users/sachinkumar/Desktop/UW Math/Notes (Personal)/MATH 138 - Calculus 2/MATH138-Notes.tex"
-(/Users/sachinkumar/Desktop/UW Math/Notes (Personal)/MATH 138 - Calculus 2/MATH138-Notes.tex
+**"/Users/sachinkumar/Desktop/UW Math/Notes (Personal)/MATH 138 - Calculus 2/MATH138-Theorems.tex"
+(/Users/sachinkumar/Desktop/UW Math/Notes (Personal)/MATH 138 - Calculus 2/MATH138-Theorems.tex
 LaTeX2e <2021-11-15> patch level 1
 L3 programming layer <2022-02-24> (/usr/local/texlive/2022/texmf-dist/tex/latex/memoir/memoir.cls
 Document Class: memoir 2022/02/20 v3.7q configurable book, report, article document class
@@ -1221,8 +1221,8 @@ File: ot1jkp.fd 2007/08/30 Fontinst v1.928 font definitions for OT1/jkp.
 File: l3backend-pdftex.def 2022-02-07 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count409
 \l__pdf_internal_box=\box71
-) (./MATH138-Notes.aux)
-\openout1 = `MATH138-Notes.aux'.
+) (./MATH138-Theorems.aux)
+\openout1 = `MATH138-Theorems.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/jkp/m/it on input line 311.
 LaTeX Font Info:    Trying to load font information for OML+jkp on input line 311.
@@ -1351,9 +1351,9 @@ LaTeX Info: Redefining \nameref on input line 311.
 LaTeX Info: Redefining \ref on input line 311.
 LaTeX Info: Redefining \pageref on input line 311.
 LaTeX Info: Redefining \nameref on input line 311.
-(./MATH138-Notes.out) (./MATH138-Notes.out)
+(./MATH138-Theorems.out) (./MATH138-Theorems.out)
 \@outlinefile=\write5
-\openout5 = `MATH138-Notes.out'.
+\openout5 = `MATH138-Theorems.out'.
 
 Package hyperref Info: Option `pageanchor' set `false' on input line 313.
 LaTeX Font Info:    Trying to load font information for U+jkpsya on input line 315.
@@ -1386,150 +1386,67 @@ Package microtype Info: Loading generic protrusion settings for font family
 
 ]
 Package hyperref Info: Option `pageanchor' set `true' on input line 317.
- (./MATH138-Notes.toc) [1] [2
+ (./MATH138-Theorems.toc) [1] [2
 
 ]
-Package hyperref Info: bookmark level for unknown definition defaults to 0 on input line 338.
- [1
+Package hyperref Info: bookmark level for unknown theorem defaults to 0 on input line 332.
+
+Overfull \hbox (1.01035pt too wide) in paragraph at lines 353--353
+[]\OT1/jkp/m/it/10.95 (-20) Assume
+ []
+
+[1
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 360--361
-
+Overfull \hbox (16.05759pt too wide) in paragraph at lines 360--360
+[]\OT1/jkp/m/it/10.95 (-20) Assume that
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 379--381
-
- []
-
-Package hyperref Info: bookmark level for unknown theorem defaults to 0 on input line 381.
 [2]
-Package hyperref Info: bookmark level for unknown proof defaults to 0 on input line 398.
-Package hyperref Info: bookmark level for unknown corollary defaults to 0 on input line 407.
-
-
-Class memoir Warning: The material used in the headers is too large
-(27.2pt) for the given head height (13.6pt), it is recommended to
-either increase the head height or redesign the header
-(in both cases you will find help in the memoir manual). on input line 412.
-
-
-Overfull \vbox (13.59999pt too high) has occurred while \output is active []
-
- [3]
-Underfull \hbox (badness 10000) in paragraph at lines 428--431
-
+Overfull \hbox (36.85274pt too wide) in paragraph at lines 391--393
+[]\OT1/jkp/m/it/10.95 (-20) Assume that $[][] \OML/jkp/m/it/10.95 f\OT1/jkp/m/n/10.95 (-20) (\OML/jkp/m/it/10.95 x\OT1/jkp/m/n/10.95 (-20) )\OML/jkp/m/it/10.95 dx$ \OT1/jkp/m/it/10.95 (-20) and $[][] \OML/jkp/m/it/10.95 g\OT1/jkp/m/n/10.95 (-20) (\OML/jkp/m/it/10.95 x\OT1/jkp/m/n/10.95 (-20) )\OML/jkp/m/it/10.95 dx$
  []
 
-[4]
-Underfull \hbox (badness 10000) in paragraph at lines 441--444
+[3
 
+]
+Overfull \hbox (4.79454pt too wide) in paragraph at lines 407--409
+[]\OT1/jkp/m/it/10.95 (-20) Assume that $\OT1/jkp/m/n/10.95 (-20) 0 \OMS/jkp/m/n/10.95 ^^T \OML/jkp/m/it/10.95 g\OT1/jkp/m/n/10.95 (-20) (\OML/jkp/m/it/10.95 x\OT1/jkp/m/n/10.95 (-20) ) \OMS/jkp/m/n/10.95 ^^T
  []
 
+[4] [5
 
-Underfull \hbox (badness 10000) in paragraph at lines 444--452
+] [6
 
+]
+Overfull \hbox (1.13907pt too wide) in paragraph at lines 443--443
+[]\OT1/jkp/m/it/10.95 (-20) Let $\OML/jkp/m/it/10.95 f$ \OT1/jkp/m/it/10.95 (-20) and $\OML/jkp/m/it/10.95 g$ \OT1/jkp/m/it/10.95 (-20) be con-
  []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 444--452
-
- []
-
-
-Overfull \vbox (13.59999pt too high) has occurred while \output is active []
-
- [5]
-Underfull \hbox (badness 10000) in paragraph at lines 473--476
-
- []
-
-[6]
-Underfull \hbox (badness 10000) in paragraph at lines 487--491
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 487--491
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 495--496
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 496--499
-
- []
-
-
-Overfull \hbox (0.91753pt too wide) in paragraph at lines 500--500
-[]\OT1/jkp/m/it/10.95 (-20) Let $\OML/jkp/m/it/10.95 F$ \OT1/jkp/m/it/10.95 (-20) be any an-tideriva-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 503--504
-
- []
-
-
-Overfull \vbox (13.59999pt too high) has occurred while \output is active []
-
- [7]
-Underfull \hbox (badness 10000) in paragraph at lines 504--507
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 515--517
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 517--520
-
- []
-
-[8]
-Underfull \hbox (badness 10000) in paragraph at lines 523--526
-
- []
-
-
-Class memoir Warning: The material used in the headers is too large
-(27.2pt) for the given head height (13.6pt), it is recommended to
-either increase the head height or redesign the header
-(in both cases you will find help in the memoir manual). on input line 531.
 
 \tf@thm=\write6
-\openout6 = `MATH138-Notes.thm'.
+\openout6 = `MATH138-Theorems.thm'.
 
-
-Overfull \vbox (13.59999pt too high) has occurred while \output is active []
-
- [9]
+[7]
 \tf@toc=\write7
-\openout7 = `MATH138-Notes.toc'.
+\openout7 = `MATH138-Theorems.toc'.
 
- (./MATH138-Notes.aux)
-Package rerunfilecheck Info: File `MATH138-Notes.out' has not changed.
-(rerunfilecheck)             Checksum: 17C088D2773754FF8600425B50F29E67;953.
+ (./MATH138-Theorems.aux)
+Package rerunfilecheck Info: File `MATH138-Theorems.out' has not changed.
+(rerunfilecheck)             Checksum: 35F73066C4C19942508CAFB7AD03E703;3000.
  ) 
 Here is how much of TeX's memory you used:
- 41664 strings out of 478268
- 925458 string characters out of 5846346
- 1340924 words of memory out of 5000000
- 58907 multiletter control sequences out of 15000+600000
- 561965 words of font info for 363 fonts, out of 8000000 for 9000
+ 41650 strings out of 478268
+ 925479 string characters out of 5846346
+ 1336933 words of memory out of 5000000
+ 58906 multiletter control sequences out of 15000+600000
+ 556395 words of font info for 337 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,15n,89p,1086b,609s stack positions out of 10000i,1000n,20000p,200000b,200000s
-{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/kpfonts/kpfonts-expert.enc}</usr/local/texlive/2022/texmf-dist/fonts/type1/public/kpfonts/jkpbit8a.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/kpfonts/jkpbmi.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/kpfonts/jkpbn8a.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/kpfonts/jkpbsc8a.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/kpfonts/jkpex.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/kpfonts/jkpexa.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/kpfonts/jkpmi.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/kpfonts/jkpmia.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/kpfonts/jkpmit8a.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/kpfonts/jkpmn8a.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/kpfonts/jkpmnc.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/kpfonts/jkpmne.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/kpfonts/jkpmsc8a.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/kpfonts/jkpsy.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/kpfonts/jkpsya.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/kpfonts/jkpsyb.pfb>
-Output written on MATH138-Notes.pdf (13 pages, 172285 bytes).
+ 84i,12n,89p,1089b,609s stack positions out of 10000i,1000n,20000p,200000b,200000s
+{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/kpfonts/kpfonts-expert.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2022/texmf-dist/fonts/type1/public/kpfonts/jkpbit8a.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/kpfonts/jkpbite.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/kpfonts/jkpbmi.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/kpfonts/jkpbn8a.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/kpfonts/jkpbne.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/kpfonts/jkpbsc8a.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/kpfonts/jkpex.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/kpfonts/jkpmi.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/kpfonts/jkpmia.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/kpfonts/jkpmit8a.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/kpfonts/jkpmite.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/kpfonts/jkpmn8a.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/kpfonts/jkpmnc.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/kpfonts/jkpmne.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/kpfonts/jkpmsc8a.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/kpfonts/jkpsy.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/kpfonts/jkpsyb.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/kpfonts/jkpsyc.pfb>
+Output written on MATH138-Theorems.pdf (11 pages, 173407 bytes).
 PDF statistics:
- 210 PDF objects out of 1000 (max. 8388607)
- 161 compressed objects within 2 object streams
- 40 named destinations out of 1000 (max. 500000)
- 116797 words of extra memory for PDF output out of 128383 (max. 10000000)
+ 283 PDF objects out of 1000 (max. 8388607)
+ 231 compressed objects within 3 object streams
+ 65 named destinations out of 1000 (max. 500000)
+ 104589 words of extra memory for PDF output out of 106986 (max. 10000000)
 
