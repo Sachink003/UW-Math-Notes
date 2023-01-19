@@ -648,7 +648,7 @@ $P$ and $Q$ are statements $\to$ If $P$, then $Q$\\
 %         \hline
 %     \end{tabular}
 % \end{table}
-\textbf{Implication Law: } $(P \implies Q) \equiv (\neg P \vee B)$\\ \: \\
+\textbf{Implication Law: } $(P \implies Q) \equiv (\neg P \vee Q)$\\ \: \\
 \textbf{Exercise:}
 \begin{enumerate}
     \item Prove using the implication law
@@ -696,5 +696,35 @@ $$\forall x \in \mathbb{P}, \forall y \in \mathbb{P}, ((x < 3) \wedge (y < 3) \i
 \begin{enumerate}
     \item $(A \iff B) \equiv ((A \implies B) \wedge (B \implies A))$
     \item $\big(\forall x \in X, P(x) \iff Q(x)\big) \equiv \big((\forall x \in X, P(x) \implies Q(x)) \wedge (\forall x \in X, Q(x) \implies P(x))\big)$
+\end{enumerate}
+
+\chapter{Proving Mathematical Statements}
+\section{Proving Universally Quantified Statements}
+\textbf{Example:}
+\begin{enumerate}
+    \item Prove that $\forall \theta \in \R$, $\sin(3 \theta) = 3\sin \theta - 4\sin^3 \theta$
+    \begin{proof}
+        Let $\theta$ be an arbitrary real number. \\
+        We used the identity $\sin(a + b) = \sin a \cos b + \cos a \sin b$, with $a = \theta$ and $b = \theta$ to obtain.
+        \begin{equation}
+            \sin (3 \theta) = \sin (\theta + 2\theta) = \sin \theta \cos(2 \theta) + \cos \theta \sin(2 \theta)
+        \end{equation}
+        Now we substitute the double angle identities, 
+        \begin{align*}
+            \cos(2 \theta) &= \cos^2 \theta - \sin^2 \theta\\
+            \sin(2 \theta) &= 2\sin\theta \cos \theta
+        \end{align*}
+        into the right hand side of $9.1$, and we get
+        \begin{equation}
+            \sin(3 \theta) = \sin \theta(\cos^2 \theta - \sin^2 \theta) + \cos \theta (2 \sin \theta \cos \theta)
+        \end{equation}
+        we substitute $\cos^2 \theta = 1 - \sin^2 \theta$, into the RHS of (9.2), we get 
+        \begin{align*}
+            \sin 3\theta &= \sin(1 - \sin^2\theta - \sin^2 \theta) + 2 \sin \theta(1 - \sin^2 \theta)\\
+                         &= \sin \theta - 2 \sin^2 \theta + 2 \sin \theta - 2 \sin^2 \theta\\
+                         &= 3 \sin \theta - 4 \sin^3 \theta
+        \end{align*}
+        so we've shown that $\sin 3 \theta = 3 \sin \theta - 4 \sin^3 \theta$, $\forall \theta \in \R$, as desired.
+    \end{proof}
 \end{enumerate}
 \end{document}

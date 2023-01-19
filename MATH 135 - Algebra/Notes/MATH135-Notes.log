@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.12.30)  16 JAN 2023 22:16
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.12.30)  18 JAN 2023 23:40
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**"/Users/sachinkumar/Desktop/UW Math/Notes (Personal)/MATH 135 - Algebra/MATH135-Notes.tex"
-(/Users/sachinkumar/Desktop/UW Math/Notes (Personal)/MATH 135 - Algebra/MATH135-Notes.tex
+**"/Users/sachinkumar/Desktop/UW Math/Notes/MATH 135 - Algebra/Notes/MATH135-Notes.tex"
+(/Users/sachinkumar/Desktop/UW Math/Notes/MATH 135 - Algebra/Notes/MATH135-Notes.tex
 LaTeX2e <2021-11-15> patch level 1
 L3 programming layer <2022-02-24> (/usr/local/texlive/2022/texmf-dist/tex/latex/memoir/memoir.cls
 Document Class: memoir 2022/02/20 v3.7q configurable book, report, article document class
@@ -1452,39 +1452,41 @@ Underfull \hbox (badness 10000) in paragraph at lines 634--654
 Overfull \vbox (13.59999pt too high) has occurred while \output is active []
 
  [9] [10]
+Overfull \vbox (13.59999pt too high) has occurred while \output is active []
+
+ [11] [12
+
+]
 
 Class memoir Warning: The material used in the headers is too large
 (27.2pt) for the given head height (13.6pt), it is recommended to
 either increase the head height or redesign the header
-(in both cases you will find help in the memoir manual). on input line 700.
+(in both cases you will find help in the memoir manual). on input line 730.
 
 \tf@thm=\write6
 \openout6 = `MATH135-Notes.thm'.
 
-
-Overfull \vbox (13.59999pt too high) has occurred while \output is active []
-
- [11]
+[13]
 \tf@toc=\write7
 \openout7 = `MATH135-Notes.toc'.
 
  (./MATH135-Notes.aux)
 Package rerunfilecheck Info: File `MATH135-Notes.out' has not changed.
-(rerunfilecheck)             Checksum: 4FC8AEE46295125E75795F2B362F4A81;1988.
+(rerunfilecheck)             Checksum: 0C3717B95D5E72F41DCAC852319D48C5;2468.
  ) 
 Here is how much of TeX's memory you used:
- 41682 strings out of 478268
- 925423 string characters out of 5846346
+ 41692 strings out of 478268
+ 925520 string characters out of 5846346
  1340053 words of memory out of 5000000
- 58917 multiletter control sequences out of 15000+600000
+ 58919 multiletter control sequences out of 15000+600000
  546771 words of font info for 310 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,12n,80p,1083b,609s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,12n,80p,1078b,609s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/kpfonts/kpfonts-expert.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2022/texmf-dist/fonts/type1/public/kpfonts/jkpbit8a.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/kpfonts/jkpbite.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/kpfonts/jkpbn8a.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/kpfonts/jkpbsc8a.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/kpfonts/jkpex.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/kpfonts/jkpmi.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/kpfonts/jkpmit8a.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/kpfonts/jkpmn8a.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/kpfonts/jkpmnc.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/kpfonts/jkpmne.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/kpfonts/jkpmsc8a.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/kpfonts/jkpsy.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/kpfonts/jkpsya.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/kpfonts/jkpsyb.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/kpfonts/jkpsyc.pfb>
-Output written on MATH135-Notes.pdf (15 pages, 158387 bytes).
+Output written on MATH135-Notes.pdf (17 pages, 161586 bytes).
 PDF statistics:
- 280 PDF objects out of 1000 (max. 8388607)
- 230 compressed objects within 3 object streams
- 84 named destinations out of 1000 (max. 500000)
- 106589 words of extra memory for PDF output out of 106986 (max. 10000000)
+ 304 PDF objects out of 1000 (max. 8388607)
+ 252 compressed objects within 3 object streams
+ 92 named destinations out of 1000 (max. 500000)
+ 106605 words of extra memory for PDF output out of 106986 (max. 10000000)
 

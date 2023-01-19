@@ -20,3 +20,5 @@
 \contentsline {subsection}{Negating Implication}{10}{section*.13}%
 \contentsline {section}{\numberline {7}Converse and Contrapositive}{10}{section.0.2.7}%
 \contentsline {section}{\numberline {8}If and Only if}{10}{section.0.2.8}%
+\contentsline {chapter}{\chapternumberline {III}Proving Mathematical Statements}{13}{chapter.0.3}%
+\contentsline {section}{\numberline {9}Proving Universally Quantified Statements}{13}{section.0.3.9}%

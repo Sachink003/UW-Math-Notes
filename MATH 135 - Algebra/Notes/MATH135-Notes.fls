@@ -1,8 +1,8 @@
-PWD /Users/sachinkumar/Desktop/UW Math/Notes (Personal)/MATH 135 - Algebra
+PWD /Users/sachinkumar/Desktop/UW Math/Notes/MATH 135 - Algebra/Notes
 INPUT /usr/local/texlive/2022/texmf.cnf
 INPUT /usr/local/texlive/2022/texmf-dist/web2c/texmf.cnf
 INPUT /usr/local/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT /Users/sachinkumar/Desktop/UW Math/Notes (Personal)/MATH 135 - Algebra/MATH135-Notes.tex
+INPUT /Users/sachinkumar/Desktop/UW Math/Notes/MATH 135 - Algebra/Notes/MATH135-Notes.tex
 OUTPUT MATH135-Notes.log
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/memoir/memoir.cls
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/memoir/memoir.cls

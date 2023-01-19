@@ -1,6 +1,6 @@
 # Fdb version 3
-["pdflatex"] 1673925417 "/Users/sachinkumar/Desktop/UW Math/Notes (Personal)/MATH 135 - Algebra/MATH135-Notes.tex" "MATH135-Notes.pdf" "MATH135-Notes" 1673925418
-  "/Users/sachinkumar/Desktop/UW Math/Notes (Personal)/MATH 135 - Algebra/MATH135-Notes.tex" 1673925417 26057 9af726f380de8226984ee16bd7e2a2db ""
+["pdflatex"] 1674103232 "/Users/sachinkumar/Desktop/UW Math/Notes/MATH 135 - Algebra/Notes/MATH135-Notes.tex" "MATH135-Notes.pdf" "MATH135-Notes" 1674103233
+  "/Users/sachinkumar/Desktop/UW Math/Notes/MATH 135 - Algebra/Notes/MATH135-Notes.tex" 1674103232 27608 17bf9167c33bfef9cb0148c43ae4613a ""
   "/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/kpfonts/kpfonts-expert.enc" 1240420913 2639 b7bbeb66c016cde6fdcad9263fe54a4a ""
   "/usr/local/texlive/2022/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -264,10 +264,10 @@
   "/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1647878959 4410336 7d30a02e9fa9a16d7d1f8d037ba69641 ""
   "/usr/local/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt" 1672411288 2826451 b75c11741eb7662ee456800bc6d6544e ""
   "/usr/local/texlive/2022/texmf.cnf" 1647878952 577 209b46be99c9075fd74d4c0369380e8c ""
-  "MATH135-Notes.aux" 1673925418 4496 dbf9e9879845c33c28a9c053344406c5 "pdflatex"
-  "MATH135-Notes.out" 1673925418 1988 4fc8aee46295125e75795f2b362f4a81 "pdflatex"
-  "MATH135-Notes.tex" 1673925417 26057 9af726f380de8226984ee16bd7e2a2db ""
-  "MATH135-Notes.toc" 1673925418 1646 d1a10152578ce7530e63780480af228b "pdflatex"
+  "MATH135-Notes.aux" 1674103233 4942 2f0f288f1a1c74ac53c9fbc7c7bd9a13 "pdflatex"
+  "MATH135-Notes.out" 1674103233 2468 0c3717b95d5e72f41dcac852319d48c5 "pdflatex"
+  "MATH135-Notes.tex" 1674103232 27608 17bf9167c33bfef9cb0148c43ae4613a ""
+  "MATH135-Notes.toc" 1674103233 1847 e885740e5b7d95a1c282b36007daaff7 "pdflatex"
   (generated)
   "MATH135-Notes.aux"
   "MATH135-Notes.log"
