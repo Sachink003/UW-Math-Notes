@@ -1,49 +1,83 @@
-% header -----------------------------------------------------------------------
-% Template created by texnew (author: Sachin Kumar); info can be found at 'https://github.com/alexrutar/texnew'.
-% version (1.13)
+\documentclass[10pt]{article} 
 
-
-% doctype ----------------------------------------------------------------------
-\documentclass[11pt, a4paper]{memoir}
-\usepackage[utf8]{inputenc}
-\usepackage[left=3cm,right=3cm,top=3cm,bottom=4cm]{geometry}
-\usepackage[protrusion=true,expansion=true]{microtype}
-
-
-% packages ---------------------------------------------------------------------
-\usepackage{amsmath,amssymb,amsfonts}
-\usepackage{graphicx}
+\usepackage{fullpage}
+\usepackage{bookmark}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref} % for the URL
+\usepackage[shortlabels]{enumitem}
+\usepackage{mathtools}
+\usepackage[most]{tcolorbox}
+\usepackage[amsmath,standard,thmmarks]{ntheorem} 
+\usepackage{physics}
+\usepackage{pst-tree} % for the trees
+\usepackage{verbatim} % for comments, for version control
+\usepackage{tabu}
+\usepackage{tikz}
+\usepackage{float}
 \usepackage{etoolbox}
 
-% Set enimitem
-\usepackage{enumitem}
-\SetEnumitemKey{nl}{nolistsep}
-\SetEnumitemKey{r}{label=(\roman*)}
-
-% Set tikz
-\usepackage{tikz, pgfplots}
-\pgfplotsset{compat=1.15}
-\usetikzlibrary{intersections,positioning,cd}
-\usetikzlibrary{arrows,arrows.meta}
-\tikzcdset{arrow style=tikz,diagrams={>=stealth}}
-
-% Set hyperref
-\usepackage[hidelinks]{hyperref}
-\usepackage{xcolor}
-\newcommand\myshade{85}
-\colorlet{mylinkcolor}{violet}
-\colorlet{mycitecolor}{orange!50!yellow}
-\colorlet{myurlcolor}{green!50!blue}
-
-\hypersetup{
-  linkcolor  = mylinkcolor!\myshade!black,
-  citecolor  = mycitecolor!\myshade!black,
-  urlcolor   = myurlcolor!\myshade!black,
-  colorlinks = true,
+\lstnewenvironment{python}{
+\lstset{frame=tb,
+language=Python,
+aboveskip=3mm,
+belowskip=3mm,
+showstringspaces=false,
+columns=flexible,
+basicstyle={\small\ttfamily},
+numbers=none,
+numberstyle=\tiny\color{Green},
+keywordstyle=\color{Violet},
+commentstyle=\color{Gray},
+stringstyle=\color{Brown},
+breaklines=true,
+breakatwhitespace=true,
+tabsize=2}
 }
+{}
 
+\lstnewenvironment{cpp}{
+\lstset{
+backgroundcolor=\color{white!90!NavyBlue},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}; should come as last argument
+basicstyle={\scriptsize\ttfamily},        % the size of the fonts that are used for the code
+breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+breaklines=true,                 % sets automatic line breaking
+captionpos=b,                    % sets the caption-position to bottom
+commentstyle=\color{Gray},    % comment style
+deletekeywords={...},            % if you want to delete keywords from the given language
+escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+% firstnumber=1000,                % start line enumeration with line 1000
+frame=single,	                   % adds a frame around the code
+keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+keywordstyle=\color{Cyan},       % keyword style
+language=c++,                 % the language of the code
+morekeywords={*,...},            % if you want to add more keywords to the set
+% numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+% numbersep=5pt,                   % how far the line-numbers are from the code
+% numberstyle=\tiny\color{Green}, % the style that is used for the line-numbers
+rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+showstringspaces=false,          % underline spaces within strings only
+showtabs=false,                  % show tabs within strings adding particular underscores
+stepnumber=2,                    % the step between two line-numbers. If it's 1, each line will be numbered
+stringstyle=\color{GoldenRod},     % string literal style
+tabsize=2,	                   % sets default tabsize to 2 spaces
+title=\lstname}                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+{}
 
-% macros -----------------------------------------------------------------------
+% floor, ceiling, set
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+\DeclarePairedDelimiter{\set}{\lbrace}{\rbrace}
+\DeclarePairedDelimiter{\iprod}{\langle}{\rangle}
+
+\DeclareMathOperator{\Int}{int}
+\DeclareMathOperator{\mean}{mean}
+
+% commonly used sets
 \DeclareMathOperator{\N}{{\mathbb{N}}}
 \DeclareMathOperator{\Q}{{\mathbb{Q}}}
 \DeclareMathOperator{\Z}{{\mathbb{Z}}}
@@ -51,7 +85,6 @@
 \DeclareMathOperator{\C}{{\mathbb{C}}}
 \DeclareMathOperator{\F}{{\mathbb{F}}}
 
-% Boldface includes math
 \newcommand{\mbf}[1]{{\boldmath\bfseries #1}}
 
 % proof implications
@@ -66,133 +99,13 @@
 
 % convenient brackets
 \newcommand{\brac}[1]{\ensuremath{\left\langle #1 \right\rangle}}
-\newcommand{\norm}[1]{\ensuremath{\left\lVert#1\right\rVert}}
-\newcommand{\abs}[1]{\ensuremath{\left\lvert#1\right\rvert}}
 
 % arrows
 \newcommand{\lto}[0]{\ensuremath{\longrightarrow}}
 \newcommand{\fto}[1]{\ensuremath{\xrightarrow{\scriptstyle{#1}}}}
 \newcommand{\hto}[0]{\ensuremath{\hookrightarrow}}
 \newcommand{\mapsfrom}[0]{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
- 
-% Divides, Not Divides
-\renewcommand{\div}{\bigm|}
-\newcommand{\ndiv}{%
-    \mathrel{\mkern.5mu % small adjustment
-        % superimpose \nmid to \big|
-        \ooalign{\hidewidth$\big|$\hidewidth\cr$/$\cr}%
-    }%
-}
 
-% Convenient overline
-\newcommand{\ol}[1]{\ensuremath{\overline{#1}}}
-
-% Big \cdot
-\makeatletter
-\newcommand*\bigcdot{\mathpalette\bigcdot@{.5}}
-\newcommand*\bigcdot@[2]{\mathbin{\vcenter{\hbox{\scalebox{#2}{$\m@th#1\bullet$}}}}}
-\makeatother
-
-% Big and small Disjoint union
-\makeatletter
-\providecommand*{\cupdot}{%
-  \mathbin{%
-    \mathpalette\@cupdot{}%
-  }%
-}
-\newcommand*{\@cupdot}[2]{%
-  \ooalign{%
-    $\m@th#1\cup$\cr
-    \sbox0{$#1\cup$}%
-    \dimen@=\ht0 %
-    \sbox0{$\m@th#1\cdot$}%
-    \advance\dimen@ by -\ht0 %
-    \dimen@=.5\dimen@
-    \hidewidth\raise\dimen@\box0\hidewidth
-  }%
-}
-
-\providecommand*{\bigcupdot}{%
-  \mathop{%
-    \vphantom{\bigcup}%
-    \mathpalette\@bigcupdot{}%
-  }%
-}
-\newcommand*{\@bigcupdot}[2]{%
-  \ooalign{%
-    $\m@th#1\bigcup$\cr
-    \sbox0{$#1\bigcup$}%
-    \dimen@=\ht0 %
-    \advance\dimen@ by -\dp0 %
-    \sbox0{\scalebox{2}{$\m@th#1\cdot$}}%
-    \advance\dimen@ by -\ht0 %
-    \dimen@=.5\dimen@
-    \hidewidth\raise\dimen@\box0\hidewidth
-  }%
-}
-\makeatother
-
-
-% macros (theorem) -------------------------------------------------------------
-\usepackage[thmmarks,amsmath,hyperref]{ntheorem}
-\usepackage[capitalise,nameinlink]{cleveref}
-
-% Numbered Statements
-\theoremstyle{change}
-\theoremindent\parindent
-\theorembodyfont{\itshape}
-\theoremheaderfont{\bfseries\boldmath}
-\newtheorem{theorem}{Theorem.}[section]
-\newtheorem{lemma}[theorem]{Lemma.}
-\newtheorem{corollary}[theorem]{Corollary.}
-\newtheorem{proposition}[theorem]{Proposition.}
-
-% Claim environment
-\theoremstyle{plain}
-\theorempreskip{0.2cm}
-\theorempostskip{0.2cm}
-\theoremheaderfont{\scshape}
-\newtheorem{claim}{Claim}
-\renewcommand\theclaim{\Roman{claim}}
-\AtBeginEnvironment{theorem}{\setcounter{claim}{0}}
-
-% Un-numbered Statements
-\theorempreskip{0.1cm}
-\theorempostskip{0.1cm}
-\theoremindent0.0cm
-\theoremstyle{nonumberplain}
-\theorembodyfont{\upshape}
-\theoremheaderfont{\bfseries\itshape}
-\newtheorem{definition}{Definition.}
-\theoremheaderfont{\itshape}
-\newtheorem{example}{Example.}
-\newtheorem{exercise}{Exercise.}
-\newtheorem{remark}{Remark.}
-
-% Proof / solution environments
-\theoremseparator{}
-\theoremheaderfont{\hspace*{\parindent}\scshape}
-\theoremsymbol{$//$}
-\newtheorem{solution}{Sol'n}
-\theoremsymbol{$\blacksquare$}
-\theorempostskip{0.4cm}
-\newtheorem{proof}{Proof}
-\theoremsymbol{}
-\newtheorem{nmproof}{Proof}
-
-% Format references
-\crefformat{equation}{(#2#1#3)}
-\Crefformat{theorem}{#2Thm. #1#3}
-\Crefformat{lemma}{#2Lem. #1#3}
-\Crefformat{proposition}{#2Prop. #1#3}
-\Crefformat{corollary}{#2Cor. #1#3}
-\crefformat{theorem}{#2Theorem #1#3}
-\crefformat{lemma}{#2Lemma #1#3}
-\crefformat{proposition}{#2Proposition #1#3}
-\crefformat{corollary}{#2Corollary #1#3}
-
-
-% macros (algebra) -------------------------------------------------------------
 \DeclareMathOperator{\Ann}{Ann}
 \DeclareMathOperator{\Aut}{Aut}
 \DeclareMathOperator{\chr}{char}
@@ -208,136 +121,122 @@
 \DeclareMathOperator{\im}{im}
 \DeclareMathOperator{\lcm}{lcm}
 \DeclareMathOperator{\Nil}{Nil}
-\DeclareMathOperator{\rank}{rank}
-\DeclareMathOperator{\Res}{Res}
 \DeclareMathOperator{\Spec}{Spec}
 \DeclareMathOperator{\spn}{span}
 \DeclareMathOperator{\Stab}{Stab}
 \DeclareMathOperator{\Tor}{Tor}
 
-% Lagrange symbol
-\newcommand{\lgs}[2]{\ensuremath{\left(\frac{#1}{#2}\right)}}
+\newcommand{\sset}{\subseteq}
 
-% Quotient (larger in display mode)
-\newcommand{\quot}[2]{\mathchoice{\left.\raisebox{0.14em}{$#1$}\middle/\raisebox{-0.14em}{$#2$}\right.}
-                                 {\left.\raisebox{0.08em}{$#1$}\middle/\raisebox{-0.08em}{$#2$}\right.}
-                                 {\left.\raisebox{0.03em}{$#1$}\middle/\raisebox{-0.03em}{$#2$}\right.}
-                                 {\left.\raisebox{0em}{$#1$}\middle/\raisebox{0em}{$#2$}\right.}}
+\theoremstyle{break}
+\theorembodyfont{\upshape}
 
+\newtheorem{thm}{Theorem}[subsection]
+\tcolorboxenvironment{thm}{
+enhanced jigsaw,
+colframe=Dandelion,
+colback=White!90!Dandelion,
+drop fuzzy shadow east,
+rightrule=2mm,
+sharp corners,
+before skip=10pt,after skip=10pt
+}
 
-% macros (analysis) ------------------------------------------------------------
-\DeclareMathOperator{\M}{{\mathcal{M}}}
-\DeclareMathOperator{\B}{{\mathcal{B}}}
-\DeclareMathOperator{\ps}{{\mathcal{P}}}
-\DeclareMathOperator{\pr}{{\mathbb{P}}}
-\DeclareMathOperator{\E}{{\mathbb{E}}}
-\DeclareMathOperator{\supp}{supp}
-\DeclareMathOperator{\sgn}{sgn}
+\newtheorem{cor}{Corollary}[thm]
+\tcolorboxenvironment{cor}{
+boxrule=0pt,
+boxsep=0pt,
+colback={White!90!RoyalPurple},
+enhanced jigsaw,
+borderline west={2pt}{0pt}{RoyalPurple},
+sharp corners,
+before skip=10pt,
+after skip=10pt,
+breakable
+}
 
-\renewcommand{\Re}{\ensuremath{\operatorname{Re}}}
-\renewcommand{\Im}{\ensuremath{\operatorname{Im}}}
-\renewcommand{\d}[1]{\ensuremath{\operatorname{d}\!{#1}}}
+\newtheorem{lem}[thm]{Lemma}
+\tcolorboxenvironment{lem}{
+enhanced jigsaw,
+colframe=Red,
+colback={White!95!Red},
+rightrule=2mm,
+sharp corners,
+before skip=10pt,after skip=10pt
+}
 
+\newtheorem{ex}[thm]{Example}
+\tcolorboxenvironment{ex}{% from ntheorem
+blanker,left=5mm,
+sharp corners,
+before skip=10pt,after skip=10pt,
+borderline west={2pt}{0pt}{Gray}
+}
 
-% file-specific preamble -------------------------------------------------------
-\DeclareMathOperator{\Ps}{\mathcal{P}}
-\renewcommand{\Re}{\ensuremath{\operatorname{Re}}}
-\renewcommand{\Im}{\ensuremath{\operatorname{Im}}}
-\DeclareMathOperator{\proj}{proj}
-\DeclareMathOperator{\Int}{Int}
-\DeclareMathOperator{\Id}{Id}
-\DeclareMathOperator{\diam}{diam}
-\newcommand{\inner}[2]{\left\langle #1, #2 \right\rangle} % inner product
-\newcommand{\st}{\text{ s.t. }}
+\newtheorem*{pf}{Proof}
+\tcolorboxenvironment{pf}{% from ntheorem
+breakable,blanker,left=5mm,
+sharp corners,
+before skip=10pt,after skip=10pt,
+borderline west={2pt}{0pt}{NavyBlue!80!white}
+}
 
+\newtheorem{defn}{Definition}[subsection]
+\tcolorboxenvironment{defn}{
+enhanced jigsaw,
+colframe=Cerulean,
+colback=White!90!Cerulean,
+drop fuzzy shadow east,
+rightrule=2mm,
+sharp corners,
+before skip=10pt,after skip=10pt
+}
 
-% constants --------------------------------------------------------------------
+\newtheorem{prop}[thm]{Proposition}
+\tcolorboxenvironment{prop}{
+boxrule=0pt,
+boxsep=0pt,
+colback={White!90!Green},
+enhanced jigsaw,
+borderline west={2pt}{0pt}{Green},
+sharp corners,
+before skip=10pt,
+after skip=10pt,
+breakable
+}
+
+\setlength\parindent{0pt}
+\setlength{\parskip}{2pt}
+
 \newcommand{\subject}{MATH 138 \\ Honours Calculus 2}
 \newcommand{\semester}{Winter 2023}
 \newcommand{\professor}{Eddie Dupont}
 
-% formatting -------------------------------------------------------------------
-% Fonts
-\usepackage{kpfonts}
-\usepackage{dsfont}
+\begin{document}
+\let\ref\Cref
 
-% Adjust numbering
-\numberwithin{equation}{section}
-\counterwithin{figure}{section}
-\counterwithout{section}{chapter}
-\counterwithin*{chapter}{part}
-
-% Footnote
-\setfootins{0.5cm}{0.5cm} % footer space above
-\renewcommand*{\thefootnote}{\fnsymbol{footnote}} % footnote symbol
-
-% Table of Contents
-\renewcommand{\thechapter}{\Roman{chapter}}
-\renewcommand*{\cftchaptername}{Chapter } % Place 'Chapter' before roman
-\setlength\cftchapternumwidth{4em} % Add space before chapter name
-\cftpagenumbersoff{chapter} % Turn off page numbers for chapter
-\maxtocdepth{section} % table of contents up to section
-
-% Section / Subsection headers
-\setsecnumdepth{section} % numbering up to and including "section"
-\newcommand*{\shortcenter}[1]{%
-    \sethangfrom{\noindent ##1}%
-    \Large\boldmath\scshape\bfseries
-    \centering
-\parbox{5in}{\centering #1}\par}
-\setsecheadstyle{\shortcenter}
-\setsubsecheadstyle{\large\scshape\boldmath\bfseries\raggedright}
-
-% Chapter Headers
-\chapterstyle{verville}
-
-% Page Headers / Footers
-\copypagestyle{myruled}{ruled} % Draw formatting from existing 'ruled' style
-\makeoddhead{myruled}{}{}{\scshape\subject}
-\makeevenfoot{myruled}{}{\thepage}{}
-\makeoddfoot{myruled}{}{\thepage}{}
-\pagestyle{myruled}
-\setfootins{0.5cm}{0.5cm}
-\renewcommand*{\thefootnote}{\fnsymbol{footnote}}
-
-% Titlepage
 \title{\subject}
 \author{Sachin Kumar\thanks{\itshape skmuthuk@uwaterloo.ca}\\ University of Waterloo}
 \date{\semester\thanks{Last updated: \today}}
 
-
-%----------------------- DOCUMENT BEGIN ----------------------
-
-\begin{document}
-\pagenumbering{gobble}
-\hypersetup{pageanchor=false}
 \maketitle
 \newpage
-\frontmatter
-\hypersetup{pageanchor=true}
-\tableofcontents*
+\tableofcontents
+% \listoffigures
+% \listoftables
 \newpage
-\mainmatter
 
+\section{Integration}
 
-
-
-
-
-% main document ----------------------------------------------------------
-
-% -------------------- CHAPTER 1 -------------------------
-\chapter{Integration}
-
-\section{Introduction}
+\subsection{Introduction}
 Consider the interval $[a, b]$,
 If we sub-divide it into $n$ sub-intervals we get (for example) something called an increasing sequence $P = \{t_0, t_1, t_2, \dots, t_n\}$ a partition of the interval $[a, b]$. \\
 The length of the $i^{\text{th}}$ sub-interval is given by $$\Delta t_i = t_i - t_{i-1}, \space \space i \in 1, 2, \dots, n$$
 Next let $c_i \in [t_{i-1}, t_i]$.
 
-\begin{definition}[Riemann Sum]
+\begin{defn}[Riemann Sum]
     Given a bounded function $f$ and partition $P$ over the interval $[a, b]$ with $c_i \in [t_{i-1}, t_i]$ a Riemann sum of $f$ w.r.t  $P$ is $$S = S(f, P) = \sum^{n}_{i=1}f(c_i)\Delta t_i$$
-\end{definition}
+\end{defn}
 Note:
 \begin{enumerate}
     \item Different partitions $P$ or different choices for the $c_i$ will yield different values of $S$.
@@ -353,10 +252,10 @@ Key Ideas:
     \item The notation $\int^b_a f(t) \space dt$ is called the definite integral of $f$ from $a$ to $b$.
     \item Note that $\int^b_a f(t) \space dt  = \int^b_a f(x) \space dx = \int^b_a f(u) \space du $  etc. is to be thought as $\sum^{n}_{i=1}f(i) = \sum^{n}_{k=1}f(k) = \sum^{n}_{p=1}f(p)$ etc.
 \end{enumerate}
-\begin{definition}[Regular $n$-partition]
+\begin{defn}[Regular $n$-partition]
 The regular $n$-partition for an interval $[a, b]$ is where $\Delta t_i = \frac{b-a}{n}$ for each $i$. 
 i.e., we divide $[a, b]$ into $n$ intervals of equal width.
-\end{definition}
+\end{defn}
 Eg: If we knew that $f(x) = e^x$ was integrable the one way to calculate its integral over $[1, 4]$ would be: $$\int^4_1 e^x \space dx = \lim_{n \to \infty} \sum^n_{i=1} e^{c_i}\Delta t_i$$ where $c_i \in [t_{n-1}, t_i]$. \\ \space \\
 Assuming the regular $n$-partition we get, $$\Delta t_i = \dfrac{b-a}{n} = \dfrac{4-1}{n} = \dfrac{3}{n} = \Delta t$$ We can choose $c_i$ any way we like. One common way is to built a right-hand Riemann sum $(R)$ by letting, 
 \begin{align*}
@@ -378,14 +277,14 @@ Using $R$, we would get
     &= e(e^3 - 1)
 \end{align*} \\ \space \\
 But is $f(x) = e^x $ integrable$?$
-\begin{theorem}[Integrability Condition]
+\begin{thm}[Integrability Condition]
 If $f$ is continuous on $[a, b]$ then $f$ is integrable on $[a, b]$.
-\end{theorem}
+\end{thm}
 Note: If $f$ is bounded with finitely many jump discontinuities then it is also integrable.
 
 
-\section{Properties of Integration}
-\begin{theorem}[Properties of Integrals]
+\subsection{Properties of Integration}
+\begin{thm}[Properties of Integrals]
 If $f$ and $g$ are integrable over $[a, b]$ then
 \begin{enumerate}
     \item[a.] $\int^b_a cf(t) dt = c \int^b_af(t) dt$, for any $c \in \R$
@@ -393,8 +292,8 @@ If $f$ and $g$ are integrable over $[a, b]$ then
     \item[c.] If $m \le f(t) \le M$ then, $$m(b-a) \le \int^b_af(t) \le M(b-a)$$
     \item[d.] $|f|$ is integrable on $[a, b]$, then $$\Bigg|\int^b_a f(t) dt\Bigg| \le \int^b_a |f(t)| dt$$
 \end{enumerate}
-\end{theorem}
-\begin{proof}
+\end{thm}
+\begin{pf}
 Given any partition $P$ of $[a, b]$, note that $$\sum^n_{i=1}\Delta t_i = b-a$$
 Since $m \le f(t) \le M$ we get that 
 \begin{align*}
@@ -402,8 +301,8 @@ Since $m \le f(t) \le M$ we get that
     m\sum^n_{i=1} \Delta t_i \le \sum^n_{i=1} f(t) \Delta t_i \le M\sum^n_{i=1} \Delta t_i
 \end{align*}
 This is true for every partition $P$ and so we end up with $$m(b-a) \le \int^b_a f(t) dt \le M(b-a)$$
-\end{proof}
-\begin{corollary}
+\end{pf}
+\begin{cor}
 Properties of Integration
 \begin{enumerate}
     \item[e.] Set $m=0$ in (c.) to get, if $f(t) \ge 0$ then $$\int^b_af(t) dt \ge 0$$
@@ -411,12 +310,12 @@ Properties of Integration
     \item[g.] We define $\int^b_a f(t) dt = 0$. Our integration interval would be $[a, a]$ and so any Riemann sum we create would be of the form $$\sum^n_{i=1}f(a) \Delta t_i = f(a) \cdot 0 = 0$$
     \item[f.] For $a < b$ we have $$\int^b_a f(t) dt = - \int^a_b f(t) dt$$
 \end{enumerate}
-\end{corollary}
+\end{cor}
 The idea here is that writing $\int^b_a$ suggests moving from $a$ to $b$ where $t_{1-i}$ and $t_i$ are points on line $a$ to $b$ and $\Delta t_i > 0$.\\
 Whereas $\int^b_a$ suggests moving from $b$ to $a$ where $\Delta t_i < 0$.
-\begin{theorem}
+\begin{thm}
 Given $a, b, c \in I$ over which $f$ is integrable then $$\int^b_a f(t) dt = \int^c_a f(t) dt + \int^b_c f(t) dt$$
-\end{theorem}
+\end{thm}
 Note: It is not required that $a < c < b$. 
 If $a< b< c$, we get
 \begin{align*}
@@ -424,7 +323,7 @@ If $a< b< c$, we get
     &= \underbrace{\int^c_a f(t) dt}_{\text{Area b/w }[a, c]} -\underbrace{\int^c_b f(t) dt}_{\text{Area b/w }[b, c]}
 \end{align*}
 
-\section{Areas and Integrals}
+\subsection{Areas and Integrals}
 Note that $\int^b_a f(t) dt$ will only return the "expected" are when $f \ge 0$. Generally $\int^b_a f(t) dt$ returns the "signed" area.\\
 That is if $f < 0$ over some interval $[c, d]$ then $\int^d_c f(t) dt$ will return the negative area between $f$ and the $x$-axis.\\ \space \\
 Let the interval from $[a, b]$ have $2$-regular partitions, $c$ and $d$, where $a < c < d < b$. Assume $A_1, A_2, A_3 > 0$ (i.e., the normal area), where $A_1$ be the positive area from $[a, c]$, $A_2$ be the positive area from $[d, b]$ and $A_3$ be the negative area from $[c, d]$.
@@ -432,12 +331,12 @@ then $$\int^b_a f(t) dt = A_1 + A_2 - A_3$$
 \textbf{Example:}
 $\int^{2\pi}_0 \sin(t) dt = 0$, since $A_1$ and $A_2$ have equal areas, where $A_1$ is the positive area from $[0, \pi]$ and $A_2$ is the negative area from $[\pi, 2\pi]$.
 
-\section{Average Value}
+\subsection{Average Value}
 Recall the average of a discrete set $\{x_1, x_2, \dots, x_n\}$ is given by $$\dfrac{\sum^n_{i=1}x_i}{n}$$
 We can define a similar concept for functions as follows:
-\begin{definition}[Average Value]
+\begin{defn}[Average Value]
     The average value of a continuous function over the interval $[a, b]$ is given by $$f_{ave} = \dfrac{1}{b-a}\int^b_a f(t) dt$$
-\end{definition}
+\end{defn}
 sometimes written as $\bar{f}$.\\ \; \\
 \textbf{Example:}
 Geometrically compute $f_{ave}$ over $[0,4]$ if $f(x)=3x$. \\
@@ -456,10 +355,10 @@ Indeed,
     &= 0
 \end{align*}
 It is always the case that for an integrable function, there is a $c \in [a,b]$ such that $f(c) = f_{ave}$? In general "no".\\
-\begin{theorem}[Average Value Theorem (AVT)]
+\begin{thm}[Average Value Theorem (AVT)]
     If $f$ is a continuous function on $[a,b]$ then there is a $c \in [a,b]$ such that $$f(c) = \frac{1}{b-a} \int^b_a f(x) dx$$
-\end{theorem}
-\begin{proof}
+\end{thm}
+\begin{pf}
     By Extreme Value Theorem (EVT), there are $p$ (min) and $q$ (max), where $p, q \in [a,b]$ such that $$f(p) \le f(x) \le f(q)$$
     By integral properties, 
     \begin{align*}
@@ -467,9 +366,9 @@ It is always the case that for an integrable function, there is a $c \in [a,b]$ 
         f(p) &\le \dfrac{1}{b-a} \int^b_a f(x) dx \le f(q)
     \end{align*}
     By the Intermediate value theorem, there is a $c \in [a, b]$ where $f(c)$ is the above equation.
-\end{proof}
+\end{pf}
 
-\section{Fundamental Theorem of Calculus (FTC)}
+\subsection{Fundamental Theorem of Calculus (FTC)}
 Up until now to compute $\int^b_af(t)dt$ we had to rely on geometry or, if using the definition, we need formulas to convert $\sum^n_{i=1}f(c_i) \Delta t_i$ to an explicit expression like $$\sum^n_{i=1}i^2 = \dfrac{n(n+1)(2n+1)}{6}$$
 In many cases, this is not possible. \\ \: \\
 Let us investigate how an integral behaves on a function on $x$. That is, \\
@@ -481,26 +380,26 @@ since $f$ is continuous, by AVT, $\exists c \in [x, x+h]$ such that $$\dfrac{A(x
 Also since $f$ is continuous and $c$ depends on $h$, $$\lim_{h \to 0} f(c) = f(x)$$
 Finally by definition $$\lim_{h \to 0}\dfrac{A(x+h) - A(x)}{h} = A'(x)$$
 Thus $A'(x) = f(x)$, i.e., $$\dfrac{d}{dx}\int^x_a f(t) dt = f(x)$$
-\begin{theorem}[Fundamental Theorem of Calculus I (FTC I)]
+\begin{thm}[Fundamental Theorem of Calculus I (FTC I)]
   If $f$ is continuous on an open interval containing $x$ and $a$, then $$\dfrac{d}{dx}\bigg[\int^x_a f(t) dt\bigg] = f(x)$$
-\end{theorem}
+\end{thm}
 That is, the derivative \textbf{cancels} the integral.\\ \; \\
 How does this help us compute $\int^b_a f(t) dt$? If we let $g(x) = \int^x_a f(t) dt$ then by FTC I, we know that $g'(x) = f(x)$ so we begin a search for a function $g(x)$
 which after we take a derivative gives $f(x)$.
 \\ \; \\
 \textbf{Example:} Compute $$\int^5_3 2t dt$$
 We need a function $g(x)$ such that $g'(x) = 2x$. That is we seek an antiderivative of $2x$ (Recall from MATH 137 that
-given a funtion, any 2 antiderivatives of that function can differ by at most a constant.)\\
+given a function, any 2 antiderivatives of that function can differ by at most a constant.)\\
 Let us denote $G(x) = x^2 + c$ as the family of antiderivatives of $2x$. By FTC I we have that 
 $$G(x) = x^2 + c = \int^x_3 2t dt$$ since G'(x) = 2x \\ \: \\
 But what is $c$? We know that $G(3) = 9 + c = \int^3_3 2t dt = 0$, so $c = -9$. Thus $$G(5) = \int^5_3 2t dt = 25 - 9 = 16$$
 Notice that if we instead let $g(x) = x^2 + 4$ and evaluated $g(5) - g(3)$ we should still get 16. \\ \: \\
 This leads us to: 
-\begin{theorem}[Fundamental Theorem of Calculus II (FTC II)]
+\begin{thm}[Fundamental Theorem of Calculus II (FTC II)]
   Let $F$ be any antiderivative of a continuous function $f$. Then, $$\int^b_a f(t) dt = F(b) - F(a)$$
-\end{theorem}
+\end{thm}
 \textbf{Example:} Compute $$\int^4_1 \cos(x) dx$$
-Using a Riemann sum would require a foumula for $$\sum^n_{i=1} \cos(1 + \frac{3i}{n})$$ and then a limit as $n \to \infty$ \\ \: \\
+Using a Riemann sum would require a formula for $$\sum^n_{i=1} \cos(1 + \frac{3i}{n})$$ and then a limit as $n \to \infty$ \\ \: \\
 Using FTC however we know that since $\frac{d}{dx} \sin(x) = \cos(x)$, we get $$\int^4_1 \cos(x) dx = \sin(4) - \sin(1)$$
 Notation: The expression $g(x) \big |^b_a = g(b) - g(a)$ \\ \: \\
 \textbf{Example:} 
@@ -511,7 +410,7 @@ Notation: The expression $g(x) \big |^b_a = g(b) - g(a)$ \\ \: \\
   &= \dfrac{1}{2} + \dfrac{1}{2} \\
   &= 1
 \end{align*}
-\subsection{Extended Fundamental Theorem of Calculus I}
+\subsubsection{Extended Fundamental Theorem of Calculus I}
 We learned that $$\dfrac{d}{dx}\int^x_a f(t) dt = f(x)$$
 What about $\frac{d}{dx} \int^a_x f(t) dt$ or $\frac{d}{dx} \int^{h(x)}_{g(x)} f(t) dt$? we solve these using the \textbf{chain rule}. \\ \; \\
 \textbf{Example:} Compute $$\dfrac{d}{dx}\int^{\ln(x)}_{2} \sin(t^2) dt$$
@@ -528,12 +427,12 @@ Then by FTC II,
   \dfrac{d}{dx} \int^{b(x)}_{a(x)} f(t) dt &= F'(b(x)) \cdot b'(x) - F'(a(x)) \cdot a(x)\\
   &= f(b(x)) \cdot b'(x) - f(a(x)) \cdot a'(x)
 \end{align*}
-\section{Indefinite Integrals}
+\subsection{Indefinite Integrals}
 So far we have defined $\int^b_a f(t) dt$ as the definite integral of $f$ over $[a, b]$. It evaluates to a number.
 We call $\int f(x) dx$ the indefinite integral of $f(x)$. It is a function.
 \\ \vspace{0.5ex} \\
 Due to FTC, $\int f(x) dx$ represents the family of antiderivatives of $f(x)$. eg: $\int 4x + 3 dx = 2x^2 + 3x + C$
-\subsection{Basic antiderivatives}
+\subsubsection{Basic antiderivatives}
 To help calculate $\int^b_a f(t) dt$, it will be handy to know the following 
 \begin{itemize}
   \item $\int x^n dx = \frac{x^{n+1}}{n+1} + C$, \hspace{3ex} $n \ne -1$
@@ -553,7 +452,7 @@ Generally, finding antiderivatives is quite hard and sometimes impossible,\\
 eg: $e^{x^2}$, $\sqrt{1 + x^3}$, $\ln(\ln(x))$, $\sin(x^2)$.\\ \vspace{0.5ex} \\
 When they do exists, finding them is much more of an art form compared to finding derivatives. We will introduce a few
 techniques that will help.
-\section{Substitution Rule}
+\subsection{Substitution Rule}
 First note that by FTC, $$\int g'(x) dx = \int \frac{d}{dx}[g(x)] dx = g(x) + C$$
 Sometimes you will see this written as $$\int d[g(x)] = g(x) + C$$
 Consider $\int \sin^3x \cdot \cos x dx$. Notice that $\cos x$ is the derivative of $\sin(x)$. In fact if we let
@@ -580,7 +479,7 @@ let $u = x^2$, then $du = 2x dx \implies dx = \frac{du}{2x}$ which gives
                           &= \frac{5}{2}e^u + C \\
                           &= \frac{5}{2}e^{x^2} + C
 \end{align*}
-\subsection{How to choose $u$?}
+\subsubsection{How to choose $u$?}
 There is no set rule for this. Often times you want to look for a function and its derivative appearing in the integrand.\\
 eg: 
 \begin{itemize}
@@ -589,7 +488,7 @@ eg:
   \item $\frac{\ln x}{x} \to u = \ln x$, $u' = \frac{1}{x}$
 \end{itemize}
 but this will not always work. \\ \vspace{0.5ex} \\
-eg: $$\int x^3 \sqrt{x^2 - 4} dx$$
+\textbf{Example:} $$\int x^3 \sqrt{x^2 - 4} dx$$
 It seems like since $\frac{d}{dx}[x^3] = 3x^2$ we should let $u = x^3$.
 If we try we end up with $du = 3x^2 dx$. 
 \begin{align*}
@@ -602,4 +501,49 @@ $$\frac{1}{3} \int \frac{u}{u^{\frac{2}{3}}} \sqrt{u^{\frac{2}{3}} - 4}du =
 Ideally we would end up at one of our basic antiderivative formulas like $\int x^n dx$ or $\int \sin (x) dx$, so we should
 try something else. \\
 There will be lots of \textbf{trial and error}.
+
+\subsubsection{Trigonometric Substitutions}
+Recall that 
+\begin{align*}
+  1 - \sin^2\theta = \cos^2 \theta\\
+  \tan^2 \theta + 1 = \sec^2 \theta\\
+  \sec^2\theta - 1 = \tan^2 \theta
+\end{align*}
+When an integrand involves an expression such as $a^2 - x^2, x^2 + a^2$ or $x^2 - a^2$ then, based on the formulas
+above we sometimes make the following substitutions.
+\begin{align*}
+  \text{for } a^2 - x^2 \hspace{4ex} &\text{ try } x = a\sin \theta, \hspace{2ex} \theta \in \left[\frac{-\pi}{2},\dfrac{\pi}{2} \right]\\
+  \text{for } a^2 + x^2 \hspace{4ex} &\text{ try } x = a\tan \theta, \hspace{2ex} \theta \in \left[\frac{-\pi}{2},\dfrac{\pi}{2} \right]\\
+  \text{for } x^2 - a^2 \hspace{4ex} &\text{ try } x = a\sec \theta, \hspace{2ex} \theta \in \left[{-\pi},\dfrac{-\pi}{2} \right) \cup \left[0,\dfrac{\pi}{2} \right)\\
+\end{align*}
+Usually we only need to do this for things like $(a^2 - x^2)^p$, $(a^2 + x^2)^p$ and $(x^2 - a^2)^p$ when $p$ is a fraction.
+\\ \vspace{0.5ex} \\
+\textbf{Example:} Find
+$$\int \dfrac{x}{\sqrt{9 + x^2}} dx \hspace{5ex} \text{ (we could do } u = 9 + x^2 \text{ but let's say we didn't notice)}$$
+Let $x = 3 \tan\theta$ with $\theta \in \left[\frac{-\pi}{2},\frac{\pi}{2} \right]$\\
+$dx = 3 \sec^2 \theta d \theta$
+so we get, 
+\begin{align*}
+  \int \dfrac{x}{\sqrt{9 + x^2}} dx &= \int \dfrac{3 \tan \theta}{\sqrt{9 + 9 \tan^2 \theta}}\cdot 3\sec^2 \theta d \theta\\
+  &= 3  \int \dfrac{\tan \theta \sec^2 \theta}{\sqrt{1 + \tan^2 \theta}} d \theta\\
+  &= 3  \int \dfrac{\tan \theta \sec^2 \theta}{\sqrt{\sec^2 \theta}} d \theta\\
+  &= 3  \int \dfrac{\tan \theta \sec^2 \theta}{|\sec \theta|} d \theta\\
+  &= 3  \int \dfrac{\tan \theta \sec^2 \theta}{\sec \theta} d \theta \hspace{3ex} \text{ since } \theta \in \left[\frac{-\pi}{2},\frac{\pi}{2} \right]\\
+  &= 3 \int \sec \theta \tan \theta d \theta\\
+  &= 3 \sec \theta + C
+\end{align*}
+\subsubsection{What is $\sec \theta$ in terms of $x$?}
+Since $$x = 3 \tan \theta \implies \frac{x}{3} = \tan \theta$$
+so, $$\sec \theta = \frac{\sqrt{x^2 + 9}}{3}$$
+We get a final answer of 
+\begin{align*}
+  &= 3 \left(\frac{\sqrt{x^2 + 9}}{3}\right) + C\\
+  &= \sqrt{x^2 + 9} + C
+\end{align*}
+\textbf{Example:} Find\\
+$$\int \dfrac{x^2}{\sqrt{1 - x^2}} dx$$
+Let $x = \sin \theta$
+
+
+
 \end{document}

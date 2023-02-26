@@ -1,0 +1,636 @@
+\documentclass[10pt]{article} 
+
+\usepackage{fullpage}
+\usepackage{bookmark}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref} % for the URL
+\usepackage[shortlabels]{enumitem}
+\usepackage{mathtools}
+\usepackage[most]{tcolorbox}
+\usepackage[amsmath,standard,thmmarks]{ntheorem} 
+\usepackage{physics}
+\usepackage{pst-tree} % for the trees
+\usepackage{verbatim} % for comments, for version control
+\usepackage{tabu}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{etoolbox}
+
+\lstnewenvironment{python}{
+\lstset{frame=tb,
+language=Python,
+aboveskip=3mm,
+belowskip=3mm,
+showstringspaces=false,
+columns=flexible,
+basicstyle={\small\ttfamily},
+numbers=none,
+numberstyle=\tiny\color{Green},
+keywordstyle=\color{Violet},
+commentstyle=\color{Gray},
+stringstyle=\color{Brown},
+breaklines=true,
+breakatwhitespace=true,
+tabsize=2}
+}
+{}
+
+\lstnewenvironment{cpp}{
+\lstset{
+backgroundcolor=\color{white!90!NavyBlue},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}; should come as last argument
+basicstyle={\scriptsize\ttfamily},        % the size of the fonts that are used for the code
+breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+breaklines=true,                 % sets automatic line breaking
+captionpos=b,                    % sets the caption-position to bottom
+commentstyle=\color{Gray},    % comment style
+deletekeywords={...},            % if you want to delete keywords from the given language
+escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+% firstnumber=1000,                % start line enumeration with line 1000
+frame=single,	                   % adds a frame around the code
+keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+keywordstyle=\color{Cyan},       % keyword style
+language=c++,                 % the language of the code
+morekeywords={*,...},            % if you want to add more keywords to the set
+% numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+% numbersep=5pt,                   % how far the line-numbers are from the code
+% numberstyle=\tiny\color{Green}, % the style that is used for the line-numbers
+rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+showstringspaces=false,          % underline spaces within strings only
+showtabs=false,                  % show tabs within strings adding particular underscores
+stepnumber=2,                    % the step between two line-numbers. If it's 1, each line will be numbered
+stringstyle=\color{GoldenRod},     % string literal style
+tabsize=2,	                   % sets default tabsize to 2 spaces
+title=\lstname}                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+{}
+
+% floor, ceiling, set
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+\DeclarePairedDelimiter{\set}{\lbrace}{\rbrace}
+\DeclarePairedDelimiter{\iprod}{\langle}{\rangle}
+
+\DeclareMathOperator{\Int}{int}
+\DeclareMathOperator{\mean}{mean}
+
+% commonly used sets
+\DeclareMathOperator{\N}{{\mathbb{N}}}
+\DeclareMathOperator{\Q}{{\mathbb{Q}}}
+\DeclareMathOperator{\Z}{{\mathbb{Z}}}
+\DeclareMathOperator{\R}{{\mathbb{R}}}
+\DeclareMathOperator{\C}{{\mathbb{C}}}
+\DeclareMathOperator{\F}{{\mathbb{F}}}
+
+\newcommand{\mbf}[1]{{\boldmath\bfseries #1}}
+
+% proof implications
+\newcommand{\imp}[2]{($#1\Rightarrow#2$)\hspace{0.2cm}}
+\newcommand{\impe}[2]{($#1\Leftrightarrow#2$)\hspace{0.2cm}}
+\newcommand{\impr}{{($\Rightarrow$)\hspace{0.2cm}}}
+\newcommand{\impl}{{($\Leftarrow$)\hspace{0.2cm}}}
+
+% align macros
+\newcommand{\agspace}{\ensuremath{\phantom{--}}}
+\newcommand{\agvdots}{\ensuremath{\hspace{0.16cm}\vdots}}
+
+% convenient brackets
+\newcommand{\brac}[1]{\ensuremath{\left\langle #1 \right\rangle}}
+
+% arrows
+\newcommand{\lto}[0]{\ensuremath{\longrightarrow}}
+\newcommand{\fto}[1]{\ensuremath{\xrightarrow{\scriptstyle{#1}}}}
+\newcommand{\hto}[0]{\ensuremath{\hookrightarrow}}
+\newcommand{\mapsfrom}[0]{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+
+\DeclareMathOperator{\Ann}{Ann}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\chr}{char}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\disc}{disc}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Fix}{Fix}
+\DeclareMathOperator{\Frac}{Frac}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\Nil}{Nil}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\spn}{span}
+\DeclareMathOperator{\Stab}{Stab}
+\DeclareMathOperator{\Tor}{Tor}
+
+\newcommand{\sset}{\subseteq}
+
+\theoremstyle{break}
+\theorembodyfont{\upshape}
+
+\newtheorem{thm}{Theorem}[subsection]
+\tcolorboxenvironment{thm}{
+enhanced jigsaw,
+colframe=Dandelion,
+colback=White!90!Dandelion,
+drop fuzzy shadow east,
+rightrule=2mm,
+sharp corners,
+before skip=10pt,after skip=10pt
+}
+
+\newtheorem{cor}{Corollary}[thm]
+\tcolorboxenvironment{cor}{
+boxrule=0pt,
+boxsep=0pt,
+colback={White!90!RoyalPurple},
+enhanced jigsaw,
+borderline west={2pt}{0pt}{RoyalPurple},
+sharp corners,
+before skip=10pt,
+after skip=10pt,
+breakable
+}
+
+\newtheorem{lem}[thm]{Lemma}
+\tcolorboxenvironment{lem}{
+enhanced jigsaw,
+colframe=Red,
+colback={White!95!Red},
+rightrule=2mm,
+sharp corners,
+before skip=10pt,after skip=10pt
+}
+
+\newtheorem{ex}[thm]{Example}
+\tcolorboxenvironment{ex}{% from ntheorem
+blanker,left=5mm,
+sharp corners,
+before skip=10pt,after skip=10pt,
+borderline west={2pt}{0pt}{Gray}
+}
+
+\newtheorem*{pf}{Proof}
+\tcolorboxenvironment{pf}{% from ntheorem
+breakable,blanker,left=5mm,
+sharp corners,
+before skip=10pt,after skip=10pt,
+borderline west={2pt}{0pt}{NavyBlue!80!white}
+}
+
+\newtheorem{defn}{Definition}[subsection]
+\tcolorboxenvironment{defn}{
+enhanced jigsaw,
+colframe=Cerulean,
+colback=White!90!Cerulean,
+drop fuzzy shadow east,
+rightrule=2mm,
+sharp corners,
+before skip=10pt,after skip=10pt
+}
+
+\newtheorem{prop}[thm]{Proposition}
+\tcolorboxenvironment{prop}{
+boxrule=0pt,
+boxsep=0pt,
+colback={White!90!Green},
+enhanced jigsaw,
+borderline west={2pt}{0pt}{Green},
+sharp corners,
+before skip=10pt,
+after skip=10pt,
+breakable
+}
+
+\setlength\parindent{0pt}
+\setlength{\parskip}{2pt}
+
+\newcommand{\subject}{MATH 135 \\ Honours Algbera}
+\newcommand{\semester}{Winter 2023}
+\newcommand{\professor}{Jason Bell}
+
+\begin{document}
+\let\ref\Cref
+
+\title{\subject}
+\author{Sachin Kumar\thanks{\itshape skmuthuk@uwaterloo.ca}\\ University of Waterloo}
+\date{\semester\thanks{Last updated: \today}}
+
+\maketitle
+\newpage
+\tableofcontents
+% \listoffigures
+% \listoftables
+\newpage
+
+
+
+
+
+
+% main document ----------------------------------------------------------
+
+% -------------------- CHAPTER 1 -------------------------
+\section{Introduction to the Language of Mathematics}
+\subsection{Sets and Mathematical Statements}
+\begin{defn}[Set]
+A set is a well-defined unordered (i.e., order does not matter) collection of distinct (unique) objects.\\
+Example: 
+Empty set = $\{\} = \emptyset$
+\end{defn}
+Note:
+\begin{itemize}
+    \item $\{\emptyset\} \ne \emptyset$ and $\{a, \{a, b\}\}$ is a set since $a, \{a, b\}$ are distinct objects.
+    \item $\in \to $ "is a member of"
+    \item $\notin \to $ "is not a member of"
+\end{itemize}
+Exercise 1 (True or false)
+\begin{enumerate}
+    \item $\empty \in \{A, \{A, B\}\}$ → false
+    \item $A \in \{A, \{A, B\}\}$ → true
+    \item $B \in \{A, \{A, B\}\}$ → false
+    \item $\{B, A\} \in \{A , \{A, B\}\}$ → true
+\end{enumerate}
+\subsubsection{Common Sets}
+$\N = \{1, 2, 3, \dots\}$ → Natural Numbers\\
+$\Z = \{\dots, -2, -1, 0, 1, 2, \dots\}$ → Integer Numbers\\
+$\R = \{\text{ set of real numbers }\}$ → Real Numbers\\
+$\mathbb{P} = \{2, 3, 5, \dots \}$ → Prime Numbers\\
+$\mathbb{Q} = \{\frac{a}{b}: a, b \in \Z, b \ne 0\}$ → Rational Numbers\\ \vspace{1ex} \\
+Exercise 1 (True or false)
+\begin{enumerate}
+    \item $\mathbb{Q} \in \N$ → false
+    \item $\sqrt{2} \in \mathbb{Q}$ → false
+    \item $- \infty \in \Z$ → false
+    \item $\pi \in \R$ → true
+    \item $\{\sqrt{2}, \sqrt{3}\} \subseteq \R$  → true
+\end{enumerate}
+\subsubsection{Statements}
+\begin{defn}[statements]
+  A statement is a sentence that has a definite state of being true or false. (It cannot be sometimes false or sometimes true). (i.e., it cannot be sometimes false or sometimes true)  
+\end{defn}
+$P(a, b, c): a^2 + b^2 = c^2$ is NOT a statement since for some values of $a, b $ and $c $ the statement may be true and false for some. \\ \vspace{1ex}\\
+Examples: 
+\begin{itemize}
+    \item $P(3, 4, 5): 3^2 + 4^2 = 5^2$  → true
+    \item $P(1, 2, 3): 1^2 + 2^2 = 3^2$  → false
+\end{itemize} 
+Exercise 1 (Which of these are statements)
+\begin{enumerate}
+    \item 18 is a prime number → statement
+    \item $a^3 + b^3 = c^3$  → not a statement
+    \item $\forall \space a, b, c \in \R$,  $a^3 + b^3 = c^3$  → statement
+    \item $\exists \space a, b , c \in \R$ such that $a^3 + b^3 = c^3$ → statement
+\end{enumerate}
+\subsubsection{Open Sentence}
+\begin{defn}[open sentence]
+    An open sentence is a sentence with at least one variable that is not a statement but can become one when we give values.
+\end{defn}
+$P(a, b, c): a^3 + b^3 = c^3$ is an open sentence since if we give values for $a, b $ and $c$ $P(a,b , c) $ will become a statement. 
+\\ \vspace{1ex} \\
+Examples:
+\begin{itemize}
+    \item $P(2, 3 ,5): 2^3 + 3^3 = 5^3$ → statement
+    \item $\forall \space a, b, c \in \R$,  $a^3 + b^3 = c^3$  → statement
+\end{itemize} 
+Exercise 4 (Which of these are open sentences or statements)
+\begin{enumerate}
+    \item $P(2, 3, 5)$ → statement
+    \item $\forall a \in \R,$   $P(a, b , c)$ → open sentence
+    \item $P(2, 3, C)$ → open sentence
+    \item $\exists a, b \in \N$ and $c \in \R$ such that $P(a, b, c)$ → sometimes considered as a statement or as an open sentence
+\end{enumerate}
+\subsubsection{Negation of Statements}
+If $P$ is a statement, $$\neg P \to \text{not }P$$
+\\ \; \\
+Examples:
+\begin{itemize}
+    \item $P \to$  There is a $x \in \R$ such that $x^2 = 2$
+    \item $\neg P \to$  $\forall \space x \in \R,$   $x^2 \ne 2$
+    \item $P \to$  $\forall \space x \in \R$,   $x^2 = 2$
+    \item $\neg P \to$  $\exists \space x \in \R$ such that $x^2 = 2$
+\end{itemize}
+$\neg (\neg P)$ is logically equivalent to $P$, $\neg (\neg P) = P$
+
+\subsection{Quantifiers and Nested Quantifiers}
+\subsubsection{Quantifiers}
+$\forall$ = "for all" $\to$ universal quantifier\\
+$\exists$ = "there exists" $\to$ Existential quantifier\\
+Typically , we'll have a open sentence with at least one "free" variable, $x$. 
+\\ \vspace{1ex} \\
+Examples: 
+\begin{itemize}
+    \item $x^2 + 2 = z^3$
+    \item $\forall x \in \Z, \exists z \in \R, x^2 + 2 = z^3 \to $ For all $x \in \Z$, there exists $z \in \R$, such that $x^2 + 2 = z^3$
+\end{itemize}
+P(x): $x^2 = 2$ (open sentence)
+\begin{itemize}
+    \item $\exists x \in \N, x^2 = 2 \to $ false
+    \item $\exists x \in \R, x^2 = 2 \to $ true
+    \item $\forall x \in \R, x^2 \ne 2 \to $ true
+    \item $\forall x \in \R, x^2 \ne 2 \to $ false
+\end{itemize}
+If Q(x): $\frac{m+1}{m+2} = 5$ is open sentence, then \\
+$$\exists m \in \Z, \frac{m+1}{m+2} = 5 \to \text{ false }$$\\
+We can make the above statement true by changing its domains, i.e., \\
+\begin{align*}
+    &\exists m \in \R, \frac{m+1}{m+2} = 5
+    &\exists m \in \Q, \frac{m+1}{m+2} = 5
+\end{align*}
+\subsubsection{Hidden Quantifiers}
+Examples:
+\begin{itemize}
+    \item $64$ is a perfect square $\to \exists x \in \Z, x^2 = 64$ (true statement)
+    \item $2^{2x - 4} = 8$ has a integer solution $\to \exists x \in \Z, 2^{2x - 4} = 8$ (false statement)
+    \item The graph of $y = x^3 - 2x + 1$ has no $x$-intercept\\ $\to $ There is no solution in $x \in \R$ such that $x^3 - 2x + 1 = 0$ \\ $\to$ For all $x \in \R, x^3 - 2x + 1 = 0$ \\$\to \forall x \in \R, x^3 - 2x + 1 = 0$ (false statement)
+\end{itemize}
+\subsubsection{Negation of Quantifiers}
+$P: $ Everyone in this room was born in or before 2013. \\
+$\neg P: $ There exists someone in this room was born in or after 2013.\\
+$S: $ Set of people in this room, $Q(x) = x$ is born in or before 2013, where $x$ is a person in the room.
+\begin{itemize}
+    \item $P: \forall x \in S, Q(x)$
+    \item $\neg P: \exists x \in S, \neg Q(x)$
+\end{itemize}
+Fact: If we have the statement of the form 
+\begin{align*}
+    P&: \forall x \in S, Q(x)\\
+    \neg P&: \exists x \in S, \neg Q(x)
+\end{align*}
+\\ \vspace{1ex} \\
+Exercise 5 (Negate the statement)
+\begin{enumerate}
+    \item $P: \forall x \in \R, |x| \ge 5$
+    \item $\neg P: \exists x \in \R, \neg(|x| \ge 5) \to \exists x \in \R, |x| < 5$
+\end{enumerate}
+\subsubsection{Nested Quantifiers}
+Examples:
+Let $Q(x, y) = x^3 - y^3 = 1$
+\begin{itemize}
+    \item $\forall x \in \R, \forall y \in \R, x^3 - y^3 = 1 \to $ false
+    \item $\exists x \in \R, \exists y \in \R, x^3 - y^3 \to $ true
+    \item $\forall x \in \R, \exists y \in \R, x^3 - y^3 \to $ true
+    \item $\exists x \in \R, \forall y \in \R, x^3 - y^3 \to $ false
+\end{itemize}
+Note: Switching the order of the quantifiers in a statement makes a difference.\\
+If we have an open sentence $Q(x, y)$,\\
+$\exists x \in S, \forall y \in T, Q(x, y) \to $ There is an $x \in S$ such that [for all $y \in T, Q(x,y)$] is true.
+
+\subsubsection{Negating Nested Quantifiers}
+Examples: 
+Let $Q(x, y, z) = x^5 + y^2 = 2^3$\\
+\begin{align*}
+    P&: \exists x \in \Z, \forall y \in \Q, \, \exists z \in \R, \, x^5 + y^2 = 2^3\\
+    \neg P&: \forall x \in \Z, \exists y \in \Q, \, \forall z \in \R, \, x^5 + y^2 \ne 2^3
+\end{align*}
+Fact: 
+\begin{itemize}
+    \item In order to negate a nested quantified statement, just flip $\forall$ and $\exists$, and also negate the statement $P(x)$
+    \item Also if the nested quantified statement is long, break it into shorter nested quantified statements and negate it.
+\end{itemize}
+
+
+\section{Logical Analysis of Mathematical Statements}
+\subsection{Truth Table}
+Let $p$ be statement. 
+\begin{enumerate}
+    \item $\neg P$ = "not $P$"
+    \item $\neg P$ is true when $P$ is false and false when $P$ is true.
+\end{enumerate}
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{|c|c|c|}
+    \hline
+    $P$ & $\neg P$ & $\neg (\neg P)$ \\
+    \hline
+    T & F & T \\
+    \hline
+    F & T & F \\
+    \hline
+\end{tabular}
+\end{table}
+
+\begin{itemize}
+    \item $\neg$ is a logical operator, somethin take takes a statement and creates a new statements.
+    \item $\neg P$ is a logical expression.
+\end{itemize}
+\textbf{Notice:} $P$ and $\neg(\neg P)$ have the same truth value So $P$ and $\neg (\neg P)$ are logically equivalent ($\equiv$), i.e, 
+$$P \equiv \neg (\neg P)$$ 
+
+\subsection{Conjuction and Disjunction}
+\begin{enumerate}
+    \item Conjuction ($\wedge$) = "and"
+    \item Disjunction ($\vee$) = "or"
+\end{enumerate}
+We can use conjunction and disjunction to create compound statements, that are built from two or more statement using
+things like $\vee$ and $\wedge$. \\ \: \\
+\textbf{Example:} $A$ and $B$ are statements (statement variables)
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        $A$ & $B$ & $A \wedge B$ & $A \vee B$ \\
+        \hline
+        T & T & T & T \\
+        \hline
+        T & F & F & T \\
+        \hline
+        F & T & F & T \\
+        \hline 
+        F & F & F & F \\ 
+        \hline
+    \end{tabular}
+    \end{table}
+
+\begin{itemize}
+    \item $A \wedge B$ and $A \vee B$ are called compound statements.
+    \item $\vee \to $ If one of the statements are true or both of them are, then the compound statement is true.
+    \item $\wedge \to $ Even if one of the statement is false, then the compound statement is false.
+\end{itemize}
+\textbf{Example:} $\forall x \in \R, (x^2 \ge 0) \wedge (\sin^2(x) + \cos^2(x) = 1)$ is a true statement because both the statement variables are true. Therefore the compound statement is true.
+
+\subsection{Logical Operators and Algebra}
+\subsubsection{De Morgan's Laws}
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|c|}
+        \hline
+        $A$ & $B$ & $\neg (A \wedge B)$ & $\neg (A \vee B)$ & $\neg A \vee \neg B$ & $\neg A \wedge \neg B$\\
+        \hline
+        T & T & F & F & F & F\\
+        \hline
+        T & F & T & F & T & F\\
+        \hline
+        F & T & T & F & T & F\\
+        \hline 
+        F & F & T & T & T & T\\ 
+        \hline
+    \end{tabular}
+    \end{table}
+
+\begin{enumerate}
+    \item $\neg (A \wedge B) \equiv (\neg A) \vee (\neg B)$
+    \item $\neg (A \vee B) \equiv (\neg A) \wedge (\neg B)$
+\end{enumerate}
+\textbf{Exercise:} Negate the statement\\ 
+Let $L$ be a line and $P$ be a parabola.
+Statement: The point $(1, 2)$ lies on $L$ or on $P$ $$(1,2) \in L \vee (1,2) \in P$$
+\textbf{Sol}:
+\begin{align*}
+    &\neg ((1,2) \in L \vee (1,2) \in P)\\
+    \equiv &(\neg (1,2) \in L \wedge \neg (1,2) \in P)\\
+    \equiv &(1,2) \notin L \wedge (1,2) \notin P
+\end{align*}
+Negated statement: The point $(1,2)$ does not lie on $L$ and does not lie on $P$.
+
+\subsubsection{Other Logical Operators Laws}
+\textbf{Commutative Laws:} (order does not matter)
+\begin{itemize}
+    \item $P \wedge Q \equiv Q \wedge P$
+    \item $P \vee Q \equiv Q \vee P$
+\end{itemize}
+\textbf{Associative Laws:} (parentheses does not matter)
+\begin{itemize}
+    \item $(P \wedge Q) \wedge R \equiv P \wedge (Q \wedge R)$
+    \item $(P \vee Q) \vee R \equiv P \vee (Q \vee R)$
+\end{itemize}
+\textbf{Distributive Laws:}
+\begin{itemize}
+    \item $P \wedge (Q \vee R) \equiv (P \wedge Q) \vee (P \wedge R)$
+    \item $P \vee (Q \wedge R) \equiv (P \vee Q) \wedge (P \vee R)$
+\end{itemize}
+\textbf{Exercise:} 
+\begin{enumerate}
+    \item Prove without using the truth table $$\neg (A \wedge (\neg B \wedge C)) \equiv \neg (A \wedge C) \vee B$$
+    \begin{proof}
+        Lets consider the LHS, 
+        \begin{align*}
+            \neg &(A \wedge (\neg B \wedge C))\\
+            \equiv &\neg A \vee (\neg (B \wedge C)) \; \; \; \; \; \; \; \; \;[\text{By De Morgan's Law}] \\
+            \equiv &\neg A \vee (\neg (\neg B) \vee \neg C) \; \; \; [\text{By De Morgan's Law}]\\
+            \equiv &\neg A \vee (B \vee \neg C) \; \; \; \; \; \; \; \; \; \; \; \;[\text{By Double Negation}]\\
+            \equiv &(\neg A \vee \neg C) \vee B \; \; \; \; \; \; \; \; \; \; \; \;[\text{By Associative Law}]\\
+            \equiv &\neg (A \wedge C) \vee B \; \; \; \; \; \; \; \; \; \; \; \;\; \; \;[\text{By De Morgan's Law}]
+        \end{align*}
+    \end{proof}
+    \item True or false statement: 
+    \begin{enumerate}
+        \item $\forall x \in \emptyset, x^2 = 1 \to$ vacuously true
+        \item $\exists x \in \emptyset, x^2 = 1 \to$ false
+    \end{enumerate}
+\end{enumerate}
+
+\subsection{Implications}
+$P$ and $Q$ are statements $\to$ If $P$, then $Q$\\
+"If the statement $P$ is true, then the statement $Q$ is true"\\ \: \\
+\textbf{Exercise:}
+\begin{enumerate}
+    \item If Alice is from Canada, then Alice is from North America $\to$ True
+    \item If Alice if from North America, then Alice is from Canada $\to$ False
+    \item If I am an animal, then I will give you \${10} $\to$ True
+    \item If $x > 3$, then $x > 5 \to$ False
+    \item If $x > 3$, then $x \ge 1 \to$ True 
+\end{enumerate}
+\textbf{Note:} If $P$ is false, then it does not matter, if $Q$ is false or true, the implication will be \textbf{true}.
+% \begin{table}[ht]
+%     \centering
+%     \begin{tabular}{|c|c|c|c|}
+%         \hline
+%         $P$ & $Q$ & $(P \implies Q)$ & $(\neg P \vee B)$ \\
+%         \hline
+%         T & T & T & T \\
+%         \hline
+%         T & F & F & F \\
+%         \hline
+%         F & T & T & T \\
+%         \hline 
+%         F & F & T & T \\ 
+%         \hline
+%     \end{tabular}
+% \end{table}
+\textbf{Implication Law: } $(P \implies Q) \equiv (\neg P \vee Q)$\\ \: \\
+\textbf{Exercise:}
+\begin{enumerate}
+    \item Prove using the implication law
+    $$\forall x \in \R, (x > 2) \implies (x^2 > 1)$$
+    \begin{pf}
+        Let $A(x) = x > 2$ and $B(x) = x^2 > 1$. Then for $(A(x) \implies B(x))$ to be true. We need $B(x)$ to be true or $A(x)$ to be false. Notice 
+        $B(x)$ is true for $x \in (1, \infty) \cup (-\infty, -1)$ and $A(x)$ is false for $x \in (-\infty, 2]$. So
+        $B(x)$ is true or $A(x)$ is false, holds for $x \in (1, \infty) \cup (-\infty, -1) \cup (-\infty, 2] = \R$.\\
+        So, $\forall x \in \R, B(x) \vee \neg A(x) \equiv \forall x \in \R, A(x) \implies B(x)$ 
+    \end{pf}
+    \item Let $\mathbb{P}$ be a set of prime numbers. Prove that $$\forall p \in \mathbb{P}, (p > 2) \implies (P + 1) \text{ is even.}$$
+    \begin{pf}
+        If the hypothesis is true, then $p$ is a prime greater than 2 and since $p$ it
+        prime it cannot be a multiple of 2, so by definition of even and odd, $p$ is odd. so $p + 1$ is even.
+        Thus if the hypothesis is true, the conclusion is true. so $\forall p \in \mathbb{P}, (p > 2) \implies (P + 1)$ is even.
+    \end{pf}
+\end{enumerate}
+\subsubsection{Negating Implication}
+What is $\neg (A \implies B)$?
+\begin{align*}
+    \neg (A \implies B) &\equiv \neg (B \vee (\neg A)) \; \; \; \; [\text{we know }(A \implies B) \equiv (B \vee (\neg A))]\\
+    &\equiv \neg B \wedge  \neg (\neg A) \; \; \; \; [\text{By De Morgan's Law}]\\
+    &\equiv \neg B \wedge A \; \; \; \; \; \; \; \; \; \; \; \; \;[\text{By Double Negation}]
+\end{align*}
+\textbf{Exercise: } If $\mathbb{P}$ are the set of prime numbers, then "There is at most one prime number less than 3".
+$$\forall x \in \mathbb{P}, \forall y \in \mathbb{P}, ((x < 3) \wedge (y < 3) \implies (x = y))$$
+
+\subsection{Converse and Contrapositive}
+\begin{defn}[Converse]
+    The implication $B \implies A$ is called the \textbf{converse} of $A \implies B$
+\end{defn}
+\textbf{Note: }A common mistake is to think that the implication $A \implies A$ and its converse $B \implies A$ are logically equivalent. They are not!
+\begin{defn}[contrapositive]
+    The implication $(\neg B) \implies (\neg A)$ is called the \textbf{contrapositive} of $A \implies B$.
+\end{defn}
+\textbf{Contrpositive equivalence Law:} An Implication is logically equivalent to its contrapositive. $$(P \implies Q) \equiv ((\neg B) \implies (\neg A))$$
+\textbf{Implication Law:} $$(A \implies B) \equiv ((\neg A) \vee B) \hspace{7ex} \neg(A \implies B) \equiv (A \wedge (\neg B))$$
+
+\subsection{If and Only if}
+\begin{defn}[if and only if (iff)]
+    The truth value for “$A$ if and only if $B$", written symbolically as $A \iff B$ is true when $A$ and $B$ have the 
+    same truth values, and is false when they have opposite truth values.
+\end{defn}
+\textbf{More Laws:} 
+\begin{enumerate}
+    \item $(A \iff B) \equiv ((A \implies B) \wedge (B \implies A))$
+    \item $\big(\forall x \in X, P(x) \iff Q(x)\big) \equiv \big((\forall x \in X, P(x) \implies Q(x)) \wedge (\forall x \in X, Q(x) \implies P(x))\big)$
+\end{enumerate}
+
+\section{Proving Mathematical Statements}
+\subsection{Proving Universally Quantified Statements}
+\textbf{Example:}
+\begin{enumerate}
+    \item Prove that $\forall \theta \in \R$, $\sin(3 \theta) = 3\sin \theta - 4\sin^3 \theta$
+    \begin{pf}
+        Let $\theta$ be an arbitrary real number. \\
+        We used the identity $\sin(a + b) = \sin a \cos b + \cos a \sin b$, with $a = \theta$ and $b = \theta$ to obtain.
+        \begin{equation}
+            \sin (3 \theta) = \sin (\theta + 2\theta) = \sin \theta \cos(2 \theta) + \cos \theta \sin(2 \theta)
+        \end{equation}
+        Now we substitute the double angle identities, 
+        \begin{align*}
+            \cos(2 \theta) &= \cos^2 \theta - \sin^2 \theta\\
+            \sin(2 \theta) &= 2\sin\theta \cos \theta
+        \end{align*}
+        into the right hand side of $9.1$, and we get
+        \begin{equation}
+            \sin(3 \theta) = \sin \theta(\cos^2 \theta - \sin^2 \theta) + \cos \theta (2 \sin \theta \cos \theta)
+        \end{equation}
+        we substitute $\cos^2 \theta = 1 - \sin^2 \theta$, into the RHS of (9.2), we get 
+        \begin{align*}
+            \sin 3\theta &= \sin(1 - \sin^2\theta - \sin^2 \theta) + 2 \sin \theta(1 - \sin^2 \theta)\\
+                         &= \sin \theta - 2 \sin^2 \theta + 2 \sin \theta - 2 \sin^2 \theta\\
+                         &= 3 \sin \theta - 4 \sin^3 \theta
+        \end{align*}
+        so we've shown that $\sin 3 \theta = 3 \sin \theta - 4 \sin^3 \theta$, $\forall \theta \in \R$, as desired.
+    \end{pf}
+\end{enumerate}
+\end{document}

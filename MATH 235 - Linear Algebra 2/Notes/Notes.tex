@@ -1,0 +1,498 @@
+% header -----------------------------------------------------------------------
+% Template created by texnew (author: Sachin Kumar); info can be found at 'https://github.com/alexrutar/texnew'.
+% version (1.13)
+
+
+% doctype ----------------------------------------------------------------------
+\documentclass[10pt]{article} 
+
+\usepackage{fullpage}
+\usepackage{bookmark}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref} % for the URL
+\usepackage[shortlabels]{enumitem}
+\usepackage{mathtools}
+\usepackage[most]{tcolorbox}
+\usepackage[amsmath,standard,thmmarks]{ntheorem} 
+\usepackage{physics}
+\usepackage{pst-tree} % for the trees
+\usepackage{verbatim} % for comments, for version control
+\usepackage{tabu}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{etoolbox}
+
+\lstnewenvironment{python}{
+\lstset{frame=tb,
+language=Python,
+aboveskip=3mm,
+belowskip=3mm,
+showstringspaces=false,
+columns=flexible,
+basicstyle={\small\ttfamily},
+numbers=none,
+numberstyle=\tiny\color{Green},
+keywordstyle=\color{Violet},
+commentstyle=\color{Gray},
+stringstyle=\color{Brown},
+breaklines=true,
+breakatwhitespace=true,
+tabsize=2}
+}
+{}
+
+\lstnewenvironment{cpp}{
+\lstset{
+backgroundcolor=\color{white!90!NavyBlue},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}; should come as last argument
+basicstyle={\scriptsize\ttfamily},        % the size of the fonts that are used for the code
+breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+breaklines=true,                 % sets automatic line breaking
+captionpos=b,                    % sets the caption-position to bottom
+commentstyle=\color{Gray},    % comment style
+deletekeywords={...},            % if you want to delete keywords from the given language
+escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+% firstnumber=1000,                % start line enumeration with line 1000
+frame=single,	                   % adds a frame around the code
+keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+keywordstyle=\color{Cyan},       % keyword style
+language=c++,                 % the language of the code
+morekeywords={*,...},            % if you want to add more keywords to the set
+% numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+% numbersep=5pt,                   % how far the line-numbers are from the code
+% numberstyle=\tiny\color{Green}, % the style that is used for the line-numbers
+rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+showstringspaces=false,          % underline spaces within strings only
+showtabs=false,                  % show tabs within strings adding particular underscores
+stepnumber=2,                    % the step between two line-numbers. If it's 1, each line will be numbered
+stringstyle=\color{GoldenRod},     % string literal style
+tabsize=2,	                   % sets default tabsize to 2 spaces
+title=\lstname}                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+{}
+
+% floor, ceiling, set
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+\DeclarePairedDelimiter{\set}{\lbrace}{\rbrace}
+\DeclarePairedDelimiter{\iprod}{\langle}{\rangle}
+
+\DeclareMathOperator{\Int}{int}
+\DeclareMathOperator{\mean}{mean}
+
+% commonly used sets
+\DeclareMathOperator{\N}{{\mathbb{N}}}
+\DeclareMathOperator{\Q}{{\mathbb{Q}}}
+\DeclareMathOperator{\Z}{{\mathbb{Z}}}
+\DeclareMathOperator{\R}{{\mathbb{R}}}
+\DeclareMathOperator{\C}{{\mathbb{C}}}
+\DeclareMathOperator{\F}{{\mathbb{F}}}
+
+\newcommand{\mbf}[1]{{\boldmath\bfseries #1}}
+
+% proof implications
+\newcommand{\imp}[2]{($#1\Rightarrow#2$)\hspace{0.2cm}}
+\newcommand{\impe}[2]{($#1\Leftrightarrow#2$)\hspace{0.2cm}}
+\newcommand{\impr}{{($\Rightarrow$)\hspace{0.2cm}}}
+\newcommand{\impl}{{($\Leftarrow$)\hspace{0.2cm}}}
+
+% align macros
+\newcommand{\agspace}{\ensuremath{\phantom{--}}}
+\newcommand{\agvdots}{\ensuremath{\hspace{0.16cm}\vdots}}
+
+% convenient brackets
+\newcommand{\brac}[1]{\ensuremath{\left\langle #1 \right\rangle}}
+
+% arrows
+\newcommand{\lto}[0]{\ensuremath{\longrightarrow}}
+\newcommand{\fto}[1]{\ensuremath{\xrightarrow{\scriptstyle{#1}}}}
+\newcommand{\hto}[0]{\ensuremath{\hookrightarrow}}
+\newcommand{\mapsfrom}[0]{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+
+\DeclareMathOperator{\Ann}{Ann}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\chr}{char}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\disc}{disc}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Fix}{Fix}
+\DeclareMathOperator{\Frac}{Frac}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\Nil}{Nil}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\spn}{span}
+\DeclareMathOperator{\Stab}{Stab}
+\DeclareMathOperator{\Tor}{Tor}
+
+\newcommand{\sset}{\subseteq}
+
+\theoremstyle{break}
+\theorembodyfont{\upshape}
+
+\newtheorem{thm}{Theorem}[subsection]
+\tcolorboxenvironment{thm}{
+enhanced jigsaw,
+colframe=Dandelion,
+colback=White!90!Dandelion,
+drop fuzzy shadow east,
+rightrule=2mm,
+sharp corners,
+before skip=10pt,after skip=10pt
+}
+
+\newtheorem{cor}{Corollary}[thm]
+\tcolorboxenvironment{cor}{
+boxrule=0pt,
+boxsep=0pt,
+colback={White!90!RoyalPurple},
+enhanced jigsaw,
+borderline west={2pt}{0pt}{RoyalPurple},
+sharp corners,
+before skip=10pt,
+after skip=10pt,
+breakable
+}
+
+\newtheorem{lem}[thm]{Lemma}
+\tcolorboxenvironment{lem}{
+enhanced jigsaw,
+colframe=Red,
+colback={White!95!Red},
+rightrule=2mm,
+sharp corners,
+before skip=10pt,after skip=10pt
+}
+
+\newtheorem{ex}[thm]{Example}
+\tcolorboxenvironment{ex}{% from ntheorem
+blanker,left=5mm,
+sharp corners,
+before skip=10pt,after skip=10pt,
+borderline west={2pt}{0pt}{Gray}
+}
+
+\newtheorem*{pf}{Proof}
+\tcolorboxenvironment{pf}{% from ntheorem
+breakable,blanker,left=5mm,
+sharp corners,
+before skip=10pt,after skip=10pt,
+borderline west={2pt}{0pt}{NavyBlue!80!white}
+}
+
+\newtheorem{defn}{Definition}[subsection]
+\tcolorboxenvironment{defn}{
+enhanced jigsaw,
+colframe=Cerulean,
+colback=White!90!Cerulean,
+drop fuzzy shadow east,
+rightrule=2mm,
+sharp corners,
+before skip=10pt,after skip=10pt
+}
+
+\newtheorem{prop}[thm]{Proposition}
+\tcolorboxenvironment{prop}{
+boxrule=0pt,
+boxsep=0pt,
+colback={White!90!Green},
+enhanced jigsaw,
+borderline west={2pt}{0pt}{Green},
+sharp corners,
+before skip=10pt,
+after skip=10pt,
+breakable
+}
+
+\setlength\parindent{0pt}
+\setlength{\parskip}{2pt}
+
+\newcommand{\subject}{MATH 235 \\ Linear Algbera 2}
+\newcommand{\semester}{Winter 2023}
+\newcommand{\professor}{Matthew Satriano}
+
+\begin{document}
+\let\ref\Cref
+
+\title{\subject}
+\author{Sachin Kumar\thanks{\itshape skmuthuk@uwaterloo.ca}\\ University of Waterloo}
+\date{\semester\thanks{Last updated: \today}}
+
+\maketitle
+\newpage
+\tableofcontents
+\listoffigures
+\listoftables
+\newpage
+
+
+
+
+
+
+% main document ----------------------------------------------------------
+
+% -------------------- CHAPTER 1 -------------------------
+\section{Abstract Vector Spaces}
+\subsection{Vector Spaces}
+\subsubsection{Recap from Linear Algebra I}
+\begin{enumerate}
+    \item The vector space $\R^n$: $n$-dimensional real vector space
+        \begin{align*}
+            \R^n = \left\{\begin{bmatrix} a_1 \\ \vdots \\ a_n\end{bmatrix} \mid a_i \in \R \text{ for all }i\right\}
+        \end{align*}
+    \item The vector space $\C^n$: $n$-dimensional complex vector space
+        \begin{align*}
+            \C^n = \left\{\begin{bmatrix} a_1 \\ \vdots \\ a_n\end{bmatrix} \mid a_i \in \C \text{ for all }i\right\}
+        \end{align*}
+    \item The vector space $\F^n$: $n$-dimensional \textbf{field}, that denotes either $\R$ or $\C$.
+        \begin{align*}
+            \F^n = \left\{\begin{bmatrix} a_1 \\ \vdots \\ a_n\end{bmatrix} \mid a_i \in \F \text{ for all }i\right\}
+        \end{align*}
+        If $\F = \R$, then $\F^n = \R^n$, and if $\F = \C$, then $\F^n = \C^n$ and the scalar $\alpha$ depends on the appropriate field.
+\end{enumerate}
+\subsubsection{Other Vector Spaces}
+\begin{enumerate}
+    \item[4.] The vector space $\mathcal{P}_n(\F)$: The set of polynomials of degree at most $n$ with coefficients in $\F$.
+        \begin{align*}
+            \mathcal{P}_n(\F) = \{a_0 + a_1x + \dots + a_nx^n \mid a_i \in \F \text{ for all } i\}
+        \end{align*}
+    \item[5.] The vector space $M_{m \times n}(\F)$: $m$ by $n$ matrices with entries in $\F$
+        \begin{align*}
+            M_{m \times n}(\F) = \left\{\begin{bmatrix} a_{11} & \dots & a_{1n} \\ \vdots & \ddots & \vdots \\ a_{m1} & \dots & a_{mn} \end{bmatrix} \mid a_{ij} \in \F \text{ for all } i, j \right\}
+        \end{align*}
+    \item[6.] The vector space of real-valued continuous functions on the interval $[a,b]$:
+        \begin{align*}
+            \mathcal{C}([a,b]) = \{f:[a, b] \to \R \mid f \text{ is continuous on }[a, b]\}
+        \end{align*}
+\end{enumerate}
+\begin{defn}[Vector space over $\F$]
+    A vector space over $\F$ is a set $V$ together with an operation $+: V \times V \to V$ (vector addition) so that 
+    \begin{align*}
+        \forall \vec{x}, \vec{y} \in V, \vec{x} + \vec{y} \in V
+    \end{align*}
+    and an operation $\times: \F \times V \to V$ (scalar multiplication) so that 
+    \begin{align*}
+        \forall s \in \F, \vec{x} \in V, s \cdot \vec{x} \in V
+    \end{align*}
+\end{defn}
+\begin{defn}[vector space axioms] Properties of vector spaces that closed under addition and scalar multiplication, 
+    \begin{enumerate}
+        \item $\forall \vec{x}, \vec{y}, \vec{z} \in V$, $(\vec{x} + \vec{y}) + \vec{z} = \vec{x} + (\vec{y} + \vec{z})$
+        \item There exists a vector $\vec{0} \in V$ such that, $\forall \vec{x} \in V$, $\vec{0} + \vec{x} = \vec{x} + \vec{0} = \vec{x}$ \hspace{0.5ex} $\to$ \hspace{0.5ex} \textbf{zero vector} of $V$
+        \item $\forall \vec{x} \in V$, there exists $-\vec{x} \in V$ such that $\vec{x} + (-\vec{x}) = (-\vec{x}) + \vec{x} = \vec{0}$ \hspace{0.5ex} $\to$ \hspace{0.5ex} \textbf{additive inverse} of $\vec{x}$
+        \item $\forall \vec{x}, \vec{y} \in V$, $\vec{x} + \vec{y} = \vec{y} + \vec{x}$
+        \item $\forall \vec{x} \in V$ and $s, t \in \F$, $s \cdot (t \cdot \vec{x}) = (st) \cdot \vec{x}$
+        \item $\forall \vec{x} \in V$ and $s, t \i  \F$, $(s + t) \cdot \vec{x} = s \cdot \vec{x} + t \cdot \vec{x}$
+        \item $\forall \vec{x}, \vec{y} \in \vec{x}$ and $s \in \F$, $s \cdot (\vec{x} + \vec{y}) = s \cdot \vec{x} + s \cdot \vec{y}$
+        \item $1 \cdot \vec{x} = \vec{x}$ \hspace{0.5ex} $\to$ \hspace{0.5ex} \textbf{multiplicative inverse} of $\vec{x}$
+    \end{enumerate}
+\end{defn}
+\begin{prop}
+    Let $V$ be a vector space over $\F$. Then, 
+    \begin{enumerate}
+        \item[a.] The zero vector in $V$ is \textbf{unique}. If $\vec{z} \in V$ satisfies the property that $\vec{x} + \vec{z} = \vec{x}$, $\forall \vec{x} \in V$, then it must be the case that $\vec{z} = \vec{0}$.
+        \item[b.] Let $\vec{x} \in V$. The additive inverse of $\vec{x}$ is \textbf{uniquely determined} by $\vec{x}$. That is, if $\vec{y}$ satisfies the property that $\vec{x} + \vec{y} = \vec{y} + \vec{x} = \vec{0}$, then $\vec{y} = -\vec{x}$
+    \end{enumerate}
+\end{prop}
+\begin{pf}
+    Trivial proof using axioms \dots
+\end{pf}
+\begin{prop}
+    Let $V$ be a vector space over $\F$. Then 
+    \begin{enumerate}
+        \item $0 \cdot \vec{x} = \vec{0}$, for all $\vec{x} \in V$
+        \item $(-1) \cdot \vec{x} = -\vec{x}$ for all $\vec{x} \in V$
+        \item $t \cdot \vec{0} = \vec{0}$ for all $t \in \F$
+    \end{enumerate}
+\end{prop}
+\begin{pf}
+    For exercise ...
+\end{pf}
+\subsection{Subspaces}
+\begin{defn}[subspace]
+    Let $V$ be a vector space over $\F$ and $U \subseteq V$ a subset. $U$ is a \textbf{subspace} of $V$ if $U$, endowed with the addition and scalar multiplication from $V$, is itself a vector space over $\F$.
+\end{defn}
+\begin{thm}[The subspace test]
+    Let $V$ be vector space over $\F$ and let $U$ be a subset of $V$. Then $U$ is a subspace of $V$ if and only if the following three conditions hold. 
+    \begin{enumerate}
+        \item[a.] $U$ is non-empty
+        \item[b.] $\forall \vec{u_1}, \vec{u_2} \in U$, $\vec{u_1} + \vec{u_2} \in U$. i.e., closed under addition
+        \item[c.] $\forall \alpha \in \F$ and $\forall \vec{u} \in U$, $\alpha \vec{u} \in U$. i.e., closed under scalar multiplication
+    \end{enumerate}
+\end{thm}
+\begin{pf}
+    If $U$ is a subspace, then (b) and (c) hold as part of being a definition of a subspace, and since all vector spaces have a zero, $U$ must be non-empty. \\ \vspace{0.5ex} \\
+    Suppose (a), (b) and (c) hold for a subset $U$ of $V$. Properties (b) and (c)
+    imply that the addition and scalar multiplication from $V$ restrict to addition and scalar
+    multiplication on $U$. Vector space axioms 1,4,5,6,7, and 8 hold since $V$ is a vector space. For axiom 2, since $U$ is non-empty, choose a vector $\vec{u} \in U$ and the by previous proposition, $0\vec{u} = \vec{0}$. Property (c) then implies that $\vec{0} \in U$. 
+    Similarly, for axiom 3, let $\vec{u} \in U$. Then by proposition and property (c), $-\vec{u} = (-1)\vec{u} \in U$, hence proved.
+\end{pf}
+\begin{cor}
+    Let $V$ be a vector space over $\F$ and suppose that $U$ is a subspace of $V$. Then $\vec{0} \in U$.
+\end{cor}
+\begin{pf}
+    For exercise ...
+\end{pf}
+\begin{defn}[Span]
+    Let $S = \{\vec{v}_1, \dots, \vec{v}_k\} \subseteq V$. Define the \textbf{span} of $S$ by $$\spn(S) = \{t_1\vec{v}_1 + \dots + t_k\vec{v}_k \mid t_1, \dots, t_k \in \F\}$$
+\end{defn}
+By convention, we define the span of the empty set to be the set consisting of the zero vector $$\spn(\emptyset) = \{\vec{0}\}$$
+\begin{defn}[Linear combination]
+    A vector of the form $t_1\vec{v}_1 + \dots + t_k\vec{v}_k$ is called a \textbf{linear combination} of the vectors $\vec{v}_1, \dots, \vec{v}_k$
+\end{defn}
+\begin{prop}
+    Let $S = \{\vec{v}_1, \dots, \vec{v}_k\} \subseteq V$. Then $\spn(S)$ is a subspace of $V$.
+\end{prop}
+\begin{pf}
+    Since, $\vec{0} = 0\vec{v}_1 + \dots + 0\vec{v}_k$, $\vec{0} \in \spn(S)$ so $\spn(S)$ is non-empty. Suppose $\vec{x}, \vec{y} \in \spn(S)$, and let $\vec{x} = t_1\vec{v}_1 + \dots + t_k\vec{v}_k$ and $y = s_1\vec{v}_1 + \dots + s_k\vec{v}_k$
+     for elements $t_1, \dots, t_k, s_1, \dots, s_k \in \F$. Then $$\vec{x} + \vec{y} = (t_1 + s_1)\vec{v}_1 + \dots + (t_k + s_k)\vec{v}_k$$
+     so, $\vec{x} + \vec{y} \in \spn(S)$. Finally, let $\vec{x} \in \spn(S)$ be as above, and let $\alpha \in \F$. Then $\alpha \vec{x} = (\alpha t_1)\vec{v}_1 + \dots + (\alpha t_k)\vec{v}_k$ and since $\alpha t_i \in \F$ for all $i$, $\alpha \vec{x} \in \spn(S)$. Therefore, by
+     the subspace test, $\spn(S)$ is a subspace of $V$.
+\end{pf}
+\subsection{Bases and Dimension}
+\subsubsection*{Linear Independence, Spanning Sets and Bases}
+\begin{defn}[Spanning set, Spans]
+    A set of vectors $S = \{\vec{v}_1, \dots, \vec{v}_k\}$ in a vector space $V$ is a \textbf{spanning set} for $V$, if $\spn(S)  = V$. We also say that $S$ \textbf{spans} $V$.
+\end{defn}
+\begin{defn}[Linearly independent and dependent]
+    A set of vectors $\{\vec{v}_1, \dots, \vec{v}_k\}$ in a vector space $V$ is \textbf{linearly independent} if the only solution to the equation $$t_1\vec{v}_1 + \dots + t_k\vec{v}_k = \vec{0}$$
+    is $t_1 = \dots = t_k = 0$. The set is \textbf{linearly dependent} otherwise.
+\end{defn}
+By convention, the empty set $\emptyset$ is linearly independent.
+\begin{defn}[Basis]
+    A \textbf{basis} for a vector space $V$ is a linearly independent subset that spans $V$.
+\end{defn}
+\begin{thm}
+    Every vector space  has a basis.
+\end{thm}
+\subsubsection*{Dimension}
+For $\F^n$, we will define the dimension of a vector space $V$ to be the number of vectors in a basis for $V$ .
+\begin{lem}
+    Let $V$ be a vector space over $\F$ and suppose that $V = \spn(\{\vec{v}_1, \dots, \vec{v}_n\})$. If $\{\vec{u}_1, \dots, \vec{u}_k\}$ is a linearly independent set in $V$, then $k \le n$
+\end{lem}
+\begin{pf}
+    Since $\spn(\{\vec{v}_1, \dots, \vec{v}_n\}) = V$, we have 
+    \begin{align*}
+        \vec{u}_1 &= a_{11}\vec{v}_1 + \dots + a_{1n}\vec{v}_n\\
+        &\vdots\\
+        \vec{u}_k &= a_{k1} \vec{v}_1 + \dots + a_{kn}\vec{v}_k
+    \end{align*}
+    where $a_{ij} \in \F$, for all $i$ and $j$. We will now aim to show that if $k > n$, then there is a solution to $t_1\vec{u}_1 + \dots + t_k\vec{u}_k = \vec{0}$, where not all the $t_i$ are 0. We have 
+    \begin{align*}
+        t\vec{u}_1 + \dots + t_k\vec{u}_k &= t_1(a_{11}\vec{v}_1 + \dots + a_{1n}\vec{v}_n) + \dots + t_k(a_{k1} \vec{v}_1 + \dots + a_{kn}\vec{v}_k)\\
+        &= (a_{11}t_1 + \dots + a_{k1}t_k)\vec{v}_1 + \dots + (a_{1n}t_1 + \dots + a_{kn}t_k)\vec{v}_n
+    \end{align*}
+    Now, if $k > n$ the system of linear equations 
+    \begin{align*}
+        a_{11}t_1 + \dots + a_{k1}t_k &= 0\\
+        &\vdots \\
+        a_{1n}t_1 + \dots + a_{kn}t_k &= 0
+    \end{align*}
+    has a solution where not all the $t_i$ are 0. Consider such a solution. We then have, 
+    \begin{align*}
+        \vec{0} &= 0\vec{v}_1 + \dots + 0\vec{v}_n\\
+        &= (a_{11}t_1 + \dots + a_{k1}t_k)\vec{v}_1 + \dots + (a_{1n}t_1 + \dots + a_{kn}t_K)\vec{v}_n\\
+        &= t_1\vec{u}_1 + \dots + t_{k}\vec{u}_k
+    \end{align*}
+    contradicting the assumption that $\{\vec{u}_1, \dots, \vec{u}_k\}$ is linearly independent. So $k \le n$.
+\end{pf}
+\begin{thm}
+    Suppose $\mathcal{B} = \{\vec{v}_1, \dots, \vec{v}_n\}$ and $\mathcal{C} = \{\vec{u}_1, \dots, \vec{u}_k\}$ are both bases of a vector space $V$. Then $k=n$.
+\end{thm}
+\begin{pf}
+    Since $\mathcal{B}$ spans $V$ and $\mathcal{C}$ is linearly independent, $k \le n$. However, since $\mathcal{C}$ spans $V$ and $\mathcal{B}$ is linearly independent, $n \le k$. Thus, $k=n$.
+\end{pf}
+\begin{defn}[Dimension]
+    The \textbf{dimension} of a vector space $V$, denoted by $\dim(V)$, is the size of any basis for $V$.
+\end{defn}
+\begin{itemize}
+    \item $\dim(\{\vec{0}\}) = 0$ since by convention $\emptyset$ is a basis for $\{\vec{0}\}$.
+    \item $\dim(\F^n) = n$ since the standard basis has size $n$.
+    \item $\dim(\mathcal{P}_n(\F)) = n + 1$ since the standard basis has a size $n+1$.
+    \item $\dim(M_{m \times n}(\F)) = mn$ since the standard basis has size $nm$.
+\end{itemize}
+If there is no finite basis for a vector space $V$, then $V$ is infinite-dimensional vector space.
+\begin{thm}
+    Let $V$ be an $n$-dimensional vector space over $\F$. Then 
+    \begin{enumerate}
+        \item[a.] A set of more than $n$ vectors in $V$ must be linearly dependent.
+        \item[b.] A set of fewer than $n$ vectors in $V$ cannot span $V$.
+        \item[c.] A set with exactly $n$ vectors in $V$ is a spanning set for $V$ if and only if its linearly independent. 
+    \end{enumerate}
+\end{thm}
+\begin{thm}
+    Let $V$ be a finite-dimensional vector space over $\F$ and let $W$ be a subspace of $V$. Then $\dim(W) \le \dim(V)$ with equality if and only if $W = V$.
+\end{thm}
+\begin{pf}
+    Since any basis for $W$ can be extended to a basis for $V$, the inequality $\dim(W) \le \dim(V)$ follows. Suppose now that $\dim(W) = \dim(V)$. Then according to
+    previous theorem (c) part, a basis $\mathcal{B}$ for $W$ will automatically be a basis for $V$, since it is a linearly independent set of size $\dim(V)$. It follows that $V = \spn(\mathcal{B}) = W$. Conversely, if $W = V$, then $\dim(W) = \dim(V)$. 
+\end{pf}
+\subsubsection*{Obtaining Bases}
+\begin{enumerate}
+    \item \textbf{Extending a linearly independent subset.} Given a linearly independent subset $\{\vec{v}_1, \dots, \vec{v}_k\} \in V$. If it is a spannings set, then its a basis. If not, choose a vector $\{\vec{v}_{k+1}\}$ not in the span of $\{\vec{v}_1,\dots, \vec{v}_k\}$. Then
+    $\{\vec{v}_1,\dots, \vec{v}_{k+1}\}$ must be linearly independent. If this new spans, then it's a basis. If not, then repeat. This process must eventually stop since our vector space is
+    finite-dimensional, and you will be left with a basis containing $\{\vec{v}_1, \dots, \vec{v}_k\}$.
+    \item \textbf{Reducing an arbitrary finite spanning set.} Given a finite spanning set $\{\vec{v}_1, \dots, \vec{v}_k\}$ for a vector space $V$, and assume that it doesn't contain $\vec{0}$. If it is linearly independent, it is a basis. If not, say $v_i$ as a linear combination of the others. 
+        Now $\spn(\{\vec{v}_1, \dots, \vec{v}_k\}) = \spn(\{\vec{v}_1, \dots, \vec{v}_{i-1}, \vec{v}_{i+1}, \dots, \vec{v}_k\})$, so $\{\vec{v}_1, \dots, \vec{v}_{i-1}, \vec{v}_{i+1}, \dots, \vec{v}_k\}$ spans the vector space. If this new set is linearly independent, then it is a basis. If not, 
+        repeat to remove another vector. This process must eventually stop since we started with finitely many vectors in our spanning set. The final product will be a basis made up entirely out of vectors from our original spanning set.
+\end{enumerate}
+\subsubsection*{Coordinates w.r.t a basis}
+\begin{lem}
+    Let $V$ be a vector space, let $S = \{\vec{v}_1, \dots, \vec{v}_n\}$ be a subset of $V$, and let $U = \spn(S)$. Then every vector in $U$ can be expressed in a unique way as a linear combination of the vectors in $S$ if and only if $S$ is linearly independent.
+\end{lem}
+\begin{pf}
+    Suppose every vector in $U$ is expressed uniquely as a linear combination of the vectors in $S$. Then there is only one way to write
+    \begin{align*}
+        \vec{0} = t_1\vec{v}_1 + \dots + t_k\vec{v}_k
+    \end{align*}
+    which is $t_1 = \dots = t_k = 0$, so $S$ is linearly independent. Conversely, suppose $S$ is linearly independent and 
+    \begin{align*}
+        t_1\vec{v}_1 + \dots + t_k\vec{v}_k = s_1\vec{v}_1 + \dots + s_k\vec{v}_k
+    \end{align*}
+    Rearranging we have $(t_1 - s_1)\vec{v}_1 + \dots + (t_k - s_k)\vec{v}_k = \vec{0}$. Since $S$ is linearly independent,
+    this can only be true if $t_i = s_i$ for all $i$, hence proved.
+\end{pf}
+\begin{thm}[Unique representation theorem]
+    Let $V$ be a vector space and let $\mathcal{B} = \{\vec{v}_1, \dots, \vec{v}_n\}$ be a basis of $V$. Then for all $\vec{v} \in V$, there exist an unique scalar $x_1, \dots, x_n \in \F$ such that
+    \begin{align*}
+        \vec{v} = x_1\vec{v} + \dots + x_n\vec{v}_n
+    \end{align*}    
+\end{thm}
+\begin{defn}[Ordered basis]
+    Let $V$ be a vector space over $\F$. An \textbf{ordered basis} for $V$ is a basis $\mathcal{B} = \{\vec{v}_1, \dots, \vec{v}_n\}$ for $V$ together with a fixed ordering.
+\end{defn} 
+A basis $\{\vec{v}_1, \dots, \vec{v}_n\}$ gives rise to $n!$ ordered bases, one for each possible permutation of the vectors in the basis.
+\begin{defn}[Coordinate vector]
+    Let $\mathcal{B} = \{\vec{v}_1, \dots, \vec{v}_n\}$ be an ordered basis for a vector space $V$. If $\vec{x} \in V$ is written as 
+    \begin{align*}
+        \vec{x} = x_1\vec{v}_1 + \dots + x_n\vec{v}_n
+    \end{align*}
+    the the coordinate vector of $\vec{x}$ with repsect to $\mathcal{B}$ is 
+    \begin{align*}
+        [\vec{x}]_{\mathcal{B}} = (x_1, \dots, x_n)
+    \end{align*}
+\end{defn}
+Once we have chosen a basis for $V$, every vector can now be represented as a column vector. Column vectors, as we know, come with their own addition and scalar multiplication.
+\begin{thm}
+    Let $V$ be a vector space over $\F$ with ordered basis $\mathcal{B}$. Then
+    \begin{align*}
+        [\vec{x}]_{\mathcal{B}} + [\vec{y}]_{\mathcal{B}} = [\vec{x} + \vec{y}]_{\mathcal{B}} \hspace{3ex} \text{ and } \hspace{3ex} t[\vec{x}]_{\mathcal{B}} = [t\vec{x}]_{\mathcal{B}}
+    \end{align*}
+    for all $\vec{x}, \vec{y} \in V$ and all $t \in \F$.
+\end{thm}
+\begin{pf}
+    This is just a matter of using the definition to determine $[\vec{x}]_{\mathcal{B}}$, $[\vec{y}]_{\mathcal{B}}$, $[\vec{x} + \vec{y}]_{\mathcal{B}}$ and $[t\vec{x}]_\mathcal{B}$
+\end{pf}
+
+
+
+
+\end{document}
