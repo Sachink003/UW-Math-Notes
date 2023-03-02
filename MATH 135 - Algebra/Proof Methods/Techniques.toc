@@ -1,11 +1,13 @@
 \contentsline {section}{\numberline {1}Proving Mathematical Statements}{3}{section.1}%
 \contentsline {subsection}{\numberline {1.1}Proving Universally Quantified Statements}{3}{subsection.1.1}%
-\contentsline {subsubsection}{\numberline {1.1.1}Proof Technique 1}{3}{subsubsection.1.1.1}%
-\contentsline {subsubsection}{\numberline {1.1.2}Proof Technique 2}{3}{subsubsection.1.1.2}%
 \contentsline {subsection}{\numberline {1.2}Proving Existentially Quantified Statements}{3}{subsection.1.2}%
-\contentsline {subsubsection}{\numberline {1.2.1}Proof Technique 3}{3}{subsubsection.1.2.1}%
-\contentsline {subsubsection}{\numberline {1.2.2}Proof Technique 4}{3}{subsubsection.1.2.2}%
 \contentsline {subsection}{\numberline {1.3}Proving Implications}{3}{subsection.1.3}%
-\contentsline {subsubsection}{\numberline {1.3.1}Proof Technique 5}{3}{subsubsection.1.3.1}%
 \contentsline {subsection}{\numberline {1.4}Proof by Contrapositive}{4}{subsection.1.4}%
-\contentsline {subsubsection}{\numberline {1.4.1}Proof Technique 6}{4}{subsubsection.1.4.1}%
+\contentsline {subsection}{\numberline {1.5}Proof by Contradiction}{4}{subsection.1.5}%
+\contentsline {subsubsection}{\numberline {1.5.1}Proving Uniqueness}{4}{subsubsection.1.5.1}%
+\contentsline {subsection}{\numberline {1.6}Proving If and Only if}{5}{subsection.1.6}%
+\contentsline {section}{\numberline {2}Mathematical Induction and Sets}{6}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Proof by Induction}{6}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Proof by Strong Induction}{6}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Proving subset}{6}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Proving equality}{7}{subsection.2.4}%

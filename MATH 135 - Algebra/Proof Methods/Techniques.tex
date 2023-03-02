@@ -155,8 +155,8 @@ after skip=10pt,
 breakable
 }
 
-\newtheorem{lem}[thm]{Lemma}
-\tcolorboxenvironment{lem}{
+\newtheorem{pt}[thm]{Proof Technique}
+\tcolorboxenvironment{pt}{
 enhanced jigsaw,
 colframe=Red,
 colback={White!95!Red},
@@ -236,39 +236,36 @@ breakable
 % -------------------- CHAPTER 1 -------------------------
 \section{Proving Mathematical Statements}
 \subsection{Proving Universally Quantified Statements}
-\subsubsection{Proof Technique 1}
-To prove the universally quantified statement "$\forall x \in \S, P(x)$": \\
-
-Choose a representative mathematical object $x \in \S$. This cannot be a specific object. 
-It has to be a placeholder, that is, a variable, so that our argument would work for any 
-specific member of the domain $S$.\\
-
-Then, show that the open sentence $P$ must be true for our representative $x$, using known 
-facts about the elements of $S$.
-
-\subsubsection{Proof Technique 2}
-To disprove the universally quantified statement "$\forall x \in \S, P(x)$": \\
-
-Find an element $x \in S$ for which the open sentence $P(x)$ is false. This process is 
-called finding a \textbf{counter-example}.
+\begin{pt}
+    To prove the universally quantified statement "$\forall x \in S, P(x)$": 
+    \vspace{0.5ex} \\ 
+    Choose a representative mathematical object $x \in S$. This cannot be a specific object. 
+    It has to be a placeholder, that is, a variable, so that our argument would work for any 
+    specific member of the domain $S$.\\
+    Then, show that the open sentence $P$ must be true for our representative $x$, using known 
+    facts about the elements of $S$.
+\end{pt}
+\begin{pt}
+    To disprove the universally quantified statement "$\forall x \in S, P(x)$": \\
+    Find an element $x \in S$ for which the open sentence $P(x)$ is false. This process is called finding a \emph{\textbf{counter-example}}.
+\end{pt}
 
 \subsection{Proving Existentially Quantified Statements}
-\subsubsection{Proof Technique 3}
-To prove the existentially quantified statement "$\exists x \in \S, P(x)$": \\
-
-Provide an explicit value of $x$ from the domain $S$, and show that $P(x)$
-is true for this value of $x$. In other words, find an element of $S$ that 
-satisfies property $P$.
-
-\subsubsection{Proof Technique 4}
-To disprove the existentially quantified statement "$\exists x \in S, P(x)$": \\
-
-Prove the universally quantified statement "$\forall x \in S, \neg P(x)$"
+\begin{pt}
+    To prove the existentially quantified statement "$\exists x \in S, P(x)$": \\
+    Provide an explicit value of $x$ from the domain $S$, and show that $P(x)$
+    is true for this value of $x$. In other words, find an element of $S$ that 
+    satisfies property $P$.
+\end{pt}
+\begin{pt}
+    To disprove the existentially quantified statement "$\exists x \in S, P(x)$": \\
+    Prove the universally quantified statement "$\forall x \in S, \neg P(x)$".
+\end{pt}
 
 \subsection{Proving Implications}
-\subsubsection{Proof Technique 5}
-For proving an implication: 
-\begin{enumerate}
+\begin{pt}
+    For proving an implication: 
+    \begin{enumerate}
     \item To prove the implication "$A \implies B$", \textbf{assume} that the hypothesis 
     $A$ is true, and use this assumption to show that the conclusion $B$ is true. The 
     hypothesis $A$ is what you start with. The conclusion $B$ is where you must end up.
@@ -276,10 +273,11 @@ For proving an implication:
     Let $x$ be an arbitrary element of $S$, assume that the hypothesis $P(x)$ is true, and 
     use this assumption to show that the conclusion $Q(x)$ is true.
 \end{enumerate}
+\end{pt}
 
 \subsection{Proof by Contrapositive}
-\subsubsection{Proof Technique 6}
-For proving an implication using the contrapositive:
+\begin{pt}
+    For proving an implication using the contrapositive:
 \begin{enumerate}
     \item To prove the implication "$A \implies B$", replace it with its contrapositive
     "$(\neg B) \implies (\neg A)$". Then prove this contrapositive, usually by a direct 
@@ -288,4 +286,78 @@ For proving an implication using the contrapositive:
     "$\forall x \in S, P(x) \implies Q(x)$", replace it with its universally quantified contrapositive
     "$\forall x \in S, (\neg Q(x)) \implies (\neg P(x))$". Then prove this universally quantified contrapositive.
 \end{enumerate}
+\end{pt}
+
+\subsection{Proof by Contradiction}
+\begin{pt}
+To prove $P(x)$ is true. Assume $\neg P(x)$ is true and come to a conclusion that $\neg P(x)$ is false, which proves that $P(x)$ is true.
+\end{pt}
+    
+\subsubsection{Proving Uniqueness}
+\begin{pt}
+    To prove the statement “There is a unique element $x \in S$ such that $P(x)$ is true”:
+    \begin{enumerate}
+        \item[1.] (“Existence”): Prove that there is at least one element $x \in S$ such that $P(x)$ is true (ie., prove the existentially quantified statement "$\exists$ $x \in S$, $P(x)$").
+        \item[2.] ("Uniqueness"): Do either (a) or (b) below.
+            \begin{enumerate}
+                \item Assume that $P(x)$ and $P(y)$ are true for $x, y \in S$, and prove that this assumption leads to the conclusion $x = y$,
+                \item Assume that $P(x)$ and $P(y)$ are true for distinct $x, y \in S$ (so $x \ne y$), and prove that this assumption leads to a contradiction.
+            \end{enumerate}
+    \end{enumerate}
+\end{pt}
+
+\subsection{Proving If and Only if}
+\begin{pt}
+    For proving an if and only if statement:
+    \begin{enumerate}
+        \item To prove the statement $"A \iff B"$, it is equivalent to prove both the implication $"A \implies B"$ and its converse $"B \implies A"$.
+        \item To prove the universally quantified statement $"\forall$ $x \in S$, $P(x) \iff Q(x)$", it is equivalent to do either (a) or (b) below.
+        \begin{enumerate}
+            \item Let $x$ be an arbitrary element of $S$, and prove both the implication $"P(x) \implies Q(x)"$ and its converse $"Q(x) \implies P(x)"$, 
+            \item Prove both the universally quantified implication $"\forall$ $x \in S$, $P(x) \implies Q(x)"$ and its universally quantified converse $"\forall$ $x \in S$, $Q(x) \implies P(x)"$.
+        \end{enumerate} 
+    \end{enumerate}
+\end{pt}
+
+\newpage
+
+\section{Mathematical Induction and Sets}
+\subsection{Proof by Induction}
+\begin{pt}
+    To prove the universally quantified statement "$\forall$ $n \in \N, P(n)$":
+    \begin{enumerate}
+        \item Prove "$P(1)$".
+        \item Prove the universally quantified implication "$\forall$ $k \in \N$, $P(k) \implies P(k+1)$".
+    \end{enumerate}
+    where, $P(1)$ is the \emph{base case/step}, $P(k)$ is the \emph{inductive hypothesis} and $P(k+1)$ is the \emph{inductive conclusion} and together $P(k) \implies P(k+1)$ is the \emph{inductive step}. 
+\end{pt}
+\subsection{Proof by Strong Induction}
+\begin{pt}
+    To prove the universally quantified statement “$\forall$ $n \in \N, n \ge b, P(n)$":
+    \begin{enumerate}
+        \item Prove "$P(b) \wedge P(b+1) \wedge \dots \wedge P(B)$", for some integer $B \ge b$.
+        \item Prove the universally quantified implication "$\forall$ $k \in \Z, k \ge B$, $P(b) \wedge P(b+1) \wedge \dots \wedge P(k) \implies P(k+1)$".
+    \end{enumerate}
+    To implement the proof method of strong induction, what changes are needed in terms of the standard format?
+    \begin{itemize}
+        \item For the base case, prove all of $P(b)$, $P(b+1)$, \dots, $P(B)$. When $b < B$ there is more than one case to prove, so we label them as Base cases, and refer to $b$
+        as the smallest base case and $B$ as the largest base case.
+        \item For the inductive step, we assume that $k$ is an arbitrary integer where $k \ge B$. We assume the inductive hypothesis, $P(b) \wedge P(b+1) \wedge \dots \wedge P(k)$. That is, we assume $P(i)$, for all integers $i = b, b+1, \dots, k$. We then prove $P(k+1)$ using the assumption
+        $P(i)$ for all integers $i = b, b + 1, \dots, k$.
+    \end{itemize}
+\end{pt}
+\subsection{Proving subset}
+\begin{pt}
+    To prove that $S \subseteq T$, prove the universally quantified implication: 
+    \begin{align*}
+        \forall x \in \mathcal{U}, (x \in S) \implies (x \in T)
+    \end{align*}
+\end{pt}
+\subsection{Proving equality}
+\begin{pt}
+    To prove that $S = T$, prove $S \subseteq T$ and $T \subseteq S$ (ie., universally qunatified if and only if): 
+    \begin{align*}
+        \forall x \in \mathcal{U}, (x \in S) \iff (x \in T)
+    \end{align*}
+\end{pt}
 \end{document}

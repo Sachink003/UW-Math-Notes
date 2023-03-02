@@ -1,6 +1,6 @@
 # Fdb version 3
-["pdflatex"] 1677410461 "/Users/sachinkumar/Desktop/Mathematics/Notes/MATH 138 - Calculus 2/Notes/MATH138-Notes.tex" "MATH138-Notes.pdf" "MATH138-Notes" 1677410462
-  "/Users/sachinkumar/Desktop/Mathematics/Notes/MATH 138 - Calculus 2/Notes/MATH138-Notes.tex" 1677410460 27326 e1615b4e999f5994868ec1131b28eec5 ""
+["pdflatex"] 1677721760 "/Users/sachinkumar/Desktop/Mathematics/Notes/MATH 138 - Calculus 2/Notes/MATH138-Notes.tex" "MATH138-Notes.pdf" "MATH138-Notes" 1677721761
+  "/Users/sachinkumar/Desktop/Mathematics/Notes/MATH 138 - Calculus 2/Notes/MATH138-Notes.tex" 1677721760 27964 26c672ac3040807464aedf082c341e64 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/tfm/jknappen/ec/tcrm0600.tfm" 1136768653 1536 12e8c510d3e158fdd0e9a42e75118bd9 ""
@@ -246,9 +246,9 @@
   "/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1647878959 4410336 7d30a02e9fa9a16d7d1f8d037ba69641 ""
   "/usr/local/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt" 1672411288 2826451 b75c11741eb7662ee456800bc6d6544e ""
   "/usr/local/texlive/2022/texmf.cnf" 1647878952 577 209b46be99c9075fd74d4c0369380e8c ""
-  "MATH138-Notes.aux" 1677410462 7983 adf3966b22b2fcffdcf327ba56065b52 "pdflatex"
-  "MATH138-Notes.tex" 1677410460 27326 e1615b4e999f5994868ec1131b28eec5 ""
-  "MATH138-Notes.toc" 1677410462 1206 c203bc454bf466a6ec23d41d303b3397 "pdflatex"
+  "MATH138-Notes.aux" 1677721761 8289 1390e1361370e4b71b0ed7c57595bfc7 "pdflatex"
+  "MATH138-Notes.tex" 1677721760 27964 26c672ac3040807464aedf082c341e64 ""
+  "MATH138-Notes.toc" 1677721761 1274 dc37c10cd64e1333172ef50005bff151 "pdflatex"
   (generated)
   "MATH138-Notes.aux"
   "MATH138-Notes.log"

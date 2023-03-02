@@ -1,6 +1,6 @@
 # Fdb version 3
-["pdflatex"] 1677410450 "/Users/sachinkumar/Desktop/Mathematics/Notes/MATH 136 - Linear Algebra 1/Notes/MATH136-Notes.tex" "MATH136-Notes.pdf" "MATH136-Notes" 1677410451
-  "/Users/sachinkumar/Desktop/Mathematics/Notes/MATH 136 - Linear Algebra 1/Notes/MATH136-Notes.tex" 1677410449 17286 f6b44a56801fa5a538a298f373ba7bdd ""
+["pdflatex"] 1677717866 "/Users/sachinkumar/Desktop/Mathematics/Notes/MATH 136 - Linear Algebra 1/Notes/MATH136-Notes.tex" "MATH136-Notes.pdf" "MATH136-Notes" 1677717867
+  "/Users/sachinkumar/Desktop/Mathematics/Notes/MATH 136 - Linear Algebra 1/Notes/MATH136-Notes.tex" 1677717866 17904 bcbf9a7c512bdaca805a3737a6d10c2e ""
   "/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/tfm/jknappen/ec/tcrm0600.tfm" 1136768653 1536 12e8c510d3e158fdd0e9a42e75118bd9 ""
@@ -241,9 +241,9 @@
   "/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1647878959 4410336 7d30a02e9fa9a16d7d1f8d037ba69641 ""
   "/usr/local/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt" 1672411288 2826451 b75c11741eb7662ee456800bc6d6544e ""
   "/usr/local/texlive/2022/texmf.cnf" 1647878952 577 209b46be99c9075fd74d4c0369380e8c ""
-  "MATH136-Notes.aux" 1677410450 5074 1944924a4028c5e17d1b4db3cad50132 "pdflatex"
-  "MATH136-Notes.tex" 1677410449 17286 f6b44a56801fa5a538a298f373ba7bdd ""
-  "MATH136-Notes.toc" 1677410450 542 73fb4f86bf405851bf5fcd775a15aa45 "pdflatex"
+  "MATH136-Notes.aux" 1677717867 5378 553dbaf0945406fad73b2b8dad3893dd "pdflatex"
+  "MATH136-Notes.tex" 1677717866 17904 bcbf9a7c512bdaca805a3737a6d10c2e ""
+  "MATH136-Notes.toc" 1677717867 610 7b227b53a795a5dc6fc330536bc10232 "pdflatex"
   (generated)
   "MATH136-Notes.aux"
   "MATH136-Notes.log"

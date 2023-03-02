@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.12.30)  26 FEB 2023 05:27
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.12.30)  1 MAR 2023 20:53
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -966,50 +966,42 @@ Non-PDF special ignored!
 \tf@toc=\write4
 \openout4 = `Notes.toc'.
 
- (./Notes.lof)
-\tf@lof=\write5
-\openout5 = `Notes.lof'.
-
- (./Notes.lot)
-\tf@lot=\write6
-\openout6 = `Notes.lot'.
-
- [2]
+ [2] [3]
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <7> not available
-(Font)              Font shape `U/lasy/m/n' tried instead on input line 276.
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 285.
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <5> not available
-(Font)              Font shape `U/lasy/m/n' tried instead on input line 276.
-Package hyperref Info: bookmark level for unknown defn defaults to 0 on input line 276.
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 285.
+Package hyperref Info: bookmark level for unknown defn defaults to 0 on input line 285.
 
 
-LaTeX Warning: Command \i invalid in math mode on input line 293.
+LaTeX Warning: Command \i invalid in math mode on input line 302.
 
-Package hyperref Info: bookmark level for unknown prop defaults to 0 on input line 299.
-[3]
-Package hyperref Info: bookmark level for unknown pf defaults to 0 on input line 306.
-Package hyperref Info: bookmark level for unknown thm defaults to 0 on input line 323.
- [4]
-Package hyperref Info: bookmark level for unknown cor defaults to 0 on input line 339.
+Package hyperref Info: bookmark level for unknown prop defaults to 0 on input line 308.
+[4]
+Package hyperref Info: bookmark level for unknown pf defaults to 0 on input line 315.
+Package hyperref Info: bookmark level for unknown thm defaults to 0 on input line 332.
  [5]
-Package hyperref Info: bookmark level for unknown lem defaults to 0 on input line 379.
- [6] [7] [8]
-\tf@thm=\write7
-\openout7 = `Notes.thm'.
+Package hyperref Info: bookmark level for unknown cor defaults to 0 on input line 348.
+ [6]
+Package hyperref Info: bookmark level for unknown lem defaults to 0 on input line 388.
+ [7] [8] [9]
+\tf@thm=\write5
+\openout5 = `Notes.thm'.
 
- [9] (./Notes.aux) ) 
+ [10] (./Notes.aux) ) 
 Here is how much of TeX's memory you used:
- 33669 strings out of 478268
- 645144 string characters out of 5846346
- 1012642 words of memory out of 5000000
- 51237 multiletter control sequences out of 15000+600000
+ 33658 strings out of 478268
+ 645025 string characters out of 5846346
+ 1012652 words of memory out of 5000000
+ 51232 multiletter control sequences out of 15000+600000
  481677 words of font info for 78 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,17n,104p,740b,1054s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on Notes.pdf (9 pages, 228619 bytes).
+Output written on Notes.pdf (10 pages, 229904 bytes).
 PDF statistics:
- 278 PDF objects out of 1000 (max. 8388607)
- 206 compressed objects within 3 object streams
+ 285 PDF objects out of 1000 (max. 8388607)
+ 212 compressed objects within 3 object streams
  73 named destinations out of 1000 (max. 500000)
- 205 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 213 words of extra memory for PDF output out of 10000 (max. 10000000)
 

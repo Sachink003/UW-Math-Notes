@@ -1,13 +1,13 @@
-\contentsline {defn}{{Definition}{1.1.{1}}{Eigenvector, Eigenvalue and Eigenpair}}{3}{defn.1.1.1}%
-\contentsline {defn}{{Definition}{1.2.{1}}{Eigenvalue Equation or Eigenvalue Problem}}{3}{defn.1.2.1}%
-\contentsline {defn}{{Definition}{1.2.{2}}{Characteristic Polynomial and Characteristic Equation}}{4}{defn.1.2.2}%
-\contentsline {prop}{{Proposition}{1.2.{1}}{}}{4}{thm.1.2.1}%
-\contentsline {pf}{{Proof}{1}{}}{4}{pf.1}%
-\contentsline {defn}{{Definition}{1.2.{3}}{Trace}}{4}{defn.1.2.3}%
-\contentsline {prop}{{Proposition}{1.2.{2}}{Features of the characteristic polynomial}}{4}{thm.1.2.2}%
-\contentsline {pf}{{Proof}{2}{}}{4}{pf.2}%
-\contentsline {prop}{{Proposition}{1.2.{3}}{Characteristic Polynomial and Eigenvalues over $\mathbb {C}$}}{5}{thm.1.2.3}%
-\contentsline {pf}{{Proof}{3}{}}{5}{pf.3}%
-\contentsline {prop}{{Proposition}{1.4.{1}}{Linear combinations of Eigenvectors}}{6}{thm.1.4.1}%
-\contentsline {pf}{{Proof}{4}{}}{6}{pf.4}%
-\contentsline {defn}{{Definition}{1.4.{1}}{Eigenspace}}{7}{defn.1.4.1}%
+\contentsline {defn}{{Definition}{1.1.{1}}{Eigenvector, Eigenvalue and Eigenpair}}{4}{defn.1.1.1}%
+\contentsline {defn}{{Definition}{1.2.{1}}{Eigenvalue Equation or Eigenvalue Problem}}{4}{defn.1.2.1}%
+\contentsline {defn}{{Definition}{1.2.{2}}{Characteristic Polynomial and Characteristic Equation}}{5}{defn.1.2.2}%
+\contentsline {prop}{{Proposition}{1.2.{1}}{}}{5}{thm.1.2.1}%
+\contentsline {pf}{{Proof}{1}{}}{5}{pf.1}%
+\contentsline {defn}{{Definition}{1.2.{3}}{Trace}}{5}{defn.1.2.3}%
+\contentsline {prop}{{Proposition}{1.2.{2}}{Features of the characteristic polynomial}}{5}{thm.1.2.2}%
+\contentsline {pf}{{Proof}{2}{}}{5}{pf.2}%
+\contentsline {prop}{{Proposition}{1.2.{3}}{Characteristic Polynomial and Eigenvalues over $\mathbb {C}$}}{6}{thm.1.2.3}%
+\contentsline {pf}{{Proof}{3}{}}{6}{pf.3}%
+\contentsline {prop}{{Proposition}{1.4.{1}}{Linear combinations of Eigenvectors}}{7}{thm.1.4.1}%
+\contentsline {pf}{{Proof}{4}{}}{7}{pf.4}%
+\contentsline {defn}{{Definition}{1.4.{1}}{Eigenspace}}{8}{defn.1.4.1}%

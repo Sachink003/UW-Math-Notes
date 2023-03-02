@@ -1,6 +1,7 @@
-\contentsline {section}{\numberline {1}Eigenvalues and Diagonalization}{3}{section.1}%
-\contentsline {subsection}{\numberline {1.1}Eigenpair}{3}{subsection.1.1}%
-\contentsline {subsection}{\numberline {1.2}Characteristic Polynomial and Eigenvalue}{3}{subsection.1.2}%
-\contentsline {subsubsection}{\numberline {1.2.1}Properties of the Characteristic Polynomial}{4}{subsubsection.1.2.1}%
-\contentsline {subsection}{\numberline {1.3}Eigenvectors}{6}{subsection.1.3}%
-\contentsline {subsection}{\numberline {1.4}Eigenspaces}{6}{subsection.1.4}%
+\contentsline {section}{\numberline {0}Introduction}{3}{section.0}%
+\contentsline {section}{\numberline {1}Eigenvalues and Diagonalization}{4}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Eigenpair}{4}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Characteristic Polynomial and Eigenvalue}{4}{subsection.1.2}%
+\contentsline {subsubsection}{\numberline {1.2.1}Properties of the Characteristic Polynomial}{5}{subsubsection.1.2.1}%
+\contentsline {subsection}{\numberline {1.3}Eigenvectors}{7}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}Eigenspaces}{7}{subsection.1.4}%
